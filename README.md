@@ -1,6 +1,8 @@
-# Your startup name here
+# Name That
 
 [My Notes](notes.md)
+
+RPH - In this application each phase of development is recorded.
 
 A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -22,15 +24,19 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] A concise and compelling elevator pitch
 - [ ] Description of key features
 - [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
+
+RPH - Do you love naming animals at the zoo, or bragging of the sweet cars that pass by? The Trivia app makes it so items come up and you test your memory in seeing how many you can correctly label. As each guess is made the user's guesses are tallied and displayed
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](pictures/guess-design.jpg)
+![Design image](pictures/login-design.jpg)
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -43,6 +49,11 @@ sequenceDiagram
 
 ### Key features
 
+- Display question image
+- Display of options
+- Store final score
+- Ability to select option
+
 - Describe your key feature
 - Describe your key feature
 - Describe your key feature
@@ -51,12 +62,19 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - 2 HTML pages. 1 for login (and possibly topic), and another for guessing items name.
+- **CSS** - Appropriate styling on separate pages. Whitespace and different of color included.
+- **React** - ??? Gives login, picture display, and React to combine components
+- **Service** - Backend endpoints for:
+   - login
+   - retrieve picture
+   - retrieve options
+   - submit guess
+   - retrieve correct guess count/user
+- **DB/Login** - Stores users, pictures, and options in the database. Register and login the users
+- **WebSocket** - ??? As a guess is made, the right/wrong answer is shown.
+
+##DELETE, WEEK 1 ABOVE THIS LINE
 
 ## 🚀 AWS deliverable
 
