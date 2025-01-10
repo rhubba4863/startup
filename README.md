@@ -1,18 +1,5 @@
 # Name That
 
-[My Notes](notes.md)
-
-RPH - In this application each phase of development is recorded.
-
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-> [!NOTE]
->  This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
->  If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
-
 ## 🚀 Specification Deliverable
 
 > [!NOTE]
@@ -28,7 +15,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-RPH - Do you love naming animals at the zoo, or bragging of the sweet cars that pass by? The Trivia app makes it so items come up and you test your memory in seeing how many you can correctly label. As each guess is made the user's guesses are tallied and displayed
+RPH - Do you love naming animals at the zoo, or bragging of the sweet cars that pass by? The Trivia app makes it so items come up and you test your memory in seeing how many you can correctly label. As each guess is made the user's guesses are tallied and displayed. Give it a go and set a new record.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -62,19 +49,19 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 2 HTML pages. 1 for login (and possibly topic), and another for guessing items name.
-- **CSS** - Appropriate styling on separate pages. Whitespace and different of color included.
-- **React** - ??? Gives login, picture display, and React to combine components
+- **HTML** - 2 HTML pages. 1 for login (and possibly topic), and another for guessing items name. Giving the body and structure for both pages and their popups.
+- **CSS** - Appropriate styling on separate pages. Whitespace and difference of color included.
+- **Javascript** -  XXXXXXXXXXXXXXXXXXXXX "Reactivity (e.g. What happens when a user presses a button)"
+- **React** - Gives login page, Trivia page, and React to combine components of each. 
 - **Service** - Backend endpoints for:
-   - login
+   - logging in
+   - creating a user
    - retrieve picture
    - retrieve options
    - submit guess
    - retrieve correct guess count/user
-- **DB/Login** - Stores users, pictures, and options in the database. Register and login the users
-- **WebSocket** - ??? As a guess is made, the right/wrong answer is shown.
-
-##DELETE, WEEK 1 ABOVE THIS LINE
+- **DB/Login** - Stores users, pictures, and options in the database. Register and login the correct user.
+- **WebSocket** - Once a new highscore is made, realtime that highscore the record list for prlayers playing at that moment.
 
 ## 🚀 AWS deliverable
 
