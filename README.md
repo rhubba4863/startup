@@ -19,8 +19,10 @@ RPH - Do you love naming animals at the zoo, or bragging of the sweet cars that 
 
 ### Design
 
-![Design image](pictures/guess-design.jpg)
-![Design image](pictures/login-design.jpg)
+<!-- ![Design image](pictures/guess-design.jpg)
+![Design image](pictures/login-design.jpg) -->
+
+<img src="pictures/guess-design.jpg" height="250">
 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
