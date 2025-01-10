@@ -17,8 +17,6 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 RPH - Do you love naming animals at the zoo, or bragging of the sweet cars that pass by? The Trivia app makes it so items come up and you test your memory in seeing how many you can correctly label. As each guess is made the user's guesses are tallied and displayed. Give it a go and set a new record.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
 ### Design
 
 ![Design image](pictures/guess-design.jpg)
@@ -51,7 +49,8 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - 2 HTML pages. 1 for login (and possibly topic), and another for guessing items name. Giving the body and structure for both pages and their popups.
 - **CSS** - Appropriate styling on separate pages. Whitespace and difference of color included.
-- **Javascript** -  XXXXXXXXXXXXXXXXXXXXX "Reactivity (e.g. What happens when a user presses a button)"
+- **Javascript** -  Controls the Trivia engine. Allowing user to login, view high scores, and and make a guess for the current picture.
+XXXXXXXXXXXXXXXXXXXXX "Reactivity (e.g. What happens when a user presses a button)"
 - **React** - Gives login page, Trivia page, and React to combine components of each. 
 - **Service** - Backend endpoints for:
    - logging in
