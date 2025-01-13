@@ -1,55 +1,64 @@
-# Name That
+# Your startup name here
+
+[My Notes](notes.md)
+
+A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+> [!NOTE]
+>  This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
+
+> [!NOTE]
+>  If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
 
 ## 🚀 Specification Deliverable
 
+> [!NOTE]
+>  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
+
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] Proper use of Markdown
+- [ ] Proper use of Markdown
 - [ ] A concise and compelling elevator pitch
-- [x] Description of key features
-- [x] Description of how you will use each technology
-- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [ ] Description of key features
+- [ ] Description of how you will use each technology
+- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-RPH - Do you love naming animals at the zoo, actors on TV, or labeling those sweet cars that pass by? The Trivia app makes it so items come up and you test your memory in seeing how many you can correctly label. As each guess is made the user's guesses are tallied and displayed. Give it a go and set the new record.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ### Design
 
-<img src="pictures/login-design.jpg" height="250">
-<img src="pictures/trivia-screen.jpg" height="250">
-<img src="pictures/trivia-popup.jpg" height="250">
+![Design image](placeholder.png)
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```mermaid
+sequenceDiagram
+    actor You
+    actor Website
+    You->>Website: Replace this with your design
+```
 ### Key features
 
-- Display question image
-- Display of options
-- Store final score
-- Ability to select option
-- Alert if a 1st was reached
+- Describe your key feature
+- Describe your key feature
+- Describe your key feature
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 2 HTML pages. 1 for login (and possibly topic), and another for guessing items name. Giving the body and structure for both pages and their popups.
-- **CSS** - Appropriate styling on separate pages. Whitespace and proper color choice included.
-- **Javascript** -  Controls the Trivia engine. Allowing user to login, view high scores, and and make a guess for the current picture.
-- **React** - Gives login page, Trivia page, and React to combine components of each. 
-- **Service** - Backend endpoints for:
-   - logging in
-   - creating a user
-   - retrieve picture
-   - retrieve options
-   - submit guess
-   - retrieve correct guess count/user
-- **DB/Login** - Stores users, pictures, and options in the database. Register and login the correct user.
-- **WebSocket** - Once a new highscore is made, realtime that highscore the record list for players playing at that moment.
+- **HTML** - Description here
+- **CSS** - Description here
+- **React** - Description here
+- **Service** - Description here
+- **DB/Login** - Description here
+- **WebSocket** - Description here
 
 ## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
 - [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
 
 ## 🚀 HTML deliverable
