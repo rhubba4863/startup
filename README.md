@@ -30,12 +30,12 @@ sequenceDiagram
     A->>L: Create User
     L->>P: After Logging In
 
-    P->>L: Make Guess
+    P->>P: Make Guess
     P->>R: View Records
     R->>P: Close Records
 
     loop Every minute
-        P-->P: Check for new record!
+        P-->P: Check/Alerted for new record made!
     end
 
     P->>L: Logout
