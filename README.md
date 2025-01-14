@@ -5,7 +5,7 @@
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
+- [x] A concise and compelling elevator pitch
 - [x] Description of key features
 - [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
@@ -32,10 +32,10 @@ RPH - Do you love naming animals at the zoo, actors on TV, or labeling those swe
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 2 HTML pages. 1 for login (and possibly topic), and another for guessing items name. Giving the body and structure for both pages and their popups.
+- **HTML** - 2 HTML pages. 1 for login (and possibly topic selection), and another for guessing items name. Giving the body and structure for both pages and their popups.
 - **CSS** - Appropriate styling on separate pages. Whitespace and proper color choice included.
 - **Javascript** -  Controls the Trivia engine. Allowing user to login, view high scores, and and make a guess for the current picture.
-- **React** - Gives login page, Trivia page, and React to combine components of each. 
+- **React** - Gives Login page, Trivia page, and React to combine components of each. 
 - **Service** - Backend endpoints for:
    - logging in
    - creating a user
@@ -44,7 +44,7 @@ I am going to use the required technologies in the following ways.
    - submit guess
    - retrieve correct guess count/user
 - **DB/Login** - Stores users, pictures, and options in the database. Register and login the correct user.
-- **WebSocket** - Once a new highscore is made, realtime that highscore the record list for players playing at that moment.
+- **WebSocket** - Once a new highscore is made, realtime that highscore onto the record list for players playing at that moment.
 
 ## 🚀 AWS deliverable
 
