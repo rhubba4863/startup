@@ -28,6 +28,42 @@ sequenceDiagram
     J->>A: Great!
 ```
 
+```mermaid
+sequenceDiagram
+    actor A as User
+    participant L as Login
+    participant P as Play
+    participant R as Record
+    A->>L: Enter User
+    A->>L: Create User
+    L->>P: After Logging In
+
+    P->>L: Make Guess
+    P->>R: View Records
+    R->>P: Close Records
+
+    loop Every minute
+        P-->P: Check for new record!
+    end
+
+    P->>L: Logout
+    P->>P: End Game
+    P->>P: Start New Game
+```
+
+```mermaid
+flowchart TD
+    %% Nodes
+    AA[Make Guess] --> BB{Is it correct answer?}
+    BB -- yes --> CC[Color Right Option]
+    BB -- no --> DD[Color Options Right/Wrong]
+    CC --> EE[Add to score]
+    EE --> FF[Display Right Guess Made]
+    DD --> GG[Display Wrong Guess Made]
+    FF --> AA[Make Guess]
+    GG --> AA[Make Guess]
+```
+
 ### Key features
 
 - Display question image
