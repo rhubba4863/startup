@@ -26,6 +26,7 @@ sequenceDiagram
     participant J as John
     A->>J: Hello John, how are you?
     J->>A: Great!
+```
 
 ### Key features
 
