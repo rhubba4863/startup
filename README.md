@@ -20,6 +20,17 @@ RPH - Do you love naming animals at the zoo, actors on TV, or labeling those swe
 <img src="pictures/trivia-screen.jpg" height="250">
 <img src="pictures/trivia-popup.jpg" height="250">
 
+```mermaid
+flowchart TD
+%% Nodes
+    AA[Make Guess] -->BB{Is it correct answer};
+    BB -- yes --> CC[Color Right Option];
+    BB -- no --> DD[Color Options Right/Wrong];
+    CC --> EE[add to score];
+    EE --> FF[Display Right Guess Made];
+    DD --> GG[Display Wrong Guess Made];
+
+
 ### Key features
 
 - Display question image
