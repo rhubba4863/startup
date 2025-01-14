@@ -22,14 +22,6 @@ RPH - Do you love naming animals at the zoo, actors on TV, or labeling those swe
 
 ```mermaid
 sequenceDiagram
-    participant A as Alice
-    participant J as John
-    A->>J: Hello John, how are you?
-    J->>A: Great!
-```
-
-```mermaid
-sequenceDiagram
     actor A as User
     participant L as Login
     participant P as Play
@@ -49,19 +41,6 @@ sequenceDiagram
     P->>L: Logout
     P->>P: End Game
     P->>P: Start New Game
-```
-
-```mermaid
-flowchart TD
-    %% Nodes
-    AA[Make Guess] --> BB{Is it correct answer?}
-    BB -- yes --> CC[Color Right Option]
-    BB -- no --> DD[Color Options Right/Wrong]
-    CC --> EE[Add to score]
-    EE --> FF[Display Right Guess Made]
-    DD --> GG[Display Wrong Guess Made]
-    FF --> AA[Make Guess]
-    GG --> AA[Make Guess]
 ```
 
 ### Key features
