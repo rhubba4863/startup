@@ -21,15 +21,11 @@ RPH - Do you love naming animals at the zoo, actors on TV, or labeling those swe
 <img src="pictures/trivia-popup.jpg" height="250">
 
 ```mermaid
-flowchart TD
-%% Nodes
-    AA[Make Guess] -->BB{Is it correct answer};
-    BB -- yes --> CC[Color Right Option];
-    BB -- no --> DD[Color Options Right/Wrong];
-    CC --> EE[add to score];
-    EE --> FF[Display Right Guess Made];
-    DD --> GG[Display Wrong Guess Made];
-
+sequenceDiagram
+    participant A as Alice
+    participant J as John
+    A->>J: Hello John, how are you?
+    J->>A: Great!
 
 ### Key features
 
