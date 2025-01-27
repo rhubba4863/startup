@@ -79,15 +79,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created a HTML page for each page of the APP
+- [x] **Proper HTML element usage** - I choose the right element type per task (Header, body, link...)
+- [x] **Links** - I included links, both for accessing each HTML page, and for the Github location.
+- [x] **Text** - I place text on the screen. Also added comments to describe tasks
+- [ ] **3rd party API placeholder** - I added an element for the "3rd party API placeholder"
+- [x] **Images** - I call and display a image within the app.
+- [x] **Login placeholder** - I have a html representing upcoming Login elements
+- [x] **DB data placeholder** - I I have a data placeholder. holding where the picture and questions will be shown.
+- [x] **WebSocket placeholder** - I have a placeholder for the websocket, storing and updating user high scores.
 
 ## 🚀 CSS deliverable
 
@@ -100,7 +100,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Application text content** - I did not complete this part of the deliverable.
 - [ ] **Application images** - I did not complete this part of the deliverable.
 
-## 🚀 React part 1: Routing deliverable
+## 🚀 React part 1: Routing deliverable 
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
