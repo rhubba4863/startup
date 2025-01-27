@@ -25,7 +25,10 @@ Week 3 - HTML
           (https://github.com/webprogramming260/.github/blob/main/profile/html/input/input.md)
 - [Media] (https://codepen.io/rhubba4863/pen/ByBOMwV)
           (https://github.com/webprogramming260/.github/blob/main/profile/html/media/media.md)
-- [Simon HTML] ()
+- [CSS]   (https://codepen.io/rhubba4863/pen/yyBQZKR)
+          (https://github.com/webprogramming260/.github/blob/main/profile/css/introduction/introduction.md)
+- [Animation Slide] (https://developer.mozilla.org/en-US/play)
+          (https://codepen.io/Digitango/pen/eRRZaP)
 
 ## Future RPH
 - [] ()
