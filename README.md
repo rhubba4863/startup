@@ -83,10 +83,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Proper HTML element usage** - I choose the right element type per task (Header, body, link...)
 - [x] **Links** - I included links, both for accessing each HTML page, and for the Github location.
 - [x] **Text** - I place text on the screen. Also added comments to describe tasks
-- [ ] **3rd party API placeholder** - I added an element for the "3rd party API placeholder"
+- [x] **3rd party API placeholder** - I added an element for the "3rd party API placeholder"
 - [x] **Images** - I call and display a image within the app.
 - [x] **Login placeholder** - I have a html representing upcoming Login elements
-- [x] **DB data placeholder** - I I have a data placeholder. holding where the picture and questions will be shown.
+- [x] **DB data placeholder** - I have a data placeholder. holding where the picture and questions will be shown.
 - [x] **WebSocket placeholder** - I have a placeholder for the websocket, storing and updating user high scores.
 
 ## 🚀 CSS deliverable
