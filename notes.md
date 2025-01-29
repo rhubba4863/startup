@@ -31,6 +31,7 @@ Week 3 - HTML
           (https://codepen.io/Digitango/pen/eRRZaP)
 - [Responsive-Design]  
           https://codepen.io/rhubba4863/pen/XJroBvj Bootstrap
+          https://getbootstrap.com/docs/5.0/components/pagination/
           Remember "LINK" and "script" like below
           <head>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
@@ -43,9 +44,16 @@ Week 3 - HTML
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
           </body>
 
+          https://codepen.io/rhubba4863/pen/RNbEBVL
+          https://codepen.io/rhubba4863/pen/vEBvaWe?editors=1100
+          https://codepen.io/rhubba4863/pen/dPbwjmR
+          https://codepen.io/rhubba4863/pen/emObjMm
 
+          Resize background
+          https://codepen.io/rhubba4863/pen/mybvOor
 
-
+          Question on Resizing text
+          https://codepen.io/rhubba4863/pen/XJrONvG
 ## Future RPH
 - [] ()
 - [] ()
