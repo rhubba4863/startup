@@ -2,8 +2,34 @@ header {
   flex: 0 90px;
   background-color: rgba(0, 0, 0, 0.9);
 
-  display: block;
+  height: 10%;
+
+  /* display: block;
   unicode-bidi: isolate;
+  margin: auto; */
+}
+
+.game-name{
+  vertical-align: middle;
+
+}
+
+menu{
+  flex: 1;
+  display: flex;
+  /*  overwrite Bootstrap so the menu does not wrap */
+  flex-direction: row !important;
+  list-style: none;
+}
+
+.navbar-brand {
+  padding-left: 0.3em;
+  border-bottom: solid rgb(182, 182, 182) thin;
+}
+
+menu .nav-item {
+  padding: 0 0.3em;
+  margin-bottom: 10px;
 }
 
 main {
@@ -19,7 +45,7 @@ main {
   font-family: sans-serif;
   box-sizing: border-box;
   
-  height: 100%;
+  height: 90%;
 
   /* flex: 1 calc(100vh - 110px); */
   display: flex;
