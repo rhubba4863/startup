@@ -15,7 +15,17 @@ main {
   align-items: center;
   justify-content: space-around; */
 
+  text-align: center;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  
   height: 100%;
+
+  /* flex: 1 calc(100vh - 110px); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 footer {
@@ -34,7 +44,6 @@ body {
 
 
   height: 100%;
-
 }
 
 /* Notes

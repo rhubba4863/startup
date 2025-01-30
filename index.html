@@ -19,8 +19,9 @@
   </head>
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
-    <header>     
+    <header class="container-fluid">     
       <nav>
+        <!-- class="navbar fixed-top navbar-dark" -->
       <!-- Navigation elements -->
       <menu class="nav nav-pills">
         <a>Trivia<sup>&reg;</sup></a>
@@ -37,9 +38,9 @@
     </nav>      
     </header>
 
-    <main>      
+    <main class="container-fluid bg-secondary text-center">      
       <!-- <div>Note - Some links Hidden till user logs in</div> -->
-      <h2>New High Score!</h2>
+      <h2 class="hidden">New High Score!</h2>
 
       <h1>Welcome to Trivia</h1>
       <form method="get" action="play.html">
