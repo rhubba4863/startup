@@ -14,13 +14,11 @@ function sayHello() {
 //   myInput.focus()
 // })
 
-function crazy(){
 
-} 
+// var myModal = document.getElementById('exampleModal')
+// var myInput = document.getElementById('myInput2')
 
-  // var myModal = document.getElementById('exampleModal')
-  // var myInput = document.getElementById('myInput2')
-
-  // myModal.addEventListener('shown.bs.modal', function () {
-  //   myInput.focus();
-  // })
+// // myModal.addEventListener('shown.bs.modal', function () {
+// myModal.addEventListener('click', function () {
+//   myInput.focus();
+// })

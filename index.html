@@ -19,8 +19,6 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
     crossorigin="anonymous"
     />
-
-
   </head>
 
   <body class="bg-dark text-light">
@@ -42,7 +40,7 @@
         </menu>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="myInput2">
+        <button type="button" class="btn btn-primary" id="myInput2" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal
         </button>   
         <!-- Modal -->
@@ -69,7 +67,7 @@
           var myInput = document.getElementById('myInput2')
         
           // myModal.addEventListener('shown.bs.modal', function () {
-          myModal.addEventListener("click", function () {
+          myModal.addEventListener("shown.bs.modal", function () {
             myInput.focus();
           })  
         </script>
@@ -97,13 +95,7 @@
       </div>
     </main>
 
-    <!-- <footer>
-      <hr />
-      <span class="text-reset">Author: Robert (Parker) Hubbard</span>
-      <br />
-      <a href="https://github.com/rhubba4863/startup">GitHub Site</a>
-    </footer> -->
-    
+    <!-- Footer and Link -->
     <footer class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
       <div class="container-fluid">
         <span class="text-reset">Author: Robert (Parker) Hubbard</span>
