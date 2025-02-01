@@ -111,11 +111,38 @@ body {
   padding:3px;
 }
 
-/* 2) scores.html's CSS */
+/* 3) scores.html's CSS */
 #scores-structure{
   padding: 10px;
   background-color: gray;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.bordertime{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #252525;
+}
+
+/* NOTE MEDIA QUERIES HERE */
+/* 
+If page is in portrait format
+@media (orientation: portrait) {
+NOTE - REFER TO BODY ELEMENT
+ body {
+   flex-direction: column;
+ }
+}
+ */
+
+ /* (max-height: 500px))
+ MEANS once below 500px
+  */
+ 
 
 /* .button-row{
   padding: 1px;
