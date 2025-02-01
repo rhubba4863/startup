@@ -75,24 +75,32 @@
 
 
     <main>
-      <h2>New High Score!</h2>
-      <h1>Name That... Actor</h1> <div>  Username</div>
-      <form method="get" action="play.html">
-        <div>
-          <img alt="Arches" height=150  src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
-        </div>
-        <div>
-          <span>Round 0/10</span>
-          <span>Score 0/10</span>
-        </div>
-        <button type="submit">John Wayne</button>
-        <button type="submit">Gary Cooper</button>
-        <br><br>
-        <button type="submit">Clint Eastwood</button>
-        <button type="submit">Henry Fonda</button>
-        <br><br>
-        <button type="submit">Restart</button>
-      </form>
+      <!-- Note - Some links Hidden till user logs in -->
+      <h2 class="new-high-score">New High Score!</h2>
+      <div id="guessing-structure">
+        <h1>Name That... Actor</h1> <div>  Username</div>
+        <form method="get" action="play.html">
+          <div>
+            <!-- Hold Image to Display -->
+            <img alt="Arches" height=150  src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
+          </div>
+          <div id="step-and-score">
+            <div style="width:40%"   float=right>Round 0/10</div>
+            <div style="width:40%"float=right>Score 0/10</div>
+          </div>
+
+          <div class="button-row">
+            <button id="option1" style="width:45%" type="submit">John Wayne</button>
+            <button id="option2" style="width:45%" type="submit">Gary Cooper</button>
+          </div>
+          <div class="button-row">
+            <button id="option3" style="width:45%" type="submit">Clint Eastwood</button>
+            <button id="option4" style="width:45%" type="submit">Henry Fonda</button>
+          </div>
+
+          <button id="restart-button" type="submit">Restart</button>
+        </form>
+      </div>
     </main>
 
     <!-- Footer and Link -->

@@ -95,6 +95,32 @@ body {
   height: 100%;
 }
 
+/* 2) Play.html's CSS */
+#guessing-structure{
+  padding: 10px;
+  background-color: gray;
+}
+
+#step-and-score{
+  /* display: inline-block */
+  /* width=100%; */
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding:3px;
+}
+
+/* 2) scores.html's CSS */
+#scores-structure{
+  padding: 10px;
+  background-color: gray;
+}
+
+/* .button-row{
+  padding: 1px;
+} */
+
 /* Notes
 Fill max height of item in page
 height: 100%; */
