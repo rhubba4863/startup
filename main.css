@@ -27,6 +27,29 @@ menu{
   border-bottom: solid rgb(182, 182, 182) thin;
 }
 
+.new-high-score{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items:start; */
+
+  /* position: relative;
+  float: right;
+
+  top: 5%; */
+
+  color: pink;
+  position: absolute;
+  top: 12%;
+  right: 16px;
+  font-size: 18px;
+
+  /* Element takes space, but not visible */
+  /* https://www.w3schools.com/css/css_display_visibility.asp */
+  /* visibility: hidden; */
+
+}
+
 menu .nav-item {
   padding: 0 0.3em;
   margin-bottom: 10px;

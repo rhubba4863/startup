@@ -9,32 +9,27 @@
 
     <link rel="stylesheet" href="main.css" />
 
+    <!-- Include Javascript -->
+    <script src="index.js"></script>
+
     <!--Include Bootstrap Tools/Resources-->
     <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
     crossorigin="anonymous"
-  />
+    />
+
+
   </head>
 
   <body class="bg-dark text-light">
+    <!-- Use header, main, and footer elements to give semantic structure -->
     <header class="container-fluid">     
       <nav class="navbar fixed-top navbar-dark">
         <a class="navbar-brand">Trivia<sup>&reg;</sup></a>
-    
-        <!-- Use header, main, and footer elements to give semantic structure -->
-  <!-- <body class="bg-dark text-light">
-    <header class="container-fluid">     
-      <nav> -->
-
-  <!-- <body class="bg-dark text-light">
-    <header class="container-fluid">     
-      <nav> -->
-        <!-- class="navbar fixed-top navbar-dark" -->
-        <!-- Navigation elements -->
+     
         <menu class="nav nav-pills">
-          <a class="game-name">Trivia<sup>&reg;</sup></a>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
@@ -45,12 +40,45 @@
             <a class="nav-link" href="scores.html">Scores</a>
           </li>
         </menu>
-      </nav>      
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="myInput2">
+          Launch demo modal
+        </button>   
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          var myModal = document.getElementById('exampleModal')
+          var myInput = document.getElementById('myInput2')
+        
+          // myModal.addEventListener('shown.bs.modal', function () {
+          myModal.addEventListener("click", function () {
+            myInput.focus();
+          })  
+        </script>
+      </nav>   
     </header>
 
     <main class="container-fluid bg-secondary text-center">      
       <!-- Note - Some links Hidden till user logs in -->
-      <h2 class="hidden">New High Score!</h2>
+      <h2 class="new-high-score">New High Score!</h2>
 
       <div>
         <h1>Welcome to Trivia</h1>
@@ -61,7 +89,7 @@
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">🔒</span>
-            <input class="form-control" type="password" placeholder="Password" />
+            <input class="form-control"type="password" placeholder="Password" />
           </div>
           <button type="submit" class="btn btn-primary">Login</button>
           <button type="submit" class="btn btn-secondary">Create</button> 
