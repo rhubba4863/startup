@@ -1,8 +1,8 @@
 header {
-  flex: 0 90px;
+  /* flex: 0 90px;
   background-color: rgba(0, 0, 0, 0.9);
 
-  height: 10%;
+  height: 10%; */
 
   /* display: block;
   unicode-bidi: isolate;
@@ -68,7 +68,7 @@ main {
   font-family: sans-serif;
   box-sizing: border-box;
   
-  height: 90%;
+  height: 100%;
 
   /* flex: 1 calc(100vh - 110px); */
   display: flex;
@@ -93,6 +93,8 @@ body {
 
 
   height: 100%;
+  /* min-width: 700px */
+  /* min-w-{700px}; */
 }
 
 /* 2) Play.html's CSS */
@@ -142,6 +144,24 @@ NOTE - REFER TO BODY ELEMENT
  /* (max-height: 500px))
  MEANS once below 500px
   */
+
+  /* @media ((orientation: portrait) and (max-height: 500px)) {
+ aside {
+   display: none;
+ }
+} */
+
+/* @media ((max-height: 500px)) {
+  #page-links {
+    display: none;
+  }
+ } */
+
+ @media ((orientation: portrait) and (max-height: 500px)) {
+  #modal-load-button {
+    display: none;
+  }
+ }
  
 
 /* .button-row{
