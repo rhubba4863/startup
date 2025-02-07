@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia</title>
+    <link rel="icon" href="favicon.ico" />
+
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- Include Javascript -->
+    <script src="index.js"></script>
+
+    <!--Include Bootstrap Tools/Resources-->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+    crossorigin="anonymous"
+    />
+  </head>
+
+  <!-- Figure how to set the minimum size " min-w-700" -->
+  <body class="bg-dark text-light">
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header class="container-fluid">
+
+      <!-- Note - perhaps remove "fixed-top" if header is to be scrolled out of view -->
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Trivia</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="play.html">Play</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="scores.html">Scores</a>
+              </li>
+
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li> -->
+            </ul>
+            <!-- <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal-load-button">
+              Launch demo modal AGAIN
+            </button>
+          </div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal-load-button">
+            Launch demo modal AGAIN
+          </button>
+        </div>
+      </nav>  
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container-fluid bg-secondary text-center">      
+      <!-- Note - Some links Hidden till user logs in -->
+      <h2 class="new-high-score">New High Score!</h2>
+
+      <div>
+        <h1>Welcome to Trivia</h1>
+        <form method="get" action="play.html">
+          <div class="input-group mb-3">
+            <span class="input-group-text">@</span>
+            <input class="form-control" type="text" placeholder="your@email.com" />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">🔒</span>
+            <input class="form-control"type="password" placeholder="Password" />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-secondary">Create</button> 
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer and Link -->
+    <footer class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="text-reset">Author: Robert (Parker) Hubbard</span>
+        <a class="text-reset" href="https://github.com/rhubba4863/startup">GitHub Site</a>
+      </div>
+    </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+  crossorigin="anonymous">
+  </script>
+
+  </body>
+</html>
+
+<!-- Move Footer to the very fixed-bottom
+ https://getbootstrap.com/docs/5.0/examples/navbar-bottom/
+class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" 
+-->
+
+
+
+<!-- <header class="container-fluid">      
+  <nav class="navbar fixed-top navbar-dark">
+    <a class="navbar-brand">Trivia<sup>&reg;</sup></a>
+     Navigation elements 
+    <menu class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="play.html">Play</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="scores.html">Scores</a>
+      </li>
+    </menu>
+  </nav>      
+</header>
+
+<main>            
+  <!-- <div>Note - Some links Hidden till user logs in</div> -->
+  <!--<h2>New High Score!</h2>
+
+  <h1>Welcome to Trivia</h1>
+  <form method="get" action="play.html">
+    <div>
+      <span>@</span>
+      <input type="text" placeholder="your@email.com" />
+    </div>
+    <div>
+      <span>🔒</span>
+      <input type="password" placeholder="Password" />
+    </div>
+    <button type="submit">Login</button>
+    <button type="submit">Create</button> 
+  </form>
+</main> -->
