@@ -54,6 +54,16 @@ Week 3 - HTML
 
           Question on Resizing text
           https://codepen.io/rhubba4863/pen/XJrONvG
+## Week 4 - React
+
+## Goals
+Need to edit Login and Scores pages (maybe some feature different
+than Simon), then later at 
+
+## Order
+app.jsx containing the header and footer
+
+
 ## Future RPH
 - [] ()
 - [] ()
