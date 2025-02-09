@@ -1,0 +1,17 @@
+/* 2) Play.html's CSS */
+#guessing-structure{
+  padding: 10px;
+  background-color: gray;
+
+  text-align: center;
+}
+
+#step-and-score{
+  /* display: inline-block */
+  /* width=100%; */
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding:3px;
+}

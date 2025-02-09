@@ -1,6 +1,6 @@
 import React from 'react';
 // Figure CSS format later
-import './play.css';
+import './play1.css';
 
 export function Play() {
   return (

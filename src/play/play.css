@@ -97,39 +97,6 @@ body {
   /* min-w-{700px}; */
 }
 
-/* 2) Play.html's CSS */
-#guessing-structure{
-  padding: 10px;
-  background-color: gray;
-}
-
-#step-and-score{
-  /* display: inline-block */
-  /* width=100%; */
-
-  display: flex;
-  text-align: center;
-  align-items: center;
-  padding:3px;
-}
-
-/* 3) scores.html's CSS */
-#scores-structure{
-  padding: 10px;
-  background-color: gray;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.bordertime{
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #252525;
-}
-
 /* NOTE MEDIA QUERIES HERE */
 /* 
 If page is in portrait format

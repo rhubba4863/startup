@@ -19,6 +19,9 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  /* RPH */
+  background-color: rgb(194, 193, 193);
 }
 
 footer {
@@ -56,4 +59,28 @@ footer a {
   main {
     flex: 1 100vh;
   }
+}
+
+
+/* RPH */
+.new-high-score{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items:start; */
+
+  /* position: relative;
+  float: right;
+
+  top: 5%; */
+
+  color: pink;
+  position: absolute;
+  top: 12%;
+  right: 16px;
+  font-size: 18px;
+
+  /* Element takes space, but not visible */
+  /* https://www.w3schools.com/css/css_display_visibility.asp */
+  /* visibility: hidden; */
 }

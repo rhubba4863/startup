@@ -1,0 +1,16 @@
+/* 3) scores.html's CSS */
+#scores-structure{
+  padding: 10px;
+  background-color: gray;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.bordertime{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #252525;
+}

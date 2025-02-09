@@ -2,6 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
+// import React, { useState } from 'react';
+// import { Modal, Button } from 'react-bootstrap';
+
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Play } from './play/play';
@@ -46,15 +49,48 @@ export default function App() {
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form> --> */}
+
+
+
+                <div className="container">
+                  <h2>Modal Example</h2>
+                  {/* <!-- Trigger the modal with a button --> */}
+                  <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                  {/* <!-- Modal --> */}
+                  <div className="modal fade" id="myModal" role="dialog">
+                    <div className="modal-dialog">
+                    
+                      {/* <!-- Modal content--> */}
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <button type="button" className="close" data-dismiss="modal">&times;</button>
+                          <h4 className="modal-title">Modal Header</h4>
+                        </div>
+                        <div className="modal-body">
+                          <p>Some text in the modal.</p>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+
                 
                 {/* <!-- Button trigger modal --> */}
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal-load-button">
-                  Launch demo modal AGAIN
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal" id="modal-load-button">
+                  Launch demo modal AGAIN-1
                 </button>
               </div>
               {/* <!-- Button trigger modal --> */}
-              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal-load-button">
-                Launch demo modal AGAIN
+              <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
+              data-bs-target="#exampleModal" id="modal-load-button">
+                Launch demo modal AGAIN-2
               </button>
             </div>
           </nav>  
@@ -105,6 +141,7 @@ export default function App() {
   )
 }
 
+// RPH - What to display in Main if wrong website 
 function NotFound() {
   return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
 }

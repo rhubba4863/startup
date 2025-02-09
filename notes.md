@@ -56,6 +56,8 @@ Week 3 - HTML
           https://codepen.io/rhubba4863/pen/XJrONvG
 ## Week 4 - React
 
+  Index -> app -> components
+
 ## Goals
 Need to edit Login and Scores pages (maybe some feature different
 than Simon), then later at 
