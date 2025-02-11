@@ -17,7 +17,7 @@ export function Scores() {
           <thead>
             <tr>
                 <th className="bordertime">#</th>
-                <th className="bordertime">Name</th>
+                <th className="bordertime">Username</th>
                 <th className="bordertime">Score</th>
                 <th className="bordertime">Date</th>
               </tr>
@@ -25,21 +25,21 @@ export function Scores() {
           <tbody>
             <tr>
               <td className="bordertime">1</td>
-              <td className="bordertime">도윤 이</td>
-              <td className="bordertime">34</td>
-              <td className="bordertime">May 20, 2024</td>
+              <td className="bordertime">Spiderman</td>
+              <td className="bordertime">7</td>
+              <td className="bordertime">May 20, 2025</td>
             </tr>
             <tr>
               <td className="bordertime">2</td>
-              <td className="bordertime">Annie James</td>
-              <td className="bordertime">29</td>
-              <td className="bordertime">January 2, 2025</td>
+              <td className="bordertime">Jerry</td>
+              <td className="bordertime">3</td>
+              <td className="bordertime">1/3/2021</td>
             </tr>
             <tr>
               <td className="bordertime">3</td>
-              <td className="bordertime">Gunter Spears</td>
-              <td className="bordertime">7</td>
-              <td className="bordertime">December 3, 2024</td>
+              <td className="bordertime">Lions</td>
+              <td className="bordertime">06</td>
+              <td className="bordertime">06/04/02</td>
             </tr>
           </tbody>
         </table>

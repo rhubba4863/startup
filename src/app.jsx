@@ -1,6 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './app.css';
+
+//import Modal from "react-bootstrap/Modal";
+//https://www.pluralsight.com/resources/blog/guides/working-with-bootstraps-modals-react
 
 // import React, { useState } from 'react';
 // import { Modal, Button } from 'react-bootstrap';
@@ -11,6 +15,8 @@ import { Play } from './play/play';
 import { Scores } from './scores/scores';
 
 export default function App() {
+
+  
   // Note - RPH just put a line on the screen
   // return <div className='body bg-dark text-light'>App will display here</div>;
 
@@ -29,6 +35,7 @@ export default function App() {
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
+              
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
@@ -49,36 +56,6 @@ export default function App() {
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form> --> */}
-
-
-
-                <div className="container">
-                  <h2>Modal Example</h2>
-                  {/* <!-- Trigger the modal with a button --> */}
-                  <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-                  {/* <!-- Modal --> */}
-                  <div className="modal fade" id="myModal" role="dialog">
-                    <div className="modal-dialog">
-                    
-                      {/* <!-- Modal content--> */}
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="close" data-dismiss="modal">&times;</button>
-                          <h4 className="modal-title">Modal Header</h4>
-                        </div>
-                        <div className="modal-body">
-                          <p>Some text in the modal.</p>
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-                  
-                </div>
 
                 
                 {/* <!-- Button trigger modal --> */}
