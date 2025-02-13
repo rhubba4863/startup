@@ -10,7 +10,7 @@ export function Login() {
       <h2 className="new-high-score">New High Score!</h2>
 
       <div>
-        <h1>Welcome to Trivia</h1>
+        <h1>Hello <br></br>Welcome back to Trivia</h1>
         <form method="get" action="play.html">
           <div className="input-group mb-3">
             <span className="input-group-text">@</span>

@@ -1,8 +1,21 @@
 
+#exampleModal {
+  /* Text color */
+  color: black;
+}
 
+#modal-load-button{
+  /* Text color */
+  background-color: black;
+}
+
+/*
+* Teachers original below
+*/
 
 /* rph */
 /* Figure the css needed acrross different pages */
+/*Flexible column format with a minimun size the screen can reach*/
 .body {
   display: flex;
   flex-direction: column;

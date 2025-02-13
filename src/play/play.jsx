@@ -2,6 +2,18 @@ import React from 'react';
 // Figure CSS format later
 import './play1.css';
 
+/*
+*RPH - suggest ways to enhance the user experience (UX)
+* Color/audio/(motion of hands)(Fireworks) if right/wrong answer
+
+* Column for number of times/games played. switch filter on username, highest score,
+* or who played the most
+*/
+
+/*
+Maybe add background hehind the question box
+responsive design 
+ */
 export function Play() {
   return (
     // <main className='container-fluid bg-secondary text-center'>

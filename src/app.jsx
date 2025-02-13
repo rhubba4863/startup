@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+//RPH Note - import to remove the javascript for the jsx files and have Bootstrap continue
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './app.css';
 
@@ -15,8 +16,6 @@ import { Play } from './play/play';
 import { Scores } from './scores/scores';
 
 export default function App() {
-
-  
   // Note - RPH just put a line on the screen
   // return <div className='body bg-dark text-light'>App will display here</div>;
 
@@ -61,14 +60,14 @@ export default function App() {
                 {/* <!-- Button trigger modal --> */}
                 <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal" id="modal-load-button">
-                  Launch demo modal AGAIN-1
+                  Details
                 </button>
               </div>
               {/* <!-- Button trigger modal --> */}
-              <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
+              {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
               data-bs-target="#exampleModal" id="modal-load-button">
-                Launch demo modal AGAIN-2
-              </button>
+                .....
+              </button> */}
             </div>
           </nav>  
           
@@ -77,15 +76,19 @@ export default function App() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 className="modal-title" id="exampleModalLabel">Trivia Instructions</h5>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
-                  ...
+                  Trivia is a knowledge game where you receive questions and choose between the possible options for the correct answer.
+                  By clicking start/restart you begin a new game. 
+                  <br></br>
+                  <br></br>
+                  <b>“Be brave. Take risks. Nothing can substitute experience.” By Paulo Coelho</b>
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary">Save changes</button>
+                  {/* <button type="button" className="btn btn-primary">Save changes</button> */}
                 </div>
               </div>
             </div>
