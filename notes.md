@@ -58,6 +58,17 @@ Week 3 - HTML
 
   Index -> app -> components
 
+  Components for each page type. CSS attributes are inheritted from the sequence/elemts above.
+
+## Week 6 - Javascript React
+
+## Week 6 - 
+## Week 7 - 
+## Week 8 - 
+## Week 9 - 
+## Week 10 - 
+## Week 11 - 
+
 ## Goals
 Need to edit Login and Scores pages (maybe some feature different
 than Simon), then later at 
