@@ -21,7 +21,7 @@ export default function App() {
     console.log("first print");
 
     saveScore(7);
-    saveScore(9);
+    saveScore(95);
 
   }
 
@@ -35,9 +35,9 @@ export default function App() {
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
 
-    console.log("A1) " + newScore.name);
-    console.log("2) " + newScore.date);
-    console.log("3) " + newScore.score);
+    // console.log("A1) " + newScore.name);
+    // console.log("2) " + newScore.date);
+    // console.log("3) " + newScore.score);
 
 
     //Storage of scores
@@ -50,7 +50,7 @@ export default function App() {
 
     scores.push(newScore);
 
-    console.log("4) " + scores.length);
+    // console.log("4) " + scores.length);
 
     // Let other players know the game has concluded
     // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
@@ -60,8 +60,8 @@ export default function App() {
     //Store the array back into localStorage
     localStorage.setItem('scores', JSON.stringify(scores));
 
-    //Clear the local storage
-     //localStorage.clear('scores');
+    //RPH - Clear the local storage  
+    //localStorage.clear('scores');
   }
 
   return (

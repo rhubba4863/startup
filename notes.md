@@ -62,6 +62,11 @@ Week 3 - HTML
 
 ## Week 6 - Javascript React
 
+  Clear Storage - "localStorage.clear();"
+  Remove 1 item - "localStorage.removeItem('age');"
+
+
+
 ## Week 6 - 
 ## Week 7 - 
 ## Week 8 - 

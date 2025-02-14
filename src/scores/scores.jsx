@@ -17,23 +17,29 @@ export function Scores() {
 
   // Demonstrates rendering an array with React
   const practiceScores = [];
-  practiceScores.push(practiceScore1());
-  practiceScores.push(practiceScore2());
-  practiceScores.push(practiceScore3());
+  practiceScores.push(practiceScoreGroup());
 
   const highScoreRows = [];
+  let counter = 0;
   if(scores.length){
     for (const [i, score] of scores.entries()) {
-      highScoreRows.push(
-        <tr key={i}>
-          <td className="bordertime">{i + 1}</td>
-          <td className="bordertime">{score.name.split('@')[0]}</td>
-          <td className="bordertime">{score.score}</td>
-          <td className="bordertime">{score.date}</td>
-        </tr>
-      );
+      if (counter < 10){
+        highScoreRows.push(
+          <tr key={i}>  
+            <td className="bordertime">{i + 1}</td>
+            <td className="bordertime">{score.name.split('@')[0]}</td>
+            <td className="bordertime">{score.score}</td>
+            <td className="bordertime">{score.date}</td>
+          </tr>
+        );
+      }
+
+      counter = counter + 1;
+      // console.log("counter " + counter);
     }
   }
+
+  sortScores();
 
   return (
     // <main className='container-fluid bg-secondary text-center'>
@@ -55,7 +61,7 @@ export function Scores() {
             </tr>
           </thead>
           <tbody id='scores'>
-            {practiceScores}
+            {/* {practiceScores} */}
             {highScoreRows}
           </tbody>
         </table>
@@ -65,28 +71,51 @@ export function Scores() {
   );  
 }
 
-  // function practiceScores() {
-  //   return (
-  //     <tr>
-  //     <td className="bordertime">1</td>
-  //     <td className="bordertime">Spiderman</td>
-  //     <td className="bordertime">7</td>
-  //     <td className="bordertime">May 20, 2025</td>
-  //   </tr>
-  //   <tr>
-  //     <td className="bordertime">2</td>
-  //     <td className="bordertime">Jerry</td>
-  //     <td className="bordertime">3</td>
-  //     <td className="bordertime">1/3/2021</td>
-  //   </tr>
-  //   <tr>
-  //     <td className="bordertime">3</td>
-  //     <td className="bordertime">Lions</td>
-  //     <td className="bordertime">06</td>
-  //     <td className="bordertime">06/04/02</td>
-  //   </tr>
-  // };
-  // }
+export function sortScores(){
+  //Storage of scores
+  let scores = [];
+  //Get the scores and split their individual pieces
+  const scoresText = localStorage.getItem('scores');
+  if (scoresText) {
+    scores = JSON.parse(scoresText);
+  }
+
+  //Sort the array and place into the array "scores"
+  scores.sort((a, b) => (a.score < b.score) ? 1 : -1)    
+  localStorage.setItem('scores', JSON.stringify(scores));
+
+  // console.log("All Scores = ")
+  // console.log(scores)
+}
+
+function practiceScoreGroup(){
+  const practiceScores = [];
+  practiceScores.push(    
+  <tr>
+    <td className="bordertime">1</td>
+    <td className="bordertime">Spiderman</td>
+    <td className="bordertime">7</td>
+    <td className="bordertime">05/20/2025</td>
+  </tr>);
+  practiceScores.push(    
+  <tr>
+    <td className="bordertime">2</td>
+    <td className="bordertime">Jerry</td>
+    <td className="bordertime">3</td>
+    <td className="bordertime">01/03/2021</td>
+  </tr>);
+  practiceScores.push(
+  <tr>
+    <td className="bordertime">3</td>
+    <td className="bordertime">Lions</td>
+    <td className="bordertime">6</td>
+    <td className="bordertime">06/04/02</td>
+  </tr>);
+
+  return (
+    practiceScores
+  )
+}
 
 function practiceScore1(){
   return (
@@ -95,28 +124,6 @@ function practiceScore1(){
       <td className="bordertime">Spiderman</td>
       <td className="bordertime">7</td>
       <td className="bordertime">May 20, 2025</td>
-    </tr>
-  )
-}
-
-function practiceScore2(){
-  return (
-    <tr>
-      <td className="bordertime">2</td>
-      <td className="bordertime">Jerry</td>
-      <td className="bordertime">3</td>
-      <td className="bordertime">1/3/2021</td>
-    </tr>
-  )
-}
-
-function practiceScore3(){
-  return (
-    <tr>
-      <td className="bordertime">3</td>
-      <td className="bordertime">Lions</td>
-      <td className="bordertime">06</td>
-      <td className="bordertime">06/04/02</td>
     </tr>
   )
 }
