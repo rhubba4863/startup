@@ -16,8 +16,53 @@ import { Play } from './play/play';
 import { Scores } from './scores/scores';
 
 export default function App() {
-  // Note - RPH just put a line on the screen
-  // return <div className='body bg-dark text-light'>App will display here</div>;
+  // async function vs function
+  function firstTry(){
+    console.log("first print");
+
+    saveScore(7);
+    saveScore(9);
+
+  }
+
+  firstTry();
+
+
+  async function saveScore(score) {
+    // const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const userName = "Jack";
+
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+
+    console.log("A1) " + newScore.name);
+    console.log("2) " + newScore.date);
+    console.log("3) " + newScore.score);
+
+
+    //Storage of scores
+    let scores = [];
+    //Get the scores and split their individual pieces
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      scores = JSON.parse(scoresText);
+    }
+
+    scores.push(newScore);
+
+    console.log("4) " + scores.length);
+
+    // Let other players know the game has concluded
+    // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+
+    // updateScoresLocal(newScore);
+
+    //Store the array back into localStorage
+    localStorage.setItem('scores', JSON.stringify(scores));
+
+    //Clear the local storage
+     //localStorage.clear('scores');
+  }
 
   return (
     // BrowserRouter will handle all
