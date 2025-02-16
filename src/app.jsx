@@ -20,9 +20,10 @@ export default function App() {
   function firstTry(){
     console.log("first print");
 
-    saveScore(7);
-    saveScore(95);
-
+    // saveScore(7);
+    // saveScore(95);
+    // saveScore(76);
+    // saveScore(20);   
   }
 
   firstTry();
@@ -62,6 +63,7 @@ export default function App() {
 
     //RPH - Clear the local storage  
     //localStorage.clear('scores');
+
   }
 
   return (
