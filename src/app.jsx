@@ -14,8 +14,16 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Play } from './play/play';
 import { Scores } from './scores/scores';
+import { UserIdentification } from './login/userIdentification';
+
 
 export default function App() {
+  //RPH - Set initial variables, start at "Not Logged In" version
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentVerification = userName ? UserIdentification.Verified :  UserIdentification.Unverified;
+  const [verifiedState, setVerificationState] = React.useState(currentVerification);
+
+
   // async function vs function
   function firstTry(){
     console.log("first print");
@@ -23,7 +31,9 @@ export default function App() {
     // saveScore(7);
     // saveScore(95);
     // saveScore(76);
-    // saveScore(20);   
+    // saveScore(20);  
+    //RPH - Clear the local storage  
+    //localStorage.clear('scores'); 
   }
 
   firstTry();
@@ -142,9 +152,23 @@ export default function App() {
           </div>
         </header>
 
-        {/* <main>App components go here</main> */}
+        {/* App components go here*/}
         <Routes>
-          <Route path='/login' element={<Login />} exact />
+          {/* <Route path='/login' element={<Login />} exact /> */}
+          <Route
+            path='/login'
+            element={
+              <Login
+                userName={userName}
+                verifiedState={verifiedState}
+                onVerifyChange={(userName, verifiedState) => {
+                  setVerificationState(verifiedState);
+                  setUserName(userName);
+                }}
+              />
+            }
+            exact
+          />
           <Route path='/play' element={<Play />} />
           <Route path='/scores' element={<Scores />} />
           <Route path='*' element={<NotFound />} />

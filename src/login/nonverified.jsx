@@ -1,16 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import Button from 'react-bootstrap/Button';
+import { MessageDialog } from './messageDialog';
+
+
+// import Button from 'react-bootstrap/Button';
 //import './nonverified.css';
 
 //RPH - Not yet logged in
-export function Nonverified(props) {
+export function NonVerified(props) {
 
-  function login() {
+  async function loginUser() {
+    localStorage.setItem('userName', userName);
+    props.onLogin(userName);
   }
 
+  async function createUser() {
+    localStorage.setItem('userName', userName);
+    props.onLogin(userName);
+  }
+
+
   return(
-    <div></div>
+    <div>Not Logged in</div>
   );
 }

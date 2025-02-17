@@ -72,6 +72,7 @@ export function Scores() {
 }
 
 export function sortScores(){
+  //https://stackoverflow.com/questions/43572436/sort-an-array-of-objects-in-react-and-render-them
   //Storage of scores
   let scores = [];
   //Get the scores and split their individual pieces

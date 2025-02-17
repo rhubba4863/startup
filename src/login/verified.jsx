@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 //import './verified.css';
 
 //RPH - Not yet logged in
@@ -19,13 +19,15 @@ export function Verified(input) {
   */
   return(
     <div>
-      <div className='playerName'>{input.userName}</div>
+      <div>Logged in</div>
+
+      {/* <div className='playerName'>{input.userName}</div>
       <Button variant='primary' onClick={() => navigation('/play')}>
         Play
       </Button>
       <Button variant='secondary' onClick={() => logout()}>
         Logout
-      </Button>
+      </Button> */}
     </div>
   );
 }
