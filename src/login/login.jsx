@@ -14,8 +14,10 @@ export function Login({ userName, verifiedState, onVerifyChange }) {
       <h2 className="new-high-score">New High Score!</h2>
 
       <div>
-        {/* Decide which Login page to show  */}
-        
+        {/* Decide which Login page/features to show  */}
+
+        {verifiedState !== UserIdentification.Unknown && <h1>Welcome back to Trivia</h1>}
+
         {verifiedState === UserIdentification.Verified && (
           <Verified userName={userName} onLogout={() => 
             onVerifyChange(userName, UserIdentification.Unverified)} />
@@ -31,7 +33,7 @@ export function Login({ userName, verifiedState, onVerifyChange }) {
         )}
 
 
-        <h1>Hello <br></br>Welcome back to Trivia</h1>
+        {/* <h1>Hello <br></br>Welcome back to Trivia</h1>
         <form method="get" action="play.html">
           <div className="input-group mb-3">
             <span className="input-group-text">@</span>
@@ -43,7 +45,7 @@ export function Login({ userName, verifiedState, onVerifyChange }) {
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
           <button type="submit" className="btn btn-secondary">Create</button> 
-        </form>
+        </form> */}
       </div>
     </main>
   );

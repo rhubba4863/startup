@@ -27,6 +27,8 @@ export default function App() {
   // async function vs function
   function firstTry(){
     console.log("first print");
+    console.log("X STATE"+currentVerification+"X");
+    console.log("X STATE"+verifiedState+"X");
 
     // saveScore(7);
     // saveScore(95);
@@ -34,14 +36,17 @@ export default function App() {
     // saveScore(20);  
     //RPH - Clear the local storage  
     //localStorage.clear('scores'); 
+    // userName = 
+    console.log("A"+userName+"A");
+    console.log("B"+localStorage.getItem('userName')+"B");
   }
 
   firstTry();
 
 
   async function saveScore(score) {
-    // const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    const userName = "Jack";
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    //const userName = "Jack";
 
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
@@ -49,7 +54,6 @@ export default function App() {
     // console.log("A1) " + newScore.name);
     // console.log("2) " + newScore.date);
     // console.log("3) " + newScore.score);
-
 
     //Storage of scores
     let scores = [];
@@ -97,22 +101,16 @@ export default function App() {
                   <li className="nav-item">
                     <NavLink className="nav-link" aria-current="page" to='login'>Home</NavLink>
                   </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to='play'>Play</NavLink>
-                  </li>
+                  {/* RPH - Currently not working */}
+                  {verifiedState === verifiedState.Verified && (
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to='play'>Play</NavLink>
+                    </li>
+                  )}
                   <li className="nav-item">
                     <NavLink className="nav-link" to='scores'>Scores</NavLink>
                   </li>
-
-                  {/* <!-- <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                  </li> --> */}
                 </ul>
-                {/* <!-- <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> --> */}
-
                 
                 {/* <!-- Button trigger modal --> */}
                 <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
@@ -120,11 +118,6 @@ export default function App() {
                   Details
                 </button>
               </div>
-              {/* <!-- Button trigger modal --> */}
-              {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-              data-bs-target="#exampleModal" id="modal-load-button">
-                .....
-              </button> */}
             </div>
           </nav>  
           
