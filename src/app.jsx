@@ -24,61 +24,18 @@ export default function App() {
   const [verifiedState, setVerificationState] = React.useState(currentVerification);
 
 
-  // async function vs function
-  function firstTry(){
-    console.log("first print");
-    console.log("X STATE"+currentVerification+"X");
-    console.log("X STATE"+verifiedState+"X");
+  // // async function vs function
+  // function firstValues(){
+  //   console.log("First State");
+  //   console.log("A"+currentVerification+"A");
+  //   console.log("A"+verifiedState+"A");
 
-    // saveScore(7);
-    // saveScore(95);
-    // saveScore(76);
-    // saveScore(20);  
-    //RPH - Clear the local storage  
-    //localStorage.clear('scores'); 
-    // userName = 
-    console.log("A"+userName+"A");
-    console.log("B"+localStorage.getItem('userName')+"B");
-  }
+  //   console.log("First User");
+  //   console.log("B"+userName+"-A");
+  //   console.log("B"+localStorage.getItem('userName')+"B");
+  // }
 
-  firstTry();
-
-
-  async function saveScore(score) {
-    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    //const userName = "Jack";
-
-    const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, date: date };
-
-    // console.log("A1) " + newScore.name);
-    // console.log("2) " + newScore.date);
-    // console.log("3) " + newScore.score);
-
-    //Storage of scores
-    let scores = [];
-    //Get the scores and split their individual pieces
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-
-    scores.push(newScore);
-
-    // console.log("4) " + scores.length);
-
-    // Let other players know the game has concluded
-    // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-
-    // updateScoresLocal(newScore);
-
-    //Store the array back into localStorage
-    localStorage.setItem('scores', JSON.stringify(scores));
-
-    //RPH - Clear the local storage  
-    //localStorage.clear('scores');
-
-  }
+  // firstValues();
 
   return (
     // BrowserRouter will handle all
@@ -101,8 +58,8 @@ export default function App() {
                   <li className="nav-item">
                     <NavLink className="nav-link" aria-current="page" to='login'>Home</NavLink>
                   </li>
-                  {/* RPH - Currently not working */}
-                  {verifiedState === verifiedState.Verified && (
+                  {/* RPH - Show "Play" link once user is logged in */}
+                  {verifiedState === UserIdentification.Verified && (
                     <li className="nav-item">
                       <NavLink className="nav-link" to='play'>Play</NavLink>
                     </li>

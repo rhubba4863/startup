@@ -39,34 +39,35 @@ export function NonVerified(props) {
 
   // async function vs function
   function firstTry(){
-    console.log("first print");
-    console.log("X"+currentVerification+"X");
-    console.log("X"+verifiedState+"X");
+    console.log("Create User");
+    console.log("C-"+currentVerification+"C");
+    console.log("C-"+verifiedState+"C");
 
-    saveScore(7);
-    saveScore(95);
-    saveScore(76);
-    saveScore(20);  
+    //RPH - Add some scores to the Scores page
+    // saveScore(7);
+    // saveScore(95);
+    // saveScore(76);
+    // saveScore(20);  
+
     //RPH - Clear the local storage  
     //localStorage.clear('scores'); 
     
     // userName = 
-    console.log("A"+userName+"A");
-    console.log("B"+localStorage.getItem('userName')+"B");
+    console.log("D-"+userName+"D");
+    console.log("D-"+localStorage.getItem('userName')+"D");
   }
 
   function saveScore(score) {
     //const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    //const userName = "Jack";
+    //const userName = "Jack and Jill";
     const userName = localStorage.getItem('userName');
-
 
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
 
-    // console.log("A1) " + newScore.name);
-    // console.log("2) " + newScore.date);
-    // console.log("3) " + newScore.score);
+    console.log("A1) " + newScore.name);
+    console.log("2) " + newScore.date);
+    console.log("3) " + newScore.score);
 
     //Storage of scores
     let scores = [];
