@@ -49,8 +49,12 @@ export function Play({ playState, onPlayChange }) {
         {/* Decide which Play page/features to show  */}
         {playState === PlayState.Playing && (        
           <Playing
+            roundNumber={roundNumber}
+            totalRounds={totalRounds}
+            totalRightAnswers={totalRightAnswers}
+
             onLogin={() => {
-              onPlayChange( PlayState.Finished, totalRounds);
+              onPlayChange( PlayState.Finished);
             }}
           />
         )}

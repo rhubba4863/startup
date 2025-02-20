@@ -7,6 +7,11 @@ import Button from 'react-bootstrap/Button';
 //RPH - Not yet logged in
 export function Playing(input) {
   const navigation = useNavigate();
+  //RPH - Carry the variables over
+  const [totalRounds, setTotalRounds] = React.useState(input.totalRounds);
+  const [roundNumber, setRoundNumber] = React.useState(input.roundNumber);
+  const [totalRightAnswers, setTotalRightAnswers] 
+    = React.useState(input.totalRightAnswers);
 
   function logout() {
     //localStorage.removeItem('userName');
@@ -14,7 +19,14 @@ export function Playing(input) {
   }
 
   function nextQuestion(){
-    
+    console.log("E"+input.totalRounds+"E"); 
+    console.log("E"+totalRounds+"E"); 
+
+    setTotalRightAnswers(totalRightAnswers+1);
+    //totalRightAnswers = totalRightAnswers+1;
+
+    console.log("F"+input.totalRightAnswers+"G"); 
+    console.log("F"+totalRightAnswers+"G"); 
   }
 
   /*
@@ -30,8 +42,10 @@ export function Playing(input) {
           <img alt="Arches" height={150} src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
         </div>
         <div id="step-and-score">
-          <div style={{'width' : '40%', textAlign: 'right' }} /*float={right}*/>Round 0/10</div>
-          <div style={{'width' : '40%', textAlign: 'right'}} /*float={right}*/>Score 0/10</div>
+          <div style={{'width' : '40%', textAlign: 'right' }}
+           /*float={right}*/>Round 0/{totalRounds}</div>
+          <div style={{'width' : '40%', textAlign: 'right'}} 
+          /*float={right}*/>Score 0/10</div>
         </div>
 
         <div className="button-row">
