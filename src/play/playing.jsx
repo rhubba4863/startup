@@ -19,14 +19,21 @@ export function Playing(input) {
   }
 
   function nextQuestion(){
-    console.log("E"+input.totalRounds+"E"); 
+    //console.log("E"+input.totalRounds+"E"); 
     console.log("E"+totalRounds+"E"); 
 
     setTotalRightAnswers(totalRightAnswers+1);
+    setRoundNumber(roundNumber+1);
+
     //totalRightAnswers = totalRightAnswers+1;
 
-    console.log("F"+input.totalRightAnswers+"G"); 
+    //console.log("F"+input.totalRightAnswers+"G"); 
     console.log("F"+totalRightAnswers+"G"); 
+
+    //Determine when to return the values to the parent 
+    // if(x>=10){
+       localStorage.setItem('userName', userName);
+    // }
   }
 
   /*
@@ -43,9 +50,9 @@ export function Playing(input) {
         </div>
         <div id="step-and-score">
           <div style={{'width' : '40%', textAlign: 'right' }}
-           /*float={right}*/>Round 0/{totalRounds}</div>
+           /*float={right}*/>Round {roundNumber}/{totalRounds}</div>
           <div style={{'width' : '40%', textAlign: 'right'}} 
-          /*float={right}*/>Score 0/10</div>
+          /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
         </div>
 
         <div className="button-row">
