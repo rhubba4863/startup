@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
-import './verified.css';
+//import './verified.css';
 
-//RPH - Logged in
-export function Verified(input) {
+//RPH - Not yet logged in
+export function Finished(input) {
   const navigation = useNavigate();
 
   function logout() {
-    localStorage.removeItem('userName');
+    //localStorage.removeItem('userName');
     input.onLogout();
   }
 
@@ -19,13 +19,14 @@ export function Verified(input) {
   */
   return(
     <div>
-      <div className='playerName'>{input.userName}</div>
+      USER FINISHED THE GAME
+      {/* <div className='playerName'>{input.userName}</div>
       <Button variant='primary' onClick={() => navigation('/play')}>
         Play
       </Button>
       <Button variant='secondary' onClick={() => logout()}>
-        Logout
-      </Button>
+        Next
+      </Button> */}
     </div>
   );
 }

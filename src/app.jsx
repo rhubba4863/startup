@@ -26,7 +26,7 @@ export default function App() {
   const [verifiedState, setVerificationState] = React.useState(currentVerification);
 
   //RPH - confirm setup
-  const currentPlayStep = userName ? PlayState.Pregame : PlayState.Playing;// : PlayState.Finished;
+  const currentPlayStep = userName ? /*PlayState.Pregame : */ PlayState.Playing : PlayState.Finished;
   const [playState, setPlayState] = React.useState(currentPlayStep);
 
   // // async function vs function
@@ -124,7 +124,15 @@ export default function App() {
             }
             exact
           />
-          <Route path='/play' element={<Play />} />
+          <Route 
+            path='/play' 
+            element={
+              <Play 
+                playState={playState}
+                onPlayChange={(playState) => {
+                  setPlayState(playState);
+                }}
+              />} />
           <Route path='/scores' element={<Scores />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

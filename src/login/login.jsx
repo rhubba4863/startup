@@ -19,7 +19,9 @@ export function Login({ userName, verifiedState, onVerifyChange }) {
         {verifiedState !== UserIdentification.Unknown && <h1>Welcome back to Trivia</h1>}
 
         {verifiedState === UserIdentification.Verified && (
-          <Verified userName={userName} onLogout={() => 
+          <Verified 
+            userName={userName} 
+            onLogout={() => 
             onVerifyChange(userName, UserIdentification.Unverified)} />
         )}
         
