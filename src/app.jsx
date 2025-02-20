@@ -15,6 +15,8 @@ import { Login } from './login/login';
 import { Play } from './play/play';
 import { Scores } from './scores/scores';
 import { UserIdentification } from './login/userIdentification';
+//
+import { PlayState } from './play/playState';
 
 
 export default function App() {
@@ -23,6 +25,9 @@ export default function App() {
   const currentVerification = userName ? UserIdentification.Verified :  UserIdentification.Unverified;
   const [verifiedState, setVerificationState] = React.useState(currentVerification);
 
+  //RPH - confirm setup
+  const currentPlayStep = userName ? PlayState.Pregame : PlayState.Playing;// : PlayState.Finished;
+  const [playState, setPlayState] = React.useState(currentPlayStep);
 
   // // async function vs function
   // function firstValues(){
