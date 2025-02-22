@@ -65,10 +65,10 @@ Week 3 - HTML
   Clear Storage - "localStorage.clear();"
   Remove 1 item - "localStorage.removeItem('age');"
 
-
-
 ## Week 6 - 
 ## Week 7 - 
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+  
 ## Week 8 - 
 ## Week 9 - 
 ## Week 10 - 

@@ -7,10 +7,6 @@ import { PlayState } from './playState';
 import { Playing } from './playing';
 import { Finished } from './finished';
 
-//roundNumber
-//totalRounds
-//totalRightAnswers
-
 /*
 *RPH - suggest ways to enhance the user experience (UX)
 * Color/audio/(motion of hands)(Fireworks) if right/wrong answer
