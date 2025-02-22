@@ -14,23 +14,18 @@ export function Playing(input) {
     = React.useState(input.totalRightAnswers);
   const [questionGuessed, setQuestionGuessed] = React.useState(false);
 
-  //let questionGuessed = false;
-
-
   function logout() {
     //localStorage.removeItem('userName');
     input.onLogout();
   }
 
   function checkAnswer(){
-    console.log("Guessed="+questionGuessed);
+    // Only edit if user has not yet guessed
     if(questionGuessed == false){
       setTotalRightAnswers(totalRightAnswers+1);
       changeDisplay();
       setQuestionGuessed(true);
     }
-    console.log("Guessed="+questionGuessed);
-
   }
 
   function nextQuestion(){
@@ -116,17 +111,8 @@ export function Playing(input) {
           <div style={{'width' : '40%', textAlign: 'right' }}
            /*float={right}*/>Round {roundNumber}/{totalRounds}</div>
           <div style={{'width' : '40%', textAlign: 'right'}} 
-          /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
+           /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
         </div>
-
-        <div className="button-row">
-          <button id="option1" style={{'width' : '45%'}} /*type="submit"*/>John Wayne</button>
-          <button id="option2" style={{'width' : '45%'}} type="submit">Gary Cooper</button>
-        </div>
-        <div className="button-row">
-          <button id="option3" style={{'width' : '45%'}} type="submit">Clint Eastwood</button>
-          <button id="option4" style={{'width' : '45%'}} type="submit">Henry Fonda</button>
-        </div> 
 
         <div className="button-row">
           <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer()}>
@@ -145,9 +131,6 @@ export function Playing(input) {
           </Button>
         </div> 
 
-        <button id="restart-button" type="submit">Restart</button>
-        {/* <button id="next-button" type="submit">Next</button> */}
-        <button id="next-button" onClick={() => changeDisplay()}>Restart</button>
         <Button variant='light' onClick={() => restartGame()}>
             Restart
         </Button>
