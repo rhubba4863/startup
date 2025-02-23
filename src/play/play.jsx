@@ -50,7 +50,7 @@ const SlidingText = ( text ) => {
 Maybe add background hehind the question box
 responsive design 
  */
-export function Play({ playState, onPlayChange }) {
+export function Play({ userName, playState, onPlayChange }) {
   function currentValues(){
     console.log("Play Page");
     console.log("D"+onPlayChange+"D");
@@ -74,17 +74,19 @@ export function Play({ playState, onPlayChange }) {
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       <h2 className="new-high-score">New High Score!</h2>
       {/* Slide Atempt 2 */}
-      {SlidingText('John')}
+      {/* {SlidingText('John')} */}
 
       <div>
         {/* Decide which Play page/features to show  */}
         {playState === PlayState.Playing && (        
           <Playing
+            userName={userName} 
             roundNumber={roundNumber}
             totalRounds={totalRounds}
             totalRightAnswers={totalRightAnswers}
 
-            onLogin={() => {
+            // RPH - Here is method sub-page calls on to switch sub-pages
+            onGameCompletion={() => {
               onPlayChange( PlayState.Finished);
             }}
           />
@@ -92,8 +94,17 @@ export function Play({ playState, onPlayChange }) {
 
         {playState === PlayState.Finished && (        
           <Finished
-            onLogin={() => {
+            userName={userName} 
+            roundNumber={localStorage.roundNumber}
+            totalRounds={localStorage.totalRounds}
+            totalRightAnswers={localStorage.totalRightAnswers}
+            
+
+
+            onStartPlayingGame={() => {
               onPlayChange( PlayState.Playing);
+              console.log("EEE"+totalRightAnswers+"E"); 
+              console.log("EEE"+localStorage.totalRightAnswers+"E"); 
             }}
           />
         )}

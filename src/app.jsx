@@ -128,6 +128,7 @@ export default function App() {
             path='/play' 
             element={
               <Play 
+                userName={userName}
                 playState={playState}
                 onPlayChange={(playState) => {
                   setPlayState(playState);

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 //import './verified.css';
 
-//RPH - Not yet logged in
+//RPH - User begins playing the game
 export function Playing(input) {
   const navigation = useNavigate();
   //RPH - Carry the variables over
@@ -14,10 +14,6 @@ export function Playing(input) {
     = React.useState(input.totalRightAnswers);
   const [questionGuessed, setQuestionGuessed] = React.useState(false);
 
-  function logout() {
-    //localStorage.removeItem('userName');
-    input.onLogout();
-  }
 
   function checkAnswer(){
     // Only edit if user has not yet guessed
@@ -39,9 +35,10 @@ export function Playing(input) {
     //console.log("F"+totalRightAnswers+"G"); 
 
     //Determine when to return the values to the parent 
-    // if(roundNumber >=10){
-    //   localStorage.setItem('userName', userName);
-    // }
+    if(roundNumber >=10){
+      saveToLocalStorage()
+      reachFinishedPage();
+    }
   }
 
   function changeDisplay(buttonClicked, answer){
@@ -88,11 +85,21 @@ export function Playing(input) {
     setRoundNumber(1);
     setTotalRightAnswers(0)
 
+    saveToLocalStorage();
+    resetDisplay();
+  }
+
+  function saveToLocalStorage(){
+    localStorage.roundNumber;
     localStorage.setItem('roundNumber', roundNumber);
     localStorage.setItem('totalRounds', totalRounds);
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
-   
-    resetDisplay();
+  }
+
+  function reachFinishedPage(){
+    //Call to "play.jsx" to shift sub-page
+    input.onGameCompletion();
+
   }
 
   /*
@@ -101,7 +108,7 @@ export function Playing(input) {
   */
   return(
     <div id="guessing-structure">
-      <h1>Name That... Actor</h1> <div>  Username</div>
+      <h1>Name That... Actor</h1> <div>  Username A{input.userName}A</div>
       <form method="get" action="play.html">
         <div>
           {/* <!-- Hold Image to Display --> */}
@@ -136,6 +143,10 @@ export function Playing(input) {
         </Button>
         <Button variant='light' onClick={() => nextQuestion()}>
           Next
+        </Button>
+
+        <Button variant='light' onClick={() => reachFinishedPage()}>
+            Finished
         </Button>
       </form>
     </div>
