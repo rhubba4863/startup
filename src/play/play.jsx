@@ -1,4 +1,6 @@
 import React from 'react';
+//import React, { useState, useEffect } from 'react';
+
 // Figure CSS format later
 import './play1.css';
 
@@ -17,6 +19,31 @@ import { Finished } from './finished';
 const roundNumber = 1;
 const totalRounds = 10;
 const totalRightAnswers = 0;
+let text = 'people';
+
+//Slid-in Method 2
+// Sliding attempts
+const SlidingText = ( text ) => {
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    // Trigger the animation after a short delay
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100); // Adjust delay as needed
+
+    return () => clearTimeout(timer); // Clear timeout if component unmounts
+  }, []);
+
+  return (
+    <div className={`sliding-text ${isVisible ? 'visible' : ''}`}>
+      {text} Happy
+    </div>
+  );
+};
+
+//Timer wait
+
 
 
 /*
@@ -36,10 +63,18 @@ export function Play({ playState, onPlayChange }) {
   
   currentValues();
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const textElement = document.getElementById('sliding-text');
+    textElement.classList.add('slide-in');
+  });
+
   return (
-    <main className="container-fluid bg-secondary text-center">      
+    <main className="container-fluid bg-secondary text-center">  
+          
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       <h2 className="new-high-score">New High Score!</h2>
+      {/* Slide Atempt 2 */}
+      {SlidingText('John')}
 
       <div>
         {/* Decide which Play page/features to show  */}

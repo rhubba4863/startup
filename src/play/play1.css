@@ -23,3 +23,40 @@ Button {
 
   margin:3px;
 }
+
+
+
+/* RPH Possible sliding steps */
+/* NEW SLIDING FEATURES */
+/* Attempt 1 */
+.fly-in {
+  animation: fly-from-right 1s ease-out;
+}
+
+@keyframes fly-from-right {
+  0% {
+    transform: translateX(+200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Attempt 2 */
+.sliding-text {
+  position: relative;
+  left: -100%; /* Initially off-screen to the left */
+  opacity: 0; /* Initially transparent */
+  animation: slideIn 1s forwards; /* Animation duration and direction */
+}
+
+.sliding-text.visible {
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  to {
+    left: 0; /* Slide to its original position */
+  }
+}
+
