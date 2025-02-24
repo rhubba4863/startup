@@ -51,17 +51,17 @@ Maybe add background hehind the question box
 responsive design 
  */
 export function Play({ userName, playState, onPlayChange }) {
-  function currentValues(){
-    console.log("Play Page");
-    console.log("D"+onPlayChange+"D");
-    console.log("D"+playState+"D");  
+  // function currentValues(){
+  //   console.log("Play Page");
+  //   console.log("D"+onPlayChange+"D");
+  //   console.log("D"+playState+"D");  
 
-    console.log("D"+roundNumber+"D"); 
-    console.log("D"+totalRounds+"D"); 
-    console.log("D"+totalRightAnswers+"D"); 
-  }
+  //   console.log("D"+roundNumber+"D"); 
+  //   console.log("D"+totalRounds+"D"); 
+  //   console.log("D"+totalRightAnswers+"D"); 
+  // }
   
-  currentValues();
+  // currentValues();
 
   document.addEventListener('DOMContentLoaded', function() {
     const textElement = document.getElementById('sliding-text');
@@ -99,12 +99,8 @@ export function Play({ userName, playState, onPlayChange }) {
             totalRounds={localStorage.totalRounds}
             totalRightAnswers={localStorage.totalRightAnswers}
             
-
-
             onStartPlayingGame={() => {
               onPlayChange( PlayState.Playing);
-              console.log("EEE"+totalRightAnswers+"E"); 
-              console.log("EEE"+localStorage.totalRightAnswers+"E"); 
             }}
           />
         )}

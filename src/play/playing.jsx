@@ -14,7 +14,6 @@ export function Playing(input) {
     = React.useState(input.totalRightAnswers);
   const [questionGuessed, setQuestionGuessed] = React.useState(false);
 
-
   function checkAnswer(){
     // Only edit if user has not yet guessed
     if(questionGuessed == false){
@@ -24,23 +23,56 @@ export function Playing(input) {
     }
   }
 
+  //Bring up next question, or show final score/page 
   function nextQuestion(){
     setRoundNumber(roundNumber+1);
 
     resetDisplay();
     
-    //console.log("E"+input.totalRounds+"E"); 
-    //console.log("E"+totalRounds+"E");
-    //console.log("F"+input.totalRightAnswers+"G"); 
-    //console.log("F"+totalRightAnswers+"G"); 
+    // console.log("E"+input.totalRounds+"E"); 
+    // console.log("E"+totalRounds+"E");
+    // console.log("F"+input.totalRightAnswers+"G"); 
+    // console.log("F"+totalRightAnswers+"G"); 
 
     //Determine when to return the values to the parent 
-    if(roundNumber >=10){
-      saveToLocalStorage()
+    if(roundNumber >= totalRounds){
+      saveToLocalStorage();
+      //RPH - Add some scores to the Scores page
+      saveScore(localStorage.totalRightAnswers);
       reachFinishedPage();
     }
   }
 
+  //Save the score among high scores
+  function saveScore(score) {
+    //const userName = "Jack and Jill";
+    const userName = localStorage.getItem('userName');
+
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+
+    // console.log("A1) " + newScore.name);
+    // console.log("2) " + newScore.date);
+    // console.log("3) " + newScore.score);
+
+    //Storage of scores
+    let scores = [];
+    //Get the scores and split their individual pieces
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      scores = JSON.parse(scoresText);
+    }
+
+    scores.push(newScore);
+
+    // Let other players know the game has concluded
+    // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+
+    //Store the array back into localStorage
+    localStorage.setItem('scores', JSON.stringify(scores));
+  }
+
+  //Change color of buttons to Green/Red
   function changeDisplay(buttonClicked, answer){
     // document.getElementById("option1").className="correct";
     // document.getElementById("option2").className="wrong";
@@ -69,6 +101,7 @@ export function Playing(input) {
     }
   }
 
+  //Change color of buttons to White
   function resetDisplay(){
     //https://getbootstrap.com/docs/4.0/components/buttons/
 
@@ -80,6 +113,7 @@ export function Playing(input) {
     setQuestionGuessed(false);
   }
 
+  //Reset values and display to original (10/0/1)
   function restartGame(){
     setTotalRounds(10);
     setRoundNumber(1);
@@ -89,6 +123,7 @@ export function Playing(input) {
     resetDisplay();
   }
 
+  //Save values to "localStorage"
   function saveToLocalStorage(){
     localStorage.roundNumber;
     localStorage.setItem('roundNumber', roundNumber);
@@ -96,10 +131,11 @@ export function Playing(input) {
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
   }
 
+  //Once all questions answered, send user to "finished" subpage
   function reachFinishedPage(){
-    //Call to "play.jsx" to shift sub-page
+    saveToLocalStorage();
+    //Call to "play.jsx" to shift to sub-page
     input.onGameCompletion();
-
   }
 
   /*
@@ -108,7 +144,7 @@ export function Playing(input) {
   */
   return(
     <div id="guessing-structure">
-      <h1>Name That... Actor</h1> <div>  Username A{input.userName}A</div>
+      <h1>Name That... Actor</h1> <div>  Username: {input.userName}</div>
       <form method="get" action="play.html">
         <div>
           {/* <!-- Hold Image to Display --> */}
@@ -139,14 +175,14 @@ export function Playing(input) {
         </div> 
 
         <Button variant='light' onClick={() => restartGame()}>
-            Restart
+          Restart
         </Button>
         <Button variant='light' onClick={() => nextQuestion()}>
           Next
         </Button>
 
         <Button variant='light' onClick={() => reachFinishedPage()}>
-            Finished
+          Finished
         </Button>
       </form>
     </div>

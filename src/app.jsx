@@ -29,6 +29,32 @@ export default function App() {
   const currentPlayStep = userName ? /*PlayState.Pregame : */ PlayState.Playing : PlayState.Finished;
   const [playState, setPlayState] = React.useState(currentPlayStep);
 
+  // let value = 2;
+  // const currentPlayStep2 = 
+  //              userName === PlayState.Pregame ? PlayState.Pregame : 
+  //              userName === PlayState.Playing ? PlayState.Playing : 
+  //              userName === PlayState.Finished ? PlayState.Finished;
+  //
+  // //condition1 ? value1 : condition2 ? value2 : value3;
+  // const [playState, setPlayState] = React.useState(currentPlayStep);
+
+
+  function chooseOption(option) {
+    console.log("ZZ"+option+"ZZ");
+    if (option === PlayState.Pregame ) {
+      return PlayState.Pregame;
+    } else if (option === PlayState.Playing) {
+      return PlayState.Playing;
+    } else if (option === PlayState.Finished) {
+      return PlayState.Finished;;
+    } 
+  }
+
+  // const currentPlayStep = chooseOption(userName);
+  // const [playState, setPlayState] = React.useState(currentPlayStep);
+
+
+
   // // async function vs function
   // function firstValues(){
   //   console.log("First State");
