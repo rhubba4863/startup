@@ -30,42 +30,24 @@ export default function App() {
   // const currentPlayStep = userName ? /*PlayState.Pregame : */ PlayState.Playing : PlayState.Finished;
   // const [playState, setPlayState] = React.useState(currentPlayStep);
 
-  // let value = 2;
-  // const currentPlayStep2 = 
-  //              value === PlayState.Pregame ? PlayState.Pregame : 
-  //              value === PlayState.Playing ? PlayState.Playing : 
-  //              value === PlayState.Finished ? PlayState.Finished;
-  //
-  // //condition1 ? value1 : condition2 ? value2 : value3;
-  // const [playState, setPlayState] = React.useState(currentPlayStep);
-
-
   function chooseOption(option) {
-    console.log("ZZ"+option+"ZZ");
+/*    console.log("ZZ"+option+"ZZ");
     console.log("ZZ"+PlayState.Pregame+"ZZ");
 
     console.log("ZZ"+option === PlayState.Pregame+"ZZ");
     console.log("ZZ"+option === PlayState.Playing+"ZZ");
     console.log("ZZ"+option === PlayState.Finished+"ZZ");
+*/
 
-    console.log("PP try other conditions PP");
-    console.log("PP"+(localStorage.startedGame == false) +" "+ (localStorage.finishedGame == false)+"PP");
-    console.log("PP"+(localStorage.startedGame == true)  +" "+  (localStorage.finishedGame == false)+"PP");
-    console.log("PP"+(localStorage.startedGame == true)  +" "+  (localStorage.finishedGame == true)+"PP");
+    /*if (option === PlayState.Pregame ) {
+      return PlayState.Pregame;
+    } else if (option === PlayState.Playing) {
+      return PlayState.Playing;
+    } else if (option === PlayState.Finished) {
+      return PlayState.Finished;;
+    } */
 
-    console.log("YY current conditions YY");
-    console.log("YY"+localStorage.startedGame + "YY");
-    console.log("YY"+localStorage.finishedGame + "YY");
-
-    // if (option === PlayState.Pregame ) {
-    //   return PlayState.Pregame;
-    // } else if (option === PlayState.Playing) {
-    //   return PlayState.Playing;
-    // } else if (option === PlayState.Finished) {
-    //   return PlayState.Finished;;
-    // } 
-
-    console.log("YY"+localStorage.finishedGame + "YY");
+    //RPH - Convert the storage values
     const startedGame = JSON.parse(localStorage.getItem('startedGame'));
     const finishedGame = JSON.parse(localStorage.getItem('finishedGame'));
 
@@ -78,14 +60,14 @@ export default function App() {
     } else if ((startedGame == true) && (finishedGame == false)) {
       return PlayState.Playing;
     } else if ((startedGame == true) && (finishedGame == true)) {
-      return PlayState.Finished;;
+      return PlayState.Finished;
     } 
-    // else {
-    //   return PlayState.Pregame;
-    // }
+    /*else {
+      return PlayState.Pregame;
+    }*/
   }
 
-  localStorage.setItem('startedGame', true);
+  localStorage.setItem('startedGame', false);
   localStorage.setItem('finishedGame', false);
 
   let page = PlayState.Pregame;

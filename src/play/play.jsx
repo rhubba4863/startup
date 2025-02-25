@@ -90,6 +90,10 @@ export function Play({ userName, playState, onPlayChange }) {
             onGameCompletion={() => {
               onPlayChange( PlayState.Finished);
             }}
+
+            onGameCancel={() => {
+              onPlayChange( PlayState.Pregame);
+            }}
           />
         )}
 
@@ -108,15 +112,18 @@ export function Play({ userName, playState, onPlayChange }) {
 
         {playState === PlayState.Pregame && (        
           <PreGame
+            userName={userName} 
+            /*roundNumber={localStorage.roundNumber}
+            totalRounds={localStorage.totalRounds}
+            totalRightAnswers={localStorage.totalRightAnswers}*/
             
-            // userName={userName} 
-            // roundNumber={localStorage.roundNumber}
-            // totalRounds={localStorage.totalRounds}
-            // totalRightAnswers={localStorage.totalRightAnswers}
-            
-            // onStartPlayingGame={() => {
-            //   onPlayChange( PlayState.Playing);
-            // }}
+            onStartPlayingGame={() => {
+              onPlayChange( PlayState.Playing);
+            }}
+
+            onGameCompletion={() => {
+              onPlayChange( PlayState.Finished);
+            }}
           />
         )}
 

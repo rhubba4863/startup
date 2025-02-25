@@ -131,6 +131,13 @@ export function Playing(input) {
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
   }
 
+  //Cancel Game, send user to "PreGame" subpage
+  function reachPreGamePage(){
+    restartGame();
+    //Call to "play.jsx" to shift to sub-page
+    input.onGameCancel();
+  }
+
   //Once all questions answered, send user to "finished" subpage
   function reachFinishedPage(){
     saveToLocalStorage();
@@ -174,6 +181,9 @@ export function Playing(input) {
           </Button>
         </div> 
 
+        <Button variant='light' onClick={() => reachPreGamePage()}>
+          Cancel Game
+        </Button>
         <Button variant='light' onClick={() => restartGame()}>
           Restart
         </Button>
