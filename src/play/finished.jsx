@@ -23,6 +23,7 @@ export function Finished(input) {
   function restartGame(){
     //Call to "play.jsx" to shift sub-page
     input.onStartPlayingGame();
+    
   }
 
   function navToLogin(){

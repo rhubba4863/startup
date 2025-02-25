@@ -8,6 +8,7 @@ import './play1.css';
 import { PlayState } from './playState';
 import { Playing } from './playing';
 import { Finished } from './finished';
+import { PreGame } from './preGame';
 
 /*
 *RPH - suggest ways to enhance the user experience (UX)
@@ -102,6 +103,20 @@ export function Play({ userName, playState, onPlayChange }) {
             onStartPlayingGame={() => {
               onPlayChange( PlayState.Playing);
             }}
+          />
+        )}
+
+        {playState === PlayState.Pregame && (        
+          <PreGame
+            
+            // userName={userName} 
+            // roundNumber={localStorage.roundNumber}
+            // totalRounds={localStorage.totalRounds}
+            // totalRightAnswers={localStorage.totalRightAnswers}
+            
+            // onStartPlayingGame={() => {
+            //   onPlayChange( PlayState.Playing);
+            // }}
           />
         )}
 
