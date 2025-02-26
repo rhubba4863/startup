@@ -20,9 +20,8 @@ import { PreGame } from './preGame';
 const roundNumber = 1;
 const totalRounds = 10;
 const totalRightAnswers = 0;
-let text = 'people';
 
-//Slid-in Method 2
+//Slide-in Method 2
 // Sliding attempts
 const SlidingText = ( text ) => {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -43,7 +42,46 @@ const SlidingText = ( text ) => {
   );
 };
 
-//Timer wait
+let productShown = false;
+async function slideObject(){
+  const element = document.getElementsByClassName('new-high-score');
+
+  //changeObjectview();
+  if (productShown){
+    console.log("1) on  5 seconds "+ productShown);
+    console.log("1) called");
+
+    //Move out
+    //element[0].style.transform = 'translateX(200px)'; // Move right off-screen
+    element[0].style.animation = 'fly-off-right 2s ease-out'; // Move right off-screen
+    element[0].style.backgroundColor = "blue";
+
+    productShown = false;
+  }else{
+    console.log("2) off 5 seconds "+ productShown);
+    console.log("2) ");
+    productShown = true;
+
+    //Bring in
+     element[0].style.animation =  'fly-from-right 3s ease-out';
+     element[0].style.backgroundColor = "red";
+
+    //element[0].style.transform = 'translateX(-200px)'; // Move right off-screen
+  }
+}
+
+setInterval(slideObject, 5000);
+
+//animation: fly-from-right 1s ease-out;
+const changeObjectview = () => {
+  const element = document.getElementsByClassName('new-high-score');
+  console.log("Element 1:",element);
+  console.log("Element 2:",element[0]);
+
+  element[0].style.backgroundColor = 'blue';
+  element[0].style.animation = 'animation: fly-from-right 4s ease-out';
+};
+
 
 
 
@@ -52,17 +90,17 @@ Maybe add background hehind the question box
 responsive design 
  */
 export function Play({ userName, playState, onPlayChange }) {
-  // function currentValues(){
-  //   console.log("Play Page");
-  //   console.log("D"+onPlayChange+"D");
-  //   console.log("D"+playState+"D");  
+  /*function currentValues(){
+    console.log("Play Page");
+    console.log("D"+onPlayChange+"D");
+    console.log("D"+playState+"D");  
 
-  //   console.log("D"+roundNumber+"D"); 
-  //   console.log("D"+totalRounds+"D"); 
-  //   console.log("D"+totalRightAnswers+"D"); 
-  // }
+    console.log("D"+roundNumber+"D"); 
+    console.log("D"+totalRounds+"D"); 
+    console.log("D"+totalRightAnswers+"D"); 
+  }
   
-  // currentValues();
+  currentValues();*/
 
   document.addEventListener('DOMContentLoaded', function() {
     const textElement = document.getElementById('sliding-text');
@@ -75,7 +113,7 @@ export function Play({ userName, playState, onPlayChange }) {
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       <h2 className="new-high-score">New High Score!</h2>
       {/* Slide Atempt 2 */}
-      {/* {SlidingText('John')} */}
+      {SlidingText('John')}
 
       <div>
         {/* Decide which Play page/features to show  */}
@@ -130,41 +168,4 @@ export function Play({ userName, playState, onPlayChange }) {
       </div>
     </main>
   );
-
-// export function Play() {
-//   return (
-//     // <main className='container-fluid bg-secondary text-center'>
-//     //   <div>play displayed here</div>
-//     // </main>
-
-//     <main>
-//       {/* <!-- Note - Some links Hidden till user logs in --> */}
-//       <h2 className="new-high-score">New High Score!</h2>
-//       <div id="guessing-structure">
-//         <h1>Name That... Actor</h1> <div>  Username</div>
-//         <form method="get" action="play.html">
-//           <div>
-//             {/* <!-- Hold Image to Display --> */}
-//             <img alt="Arches" height={150} src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
-//           </div>
-//           <div id="step-and-score">
-//             <div style={{'width' : '40%', textAlign: 'right' }} /*float={right}*/>Round 0/10</div>
-//             <div style={{'width' : '40%', textAlign: 'right'}} /*float={right}*/>Score 0/10</div>
-//           </div>
-
-//           <div className="button-row">
-//             <button id="option1" style={{'width' : '45%'}} /*type="submit"*/>John Wayne</button>
-//             <button id="option2" style={{'width' : '45%'}} type="submit">Gary Cooper</button>
-//           </div>
-//           <div className="button-row">
-//             <button id="option3" style={{'width' : '45%'}} type="submit">Clint Eastwood</button>
-//             <button id="option4" style={{'width' : '45%'}} type="submit">Henry Fonda</button>
-//           </div> 
-
-//           <button id="restart-button" type="submit">Restart</button>
-//           <button id="next-button" type="submit">Next</button>
-//         </form>
-//       </div>
-//     </main>
-//   );
 }

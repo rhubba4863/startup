@@ -29,16 +29,31 @@ Button {
 /* RPH Possible sliding steps */
 /* NEW SLIDING FEATURES */
 /* Attempt 1 */
-.fly-in {
+.new-high-score{
   animation: fly-from-right 1s ease-out;
 }
 
+/* red */
 @keyframes fly-from-right {
   0% {
     transform: translateX(+200%);
+    /* visibility:visible; */
   }
   100% {
     transform: translateX(0%);
+  }
+}
+
+/* blue */
+@keyframes fly-off-right {
+  
+  0% {
+    /* visibility: hidden; */
+    /* transform: translateX(0); */
+  }
+  100% {
+    /* transform: translateX(200%); */
+    /* visibility: hidden; */
   }
 }
 
