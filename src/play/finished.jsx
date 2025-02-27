@@ -44,15 +44,17 @@ export function Finished(input) {
           {/* <!-- Hold Image to Display --> */}
           <img alt="Arches" height={150} src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
         </div>
-     <div>Username: {input.userName}</div>
-      <div>You Scored: {totalRightAnswers} Points!</div>
+        <div>Username: {input.userName}</div>
+        <div>You Scored: {totalRightAnswers} Points!</div>
 
-        <Button variant='light' onClick={() => restartGame()}>
-            Restart
-        </Button>
-        <Button variant='light' onClick={() => navToLogin()}>
-            Main Menu
-        </Button>
+        <div id="gameCommands">
+          <Button variant='light' onClick={() => restartGame()}>
+              Restart
+          </Button>
+          <Button variant='light' onClick={() => navToLogin()}>
+              Main Menu
+          </Button>
+        </div>
       </form>
     </div>
   );

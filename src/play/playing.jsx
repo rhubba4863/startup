@@ -181,19 +181,22 @@ export function Playing(input) {
           </Button>
         </div> 
 
-        <Button variant='light' onClick={() => reachPreGamePage()}>
-          Cancel Game
-        </Button>
-        <Button variant='light' onClick={() => restartGame()}>
-          Restart
-        </Button>
-        <Button variant='light' onClick={() => nextQuestion()}>
-          Next
-        </Button>
+        <div id="gameCommands">
+          <Button variant='light' onClick={() => reachPreGamePage()}>
+            Cancel Game
+          </Button>
+          <Button variant='light' onClick={() => restartGame()}>
+            Restart
+          </Button>
+          <Button variant='light' onClick={() => nextQuestion()}>
+            Next
+          </Button>
 
-        <Button variant='light' onClick={() => reachFinishedPage()}>
-          Finished
-        </Button>
+          {/* Perhaps remove "Finished" once game completed */}
+          <Button variant='light' onClick={() => reachFinishedPage()}>
+            Finished
+          </Button>
+        </div>
       </form>
     </div>
   );

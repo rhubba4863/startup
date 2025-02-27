@@ -47,22 +47,23 @@ export function PreGame(input) {
   */
   return(
     <div id="guessing-structure">
-      <h1>Name That... 22 Actor</h1> <div>  Username: {input.userName}</div>
+      <h1>Name That... Actor</h1> <div>  Username: {input.userName}</div>
       <form method="get" action="play.html">
         <div>
           {/* <!-- Hold Image to Display --> */}
           <img alt="Arches" height={150} src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
         </div>
-        <div> </div>
-        <Button variant='light' onClick={() => navToLogin()}>
-            Main Menu
-        </Button>
-        <Button variant='light' onClick={() => startGame()}>
-          Start Game
-        </Button>
-        <Button variant='light' onClick={() => reachFinishedPage()}>
-          Finished
-        </Button>
+        <div id="gameCommands">
+          <Button variant='light' onClick={() => navToLogin()}>
+              Main Menu
+          </Button>
+          <Button variant='light' onClick={() => startGame()}>
+            Start Game
+          </Button>
+          <Button variant='light' onClick={() => reachFinishedPage()}>
+            Finished
+          </Button>
+        </div>
       </form>
     </div>
   );

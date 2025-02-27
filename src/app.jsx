@@ -61,10 +61,9 @@ export default function App() {
       return PlayState.Playing;
     } else if ((startedGame == true) && (finishedGame == true)) {
       return PlayState.Finished;
-    } 
-    /*else {
+    } else {
       return PlayState.Pregame;
-    }*/
+    }
   }
 
   localStorage.setItem('startedGame', false);

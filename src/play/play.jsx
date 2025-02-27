@@ -53,7 +53,7 @@ async function slideObject(){
 
     //Move out
     //element[0].style.transform = 'translateX(200px)'; // Move right off-screen
-    element[0].style.animation = 'fly-off-right 2s ease-out'; // Move right off-screen
+    element[0].style.animation = 'fly-off-right 5s ease-out'; // Move right off-screen
     element[0].style.backgroundColor = "blue";
 
     productShown = false;
@@ -63,7 +63,7 @@ async function slideObject(){
     productShown = true;
 
     //Bring in
-     element[0].style.animation =  'fly-from-right 3s ease-out';
+     element[0].style.animation =  'fly-from-right 5s ease-out';
      element[0].style.backgroundColor = "red";
 
     //element[0].style.transform = 'translateX(-200px)'; // Move right off-screen
@@ -111,9 +111,10 @@ export function Play({ userName, playState, onPlayChange }) {
     <main className="container-fluid bg-secondary text-center">  
           
       {/* <!-- Note - Some links Hidden till user logs in --> */}
+      {/* Slide Atempt 1 */}
       <h2 className="new-high-score">New High Score!</h2>
       {/* Slide Atempt 2 */}
-      {SlidingText('John')}
+      {/* {SlidingText('John')} */}
 
       <div>
         {/* Decide which Play page/features to show  */}

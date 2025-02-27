@@ -1,11 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-// import { MessageDialog } from './messageDialog';
-
-
-// import Button from 'react-bootstrap/Button';
-//import './nonverified.css';
 import { UserIdentification } from './userIdentification';
 
 
@@ -14,8 +8,6 @@ export function NonVerified(props) {
   //RPH - Carry the variables over
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
-  // const [displayError, setDisplayError] = React.useState(null);
-
   
   //RPH - Set initial variables, start at "Not Logged In" version
   const currentVerification = userName ? UserIdentification.Verified :  UserIdentification.Unverified;

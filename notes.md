@@ -58,7 +58,7 @@ Week 3 - HTML
 
   Index -> app -> components
 
-  Components for each page type. CSS attributes are inheritted from the sequence/elemts above.
+  Components for each page type. CSS attributes are inheritted from the sequence/elements above.
 
 ## Week 6 - Javascript React
 
@@ -70,6 +70,11 @@ Week 3 - HTML
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
   
 ## Week 8 - 
+  Change format to page and subpage.
+  Now parameters passed between pages.
+    React.useState
+  Also periodically alerting user a high score has been made
+    React.useEffect
 ## Week 9 - 
 ## Week 10 - 
 ## Week 11 - 

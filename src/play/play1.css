@@ -48,12 +48,12 @@ Button {
 @keyframes fly-off-right {
   
   0% {
-    /* visibility: hidden; */
+    visibility: hidden;
     /* transform: translateX(0); */
   }
   100% {
-    /* transform: translateX(200%); */
-    /* visibility: hidden; */
+    /* transform: translateX(+200%); */
+    visibility: hidden;
   }
 }
 

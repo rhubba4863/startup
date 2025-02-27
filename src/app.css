@@ -74,31 +74,19 @@ footer a {
   }
 }
 
+#gameCommands {
+  padding: 10px;
+}
+
 
 /* RPH */
 .new-high-score{
-  /* display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items:start; */
-
-  /* position: relative;
-  float: right;
-
-  top: 5%; */
-
+  /* RPH - Note - Maybe different position format */
   color: pink;
   position: absolute;
   top: 12%;
   right: 16px;
   font-size: 18px;
-
-  /* Element takes space, but not visible */
-  /* https://www.w3schools.com/css/css_display_visibility.asp */
-  /* visibility: hidden; */
-
-  /* Steps for easing the new high score alert */
-  animation: fly-from-right 1s ease-out;
 }
 
 @keyframes fly-from-right {

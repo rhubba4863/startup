@@ -33,21 +33,6 @@ export function Login({ userName, verifiedState, onVerifyChange }) {
             }}
           />
         )}
-
-
-        {/* <h1>Hello <br></br>Welcome back to Trivia</h1>
-        <form method="get" action="play.html">
-          <div className="input-group mb-3">
-            <span className="input-group-text">@</span>
-            <input className="form-control" type="text" placeholder="your@email.com" />
-          </div>
-          <div className="input-group mb-3">
-            <span className="input-group-text">🔒</span>
-            <input className="form-control"type="password" placeholder="Password" />
-          </div>
-          <button type="submit" className="btn btn-primary">Login</button>
-          <button type="submit" className="btn btn-secondary">Create</button> 
-        </form> */}
       </div>
     </main>
   );
