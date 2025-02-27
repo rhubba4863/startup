@@ -70,7 +70,8 @@ Week 3 - HTML
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
   
 ## Week 8 - 
-  Change format to page and subpage.
+  Change format to page.jsx and subpage.jsx, each existing in a folder holding the related pages (jsx, js, css).
+  Created .js file to determine possible subpage types
   Now parameters passed between pages.
     React.useState
   Also periodically alerting user a high score has been made
