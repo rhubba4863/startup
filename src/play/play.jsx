@@ -162,7 +162,7 @@ export function Play({ userName, playState, onPlayChange }) {
 
             onGameCompletion={() => {
               onPlayChange( PlayState.Finished);
-            }}
+            }} 
           />
         )}
 
