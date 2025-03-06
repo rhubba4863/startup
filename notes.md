@@ -77,6 +77,7 @@ Week 3 - HTML
   Also periodically alerting user a high score has been made
     React.useEffect
 ## Week 9 - 
+  Now bring up 2 terminals: first the backend "node --watch index.js" then front end in terminal 2: "npm run dev"
 ## Week 10 - 
 ## Week 11 - 
 
