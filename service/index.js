@@ -14,6 +14,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 // code has been deployed to your AWS server.
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
+// JSON body parsing using built-in middleware
 app.use(express.json());
 
 
@@ -26,6 +27,7 @@ app.use(express.json());
  * 4) Logout User
  * 5) Add new score
  * 6) Return all scores (or maybe just top 10???)
+ * 7) Get the Question, options, and the answer
  */
 
 // 1) Create User
