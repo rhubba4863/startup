@@ -113,7 +113,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] **All functionality implemented or mocked out** - I added interactivity between commands 
-- [X] **Hooks** - Added "React.useState" to pass values between different       pages/sub-pages. Added "React.useEffect" to also periodically alerting user a high score has been made.
+- [X] **Hooks** - Added "React.useState" to pass values between different pages/sub-pages. Added "React.useEffect" to also periodically alerting user a high score has been made.
 
 ## 🚀 Service deliverable
 
