@@ -48,8 +48,8 @@ async function slideObject(){
 
   //changeObjectview();
   if (productShown){
-    console.log("1) on  5 seconds "+ productShown);
-    console.log("1) called");
+    // console.log("1) on  5 seconds "+ productShown);
+    // console.log("1) called");
 
     //Move out
     //element[0].style.transform = 'translateX(200px)'; // Move right off-screen
@@ -58,8 +58,8 @@ async function slideObject(){
 
     productShown = false;
   }else{
-    console.log("2) off 5 seconds "+ productShown);
-    console.log("2) ");
+    // console.log("2) off 5 seconds "+ productShown);
+    // console.log("2) ");
     productShown = true;
 
     //Bring in

@@ -21,19 +21,14 @@ export function NonVerified(props) {
    * Week 9-10 Apply backend checkup
    */ 
   //Call same function, just one to create, one to update
-  async function createAuth(endpoint) {
-    console.log("MyEndpoint"+endpoint);
+  async function createAuth(endpoint, interaction) {
     const response = await fetch(endpoint, {
-      method: 'post',
+      method: interaction,
       body: JSON.stringify({ userName: userName, password: password }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-
-    console.log("WW MyEndpoint"+response.body.userName);
-    console.log("WW MyEndpoint"+response.body.password);
-
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
       props.onLogin(userName);
@@ -42,18 +37,17 @@ export function NonVerified(props) {
       setDisplayError(`⚠ Error: ${body.msg}`); 
     }
   }
-  // ------------------------------------------------
 
   async function loginUser() {
-    createAuth('/api/auth/login');
+    createAuth('/api/auth/login', 'put');
     // localStorage.setItem('userName', userName);
     // props.onLogin(userName);
 
-    firstTry();
+    //firstTry();
   }
 
   async function createUser() {
-    createAuth('/api/auth/create');
+    createAuth('/api/auth/create', 'post');
   }
 
   // async function vs function

@@ -25,35 +25,14 @@ export default function App() {
   const currentVerification = userName ? UserIdentification.Verified :  UserIdentification.Unverified;
   const [verifiedState, setVerificationState] = React.useState(currentVerification);
 
-  //RPH - confirm setup
-  //RPH - What value to use to select between 3 subpages?
-  // const currentPlayStep = userName ? /*PlayState.Pregame : */ PlayState.Playing : PlayState.Finished;
-  // const [playState, setPlayState] = React.useState(currentPlayStep);
-
   function chooseOption(option) {
-/*    console.log("ZZ"+option+"ZZ");
-    console.log("ZZ"+PlayState.Pregame+"ZZ");
-
-    console.log("ZZ"+option === PlayState.Pregame+"ZZ");
-    console.log("ZZ"+option === PlayState.Playing+"ZZ");
-    console.log("ZZ"+option === PlayState.Finished+"ZZ");
-*/
-
-    /*if (option === PlayState.Pregame ) {
-      return PlayState.Pregame;
-    } else if (option === PlayState.Playing) {
-      return PlayState.Playing;
-    } else if (option === PlayState.Finished) {
-      return PlayState.Finished;;
-    } */
-
     //RPH - Convert the storage values
     const startedGame = JSON.parse(localStorage.getItem('startedGame'));
     const finishedGame = JSON.parse(localStorage.getItem('finishedGame'));
 
-    console.log("P0P"+(startedGame == false) +" "+ (finishedGame == false)+"PP");
-    console.log("P0P"+(startedGame == true)  +" "+  (finishedGame == false)+"PP");
-    console.log("P0P"+(startedGame == true)  +" "+  (finishedGame == true)+"PP");
+    // console.log("P0P"+(startedGame == false) +" "+ (finishedGame == false)+"PP");
+    // console.log("P0P"+(startedGame == true)  +" "+  (finishedGame == false)+"PP");
+    // console.log("P0P"+(startedGame == true)  +" "+  (finishedGame == true)+"PP");
 
     if ((startedGame == false) && (finishedGame == false) ) {
       return PlayState.Pregame;

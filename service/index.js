@@ -75,9 +75,7 @@ apiRouter.post('/auth/create', async (req, res) => {
  * Log onto an existing user
  */
 apiRouter.put('/auth/login', async (req, res) => {
-  console.log("6------------------");
-  const user = await findUser('userName', req.body.userName);
-  console.log("------------------"+user);
+  const user = await getUser('userName', req.body.userName);
 
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -87,7 +85,7 @@ apiRouter.put('/auth/login', async (req, res) => {
       return;
     }
   }
-  res.status(401).send({ msg: 'Unauthorized' });
+  res.status(401).send({ msg: 'Wrong Username or Password' });
 });
 
 /**
