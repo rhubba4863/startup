@@ -6,8 +6,11 @@ import { UserIdentification } from './userIdentification';
 import { Verified } from './verified';
 import { NonVerified } from './nonverified';
 
-
 export function Login({ userName, verifiedState, onVerifyChange }) {
+
+/**
+ * Format for all Login pages
+ */
   return (
     <main className="container-fluid bg-secondary text-center">      
       {/* <!-- Note - Some links Hidden till user logs in --> */}

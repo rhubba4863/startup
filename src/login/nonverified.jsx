@@ -1,6 +1,9 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { UserIdentification } from './userIdentification';
+import { MessageDialog } from './messageDialog';
+
+//import { handleRegister } from './login.jsx';
 
 
 //RPH - Not yet logged in
@@ -8,38 +11,66 @@ export function NonVerified(props) {
   //RPH - Carry the variables over
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
-  
+  const [displayError, setDisplayError] = React.useState(null);
+
   //RPH - Set initial variables, start at "Not Logged In" version
   const currentVerification = userName ? UserIdentification.Verified :  UserIdentification.Unverified;
   const [verifiedState, setVerificationState] = React.useState(currentVerification);
 
+  /**
+   * Week 9-10 Apply backend checkup
+   */ 
+  //Call same function, just one to create, one to update
+  async function createAuth(endpoint) {
+    console.log("MyEndpoint"+endpoint);
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({ userName: userName, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    console.log("WW MyEndpoint"+response.body.userName);
+    console.log("WW MyEndpoint"+response.body.password);
+
+    if (response?.status === 200) {
+      localStorage.setItem('userName', userName);
+      props.onLogin(userName);
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`); 
+    }
+  }
+  // ------------------------------------------------
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+    createAuth('/api/auth/login');
+    // localStorage.setItem('userName', userName);
+    // props.onLogin(userName);
 
-    //Get The variables
-    // const scoresText = localStorage.getItem('userName');
-    // console.log("Username = "+scoresText);
     firstTry();
   }
 
   async function createUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+    createAuth('/api/auth/create');
   }
 
   // async function vs function
   function firstTry(){
+    //Get The variables
+    // const scoresText = localStorage.getItem('userName');
+    // console.log("Username = "+scoresText);
+
     console.log("Create User");
     console.log("C-"+currentVerification+"C");
     console.log("C-"+verifiedState+"C");
 
     //RPH - Add some scores to the Scores page
-    // saveScore(7);
-    // saveScore(95);
-    // saveScore(76);
-    // saveScore(20);  
+    /*saveScore(7);
+    saveScore(95);
+    saveScore(76);
+    saveScore(20); */ 
 
     //RPH - Clear the local storage  
     //localStorage.clear('scores'); 
@@ -86,10 +117,6 @@ export function NonVerified(props) {
 
   }
 
-  // return(
-  //   <div>Not Logged in</div>
-  // );
-
   return (
     <>
       <div>
@@ -109,7 +136,7 @@ export function NonVerified(props) {
         </Button>
       </div>
 
-      {/* <MessageDialog message={displayError} onHide={() => setDisplayError(null)} /> */}
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </>
   );
 }
