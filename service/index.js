@@ -36,6 +36,7 @@ app.use(cookieParser());
 // (Note - They will delete from system when the service is restarted.)
 let users = [];
 let scores = [];
+let questions = [];
 
 // Allow your code to select a port to run on based on the command line parameters.
 // The service port. In production the front-end code is statically hosted by 
@@ -89,28 +90,22 @@ apiRouter.put('/auth/login', async (req, res) => {
 });
 
 /**
- * Log off of user
+ * Log off of current user
  */
 apiRouter.delete('/auth/logout', async (req, res) => {
+  //Look for user, deleting its token if found. 
   const user = await getUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
   }
+  //Delete cookie of token
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
 
-app.get('/api/user/me', async (req, res) => {
-  const token = req.cookies['token'];
-  const user = await getUser('token', token);
-  if (user) {
-    res.send({ userName: user.userName });
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-});
-
-
+/**
+ * Setup a user with a hashed password
+ */
 async function createUser(userName, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
@@ -124,17 +119,20 @@ async function createUser(userName, password) {
   return user;
 }
 
+/**
+ * Get Users details, identifying normally through the token and  cookies
+ */
 async function getUser(field, value) {
-  // if (value) {
-  //   return users.find((user) => user[field] === value);
-  // }
-  // return null;
-
   if (!value) return null;
 
   return users.find((u) => u[field] === value);
 }
 
+/**
+ * Setup a cookie for user created or being logged onto
+ * @param {*} res 
+ * @param {*} authToken 
+ */
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     secure: true,
@@ -143,6 +141,9 @@ function setAuthCookie(res, authToken) {
   });
 }
 
+/**
+ * Possibly Unnecessary
+ */
 function clearAuthCookie(res, user) {
   delete user.token;
   res.clearCookie('token');
@@ -153,4 +154,18 @@ function clearAuthCookie(res, user) {
 app.listen(port, function() {
   //alert coder of what port is in use
   console.log(`Port ${port} is now being used`);
+});
+
+
+/**
+ * Possibly Unnecessary
+ */
+app.get('/api/user/me', async (req, res) => {
+  const token = req.cookies['token'];
+  const user = await getUser('token', token);
+  if (user) {
+    res.send({ userName: user.userName });
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
 });
