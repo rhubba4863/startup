@@ -9,8 +9,20 @@ export function Verified(input) {
   const navigation = useNavigate();
 
   function logout() {
-    localStorage.removeItem('userName');
-    input.onLogout();
+    fetch('/api/auth/logout', {
+      method: 'delete',
+    })
+    .catch(() => {
+      // Logout failed. Assuming offline
+    })
+    .finally(() => {
+      localStorage.removeItem('userName');
+      //props.onLogout();
+      input.onLogout();
+    });
+
+    // localStorage.removeItem('userName');
+    // input.onLogout();
   }
 
   /*

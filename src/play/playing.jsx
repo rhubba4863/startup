@@ -29,10 +29,10 @@ export function Playing(input) {
 
     resetDisplay();
     
-    // console.log("E"+input.totalRounds+"E"); 
-    // console.log("E"+totalRounds+"E");
-    // console.log("F"+input.totalRightAnswers+"G"); 
-    // console.log("F"+totalRightAnswers+"G"); 
+    /*console.log("E"+input.totalRounds+"E"); 
+    console.log("E"+totalRounds+"E");
+    console.log("F"+input.totalRightAnswers+"G"); 
+    console.log("F"+totalRightAnswers+"G");*/ 
 
     //Determine when to return the values to the parent 
     if(roundNumber >= totalRounds){
@@ -51,9 +51,9 @@ export function Playing(input) {
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
 
-    // console.log("A1) " + newScore.name);
-    // console.log("2) " + newScore.date);
-    // console.log("3) " + newScore.score);
+    /*console.log("A1) " + newScore.name);
+    console.log("2) " + newScore.date);
+    console.log("3) " + newScore.score);*/
 
     //Storage of scores
     let scores = [];
@@ -74,15 +74,15 @@ export function Playing(input) {
 
   //Change color of buttons to Green/Red
   function changeDisplay(buttonClicked, answer){
-    // document.getElementById("option1").className="correct";
-    // document.getElementById("option2").className="wrong";
-    // document.getElementById("option3").className="wrong";
-    // document.getElementById("option4").className="wrong";
+    /*document.getElementById("option1").className="correct";
+    document.getElementById("option2").className="wrong";
+    document.getElementById("option3").className="wrong";
+    document.getElementById("option4").className="wrong";
 
-    //document.getElementById("option03").variant='success';
-    // document.getElementById("option02").variant='success';
-    // document.getElementById("option03").className='btn btn-danger wrong';
-    // document.getElementById("option04").className='btn btn-success answer';
+    document.getElementById("option03").variant='success';
+    document.getElementById("option02").variant='success';
+    document.getElementById("option03").className='btn btn-danger wrong';
+    document.getElementById("option04").className='btn btn-success answer';*/
 
     //let myButton = document.getElementById("myButton");
     let finalAnswer = "John Wayne";

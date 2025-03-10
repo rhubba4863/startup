@@ -78,6 +78,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 apiRouter.put('/auth/login', async (req, res) => {
   const user = await getUser('userName', req.body.userName);
 
+  //Look for user, setting up token and Cookie if found
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();

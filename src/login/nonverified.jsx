@@ -22,6 +22,7 @@ export function NonVerified(props) {
    */ 
   //Call same function, just one to create, one to update
   async function createAuth(endpoint, interaction) {
+    //Ex: endpoint = '/api/auth/create'
     const response = await fetch(endpoint, {
       method: interaction,
       body: JSON.stringify({ userName: userName, password: password }),
