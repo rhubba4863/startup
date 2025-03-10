@@ -29,7 +29,7 @@ export function Playing(input) {
 
     resetDisplay();
     
-    /*console.log("E"+input.totalRounds+"E"); 
+    /* console.log("E"+input.totalRounds+"E"); 
     console.log("E"+totalRounds+"E");
     console.log("F"+input.totalRightAnswers+"G"); 
     console.log("F"+totalRightAnswers+"G");*/ 

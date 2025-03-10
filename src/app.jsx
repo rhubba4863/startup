@@ -70,6 +70,47 @@ export default function App() {
   firstValues();
   */
 
+  //Heading Quote
+  const [quote, setQuote] = React.useState('Loading...');
+  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+
+  function createNewQuote(){
+    //React.useEffect(() => {
+      fetch('https://quote.cs260.click')
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote(data.quote);
+        setQuoteAuthor(data.author);
+      })
+    //   .catch();
+    // }, []);
+    
+      // fetch('https://quote.cs260.click')
+      // .then((response) => response.json())
+      // .then((data) => {
+      //   setQuote(data.quote);
+      //   setQuoteAuthor(data.author);
+      // })
+      // .catch();
+
+    // return (
+    //   <div>
+    //   <b>"{quote}"</b>
+    //   <b> By: {quoteAuthor}</b>
+    //   </div>
+    // )
+  }
+
+  function postQuote(){   
+    return (
+      <div>
+        <b>"{quote}"</b>
+        <b> By: {quoteAuthor}</b>
+      </div>
+    )
+  }
+  
+
   return (
     // BrowserRouter will handle all
     <BrowserRouter>
@@ -104,7 +145,7 @@ export default function App() {
                 
                 {/* <!-- Button trigger modal --> */}
                 <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#exampleModal" id="modal-load-button">
+                data-bs-target="#exampleModal" id="modal-load-button" onClick={() => createNewQuote()}>
                   Details
                 </button>
               </div>
@@ -124,7 +165,8 @@ export default function App() {
                   By clicking start/restart you begin a new game. 
                   <br></br>
                   <br></br>
-                  <b>“Be brave. Take risks. Nothing can substitute experience.” By Paulo Coelho</b>
+                  {/* <b>“Be brave. Take risks. Nothing can substitute experience.” By Paulo Coelho</b> */}
+                  <b>{postQuote()}</b>
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
