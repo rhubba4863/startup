@@ -13,7 +13,7 @@ import { PreGame } from './preGame';
 /*
 *RPH - suggest ways to enhance the user experience (UX)
 * Color/audio/(motion of hands)(Fireworks) if right/wrong answer
-
+*
 * Column for number of times/games played. switch filter on username, highest score,
 * or who played the most
 */
@@ -84,7 +84,6 @@ const changeObjectview = () => {
 
 
 
-
 /*
 Maybe add background hehind the question box
 responsive design 
@@ -139,10 +138,7 @@ export function Play({ userName, playState, onPlayChange }) {
         {playState === PlayState.Finished && (        
           <Finished
             userName={userName} 
-            roundNumber={localStorage.roundNumber}
-            totalRounds={localStorage.totalRounds}
-            totalRightAnswers={localStorage.totalRightAnswers}
-            
+
             onStartPlayingGame={() => {
               onPlayChange( PlayState.Playing);
             }}
@@ -152,9 +148,6 @@ export function Play({ userName, playState, onPlayChange }) {
         {playState === PlayState.Pregame && (        
           <PreGame
             userName={userName} 
-            /*roundNumber={localStorage.roundNumber}
-            totalRounds={localStorage.totalRounds}
-            totalRightAnswers={localStorage.totalRightAnswers}*/
             
             onStartPlayingGame={() => {
               onPlayChange( PlayState.Playing);

@@ -137,7 +137,10 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
   res.send(scores);
 });
 
-apiRouter.get('/scores', (_req, res) => {
+/**
+ * Return all scores
+ */
+apiRouter.get('/records', (_req, res) => {
   res.send(scores);
 });
 
@@ -200,9 +203,7 @@ function clearAuthCookie(res, user) {
   res.clearCookie('token');
 }
 
-/**
- * Possibly Unnecessary
- */
+
 //Choose what port to use 
 //app.listen(port);
 app.listen(port, function() {

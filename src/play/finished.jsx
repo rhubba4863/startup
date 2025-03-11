@@ -12,15 +12,14 @@ export function Finished(input) {
   const [roundNumber, setRoundNumber] = React.useState(input.roundNumber);
   const [totalRightAnswers, setTotalRightAnswers] 
     = React.useState(localStorage.totalRightAnswers);
-
-  // function saveToLocalStorage(){
-  //   localStorage.roundNumber;
-  //   localStorage.setItem('roundNumber', roundNumber);
-  //   localStorage.setItem('totalRounds', totalRounds);
-  //   localStorage.setItem('totalRightAnswers', totalRightAnswers);
-  // }
   
   function restartGame(){
+    console.log("B");
+
+    console.log("AA"+totalRounds);
+    console.log("AA"+roundNumber);
+    console.log("AA"+totalRightAnswers);
+
     //Call to "play.jsx" to shift sub-page
     input.onStartPlayingGame();
   }

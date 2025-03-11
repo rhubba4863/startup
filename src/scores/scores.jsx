@@ -8,11 +8,21 @@ export function Scores() {
 
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
+  // React.useEffect(() => {
+  //   const scoresText = localStorage.getItem('scores');
+  //   if (scoresText) {
+  //     setScores(JSON.parse(scoresText));
+  //   }
+  // }, []);
+
+  // Demonstrates calling a service asynchronously so that
+  // React can properly update state objects with the results.
   React.useEffect(() => {
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      setScores(JSON.parse(scoresText));
-    }
+    fetch('/api/records')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+      });
   }, []);
 
   // Demonstrates rendering an array with React

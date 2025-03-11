@@ -20,9 +20,6 @@ export function Verified(input) {
       //props.onLogout();
       input.onLogout();
     });
-
-    // localStorage.removeItem('userName');
-    // input.onLogout();
   }
 
   /*

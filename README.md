@@ -129,6 +129,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Frontend calls service endpoints** - The functionality calls to services endpoints to check work.
     <!-- Front end calls on those backend sites -->
 
+LocalStorage for username
+post
+
 <!-- RPH - figure what -->
 
 ## 🚀 DB/Login deliverable

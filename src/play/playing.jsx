@@ -29,27 +29,28 @@ export function Playing(input) {
 
     resetDisplay();
     
-    /* console.log("E"+input.totalRounds+"E"); 
-    console.log("E"+totalRounds+"E");
-    console.log("F"+input.totalRightAnswers+"G"); 
-    console.log("F"+totalRightAnswers+"G");*/ 
-
     //Determine when to return the values to the parent 
     if(roundNumber >= totalRounds){
       saveToLocalStorage();
       //RPH - Add some scores to the Scores page
-      saveScore(localStorage.totalRightAnswers);
+      saveScore(totalRightAnswers);
       reachFinishedPage();
     }
   }
 
   //Save the score among high scores
-  function saveScore(score) {
+  async function saveScore(score) {
     //const userName = "Jack and Jill";
     const userName = localStorage.getItem('userName');
 
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
+
+    await fetch('api/records', { 
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
 
     /*console.log("A1) " + newScore.name);
     console.log("2) " + newScore.date);
@@ -125,7 +126,7 @@ export function Playing(input) {
 
   //Save values to "localStorage"
   function saveToLocalStorage(){
-    localStorage.roundNumber;
+    //localStorage.roundNumber;
     localStorage.setItem('roundNumber', roundNumber);
     localStorage.setItem('totalRounds', totalRounds);
     localStorage.setItem('totalRightAnswers', totalRightAnswers);

@@ -51,24 +51,6 @@ export default function App() {
   let page = PlayState.Pregame;
   const currentPlayStep = chooseOption(page);
   const [playState, setPlayState] = React.useState(currentPlayStep);
-  //const [playState, setPlayState] = React.useState(PlayState.Pregame);
-
-/*
-* Print any necessary values
-*/
-/*  // async function vs function
-  function firstValues(){
-    console.log("First State");
-    console.log("A"+currentVerification+"A");
-    console.log("A"+verifiedState+"A");
-
-    console.log("First User");
-    console.log("B"+userName+"-A");
-    console.log("B"+localStorage.getItem('userName')+"B");
-  }
-
-  firstValues();
-  */
 
   //Heading Quote
   const [quote, setQuote] = React.useState('Loading...');
@@ -76,21 +58,6 @@ export default function App() {
 
   const [count, setCount] = React.useState(0);
 
-  function createNewQuote2(){
-    React.useEffect(() => {
-      fetch('https://quote.cs260.click')
-      .then((response) => response.json())
-      .then((data) => {
-        setQuote(data.quote);
-        setQuoteAuthor(data.author);
-      })
-      .catch();
-    }, [count]);
-
-
-
-    // {() => setCount((c) => c + 1)}
-  }
 
   function createNewQuote(){
     //React.useEffect(() => {

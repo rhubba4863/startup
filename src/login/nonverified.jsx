@@ -41,9 +41,6 @@ export function NonVerified(props) {
 
   async function loginUser() {
     createAuth('/api/auth/login', 'put');
-    // localStorage.setItem('userName', userName);
-    // props.onLogin(userName);
-
     //firstTry();
   }
 
@@ -53,10 +50,6 @@ export function NonVerified(props) {
 
   // async function vs function
   function firstTry(){
-    //Get The variables
-    // const scoresText = localStorage.getItem('userName');
-    // console.log("Username = "+scoresText);
-
     console.log("Create User");
     console.log("C-"+currentVerification+"C");
     console.log("C-"+verifiedState+"C");
@@ -76,7 +69,6 @@ export function NonVerified(props) {
   }
 
   function saveScore(score) {
-    //const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     //const userName = "Jack and Jill";
     const userName = localStorage.getItem('userName');
 
