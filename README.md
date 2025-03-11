@@ -121,9 +121,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - I created the Express folder, installed Express tools, creating the default port to be 4000.
 - [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+    <!-- Check if user is logged on to add score -->
 - [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
+    <!-- I use React to call on 'https://quote.cs260.click' to get a  -->
 - [x] **Backend service endpoints** - I Created endpoints in services index.js file for the logging on/off authentication
+    <!-- Endpoints to put/oost/delete  backend data -->
 - [ ] **Frontend calls service endpoints** - The functionality calls to services endpoints to check work.
+    <!-- Front end calls on those backend sites -->
+
+<!-- RPH - figure what -->
 
 ## 🚀 DB/Login deliverable
 

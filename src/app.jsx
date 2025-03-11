@@ -74,6 +74,24 @@ export default function App() {
   const [quote, setQuote] = React.useState('Loading...');
   const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
 
+  const [count, setCount] = React.useState(0);
+
+  function createNewQuote2(){
+    React.useEffect(() => {
+      fetch('https://quote.cs260.click')
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote(data.quote);
+        setQuoteAuthor(data.author);
+      })
+      .catch();
+    }, [count]);
+
+
+
+    // {() => setCount((c) => c + 1)}
+  }
+
   function createNewQuote(){
     //React.useEffect(() => {
       fetch('https://quote.cs260.click')
@@ -152,7 +170,7 @@ export default function App() {
             </div>
           </nav>  
           
-          {/* <!-- Modal --> */}
+          {/* <!-- Modal --> */} {/*Maybe remove "aria-hidden="true""*/}
           <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">

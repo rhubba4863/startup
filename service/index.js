@@ -130,6 +130,34 @@ async function getUser(field, value) {
 }
 
 /**
+ * First check if logged on, then Add 1 score if logged in
+ */
+apiRouter.post('/score', verifyAuth, (req, res) => {
+  scores = updateScores(req.body);
+  res.send(scores);
+});
+
+apiRouter.get('/scores', (_req, res) => {
+  res.send(scores);
+});
+
+
+// Middleware to check user is logged on and has permission
+const checkUserPermission= async (req, res, next) =>{
+  const user = await getUser('userName', req.body.userName);
+
+  //RPH - Check if user exists, use next task
+  if(user){
+    next();
+  }else {
+    //Else tell user he doesnt have permission 
+    res.status(401).send({ msg: 'Unauthorized - not logged in' });
+  }
+}
+
+
+
+/**
  * Setup a cookie for user created or being logged onto
  * @param {*} res 
  * @param {*} authToken 
@@ -142,6 +170,28 @@ function setAuthCookie(res, authToken) {
   });
 }
 
+// updateScores considers a new score for inclusion in the high scores.
+function updateScores(newScore) {
+  let found = false;
+  for (const [i, prevScore] of scores.entries()) {
+    if (newScore.score > prevScore.score) {
+      scores.splice(i, 0, newScore);
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    scores.push(newScore);
+  }
+
+  if (scores.length > 10) {
+    scores.length = 10;
+  }
+
+  return scores;
+}
+
 /**
  * Possibly Unnecessary
  */
@@ -150,6 +200,9 @@ function clearAuthCookie(res, user) {
   res.clearCookie('token');
 }
 
+/**
+ * Possibly Unnecessary
+ */
 //Choose what port to use 
 //app.listen(port);
 app.listen(port, function() {
