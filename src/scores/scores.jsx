@@ -18,10 +18,14 @@ export function Scores() {
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
   React.useEffect(() => {
-    fetch('/api/records')
+    console.log("AA");
+    fetch('/api/records', {method: 'GET'})
       .then((response) => response.json())
-      .then((scores) => {
+      .then((scores) => {    
+        console.log("BB");
         setScores(scores);
+        console.log("CC", scores);
+
       });
   }, []);
 
@@ -37,7 +41,7 @@ export function Scores() {
         highScoreRows.push(
           <tr key={i}>  
             <td className="bordertime">{i + 1}</td>
-            <td className="bordertime">{score.name.split('@')[0]}</td>
+            <td className="bordertime">{score.userName.split('@')[0]}</td>
             <td className="bordertime">{score.score}</td>
             <td className="bordertime">{score.date}</td>
           </tr>

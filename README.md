@@ -120,9 +120,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **Node.js/Express HTTP service** - I created the Express folder, installed Express tools, creating the default port to be 4000.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+- [X] **Static middleware for frontend** - I added middlewar checking if user is logged on to add score
     <!-- Check if user is logged on to add score -->
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
+- [X] **Calls to third party endpoints** - I use React to call on 'https://quote.cs260.click' to get a quote
     <!-- I use React to call on 'https://quote.cs260.click' to get a  -->
 - [x] **Backend service endpoints** - I Created endpoints in services index.js file for the logging on/off authentication
     <!-- Endpoints to put/oost/delete  backend data -->

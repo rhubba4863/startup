@@ -7,15 +7,12 @@ import './app.css';
 //import Modal from "react-bootstrap/Modal";
 //https://www.pluralsight.com/resources/blog/guides/working-with-bootstraps-modals-react
 
-// import React, { useState } from 'react';
-// import { Modal, Button } from 'react-bootstrap';
-
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Play } from './play/play';
 import { Scores } from './scores/scores';
 import { UserIdentification } from './login/userIdentification';
-//
+
 import { PlayState } from './play/playState';
 
 
@@ -67,23 +64,6 @@ export default function App() {
         setQuote(data.quote);
         setQuoteAuthor(data.author);
       })
-    //   .catch();
-    // }, []);
-    
-      // fetch('https://quote.cs260.click')
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   setQuote(data.quote);
-      //   setQuoteAuthor(data.author);
-      // })
-      // .catch();
-
-    // return (
-    //   <div>
-    //   <b>"{quote}"</b>
-    //   <b> By: {quoteAuthor}</b>
-    //   </div>
-    // )
   }
 
   function postQuote(){   
@@ -174,6 +154,7 @@ export default function App() {
                 onVerifyChange={(userName, verifiedState) => {
                   setVerificationState(verifiedState);
                   setUserName(userName);
+                  // setPlayState(PlayState.Pregame);
                 }}
               />
             }

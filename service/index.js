@@ -87,7 +87,7 @@ apiRouter.put('/auth/login', async (req, res) => {
       return;
     }
   }
-  res.status(401).send({ msg: 'Wrong Username or Password' });
+  res.status(401).send({ msg: 'Wrong Username or Password33' });
 });
 
 /**
@@ -129,11 +129,27 @@ async function getUser(field, value) {
   return users.find((u) => u[field] === value);
 }
 
+// Middleware to check user is logged on and has permission
+const checkUserPermission= async (req, res, next) =>{
+  const user = await getUser('userName', req.body.userName);
+  console.log("DDD", user, req.body.userName);
+
+  //RPH - Check if user exists, use next task
+  if(user){
+    next();
+  }else {
+    //Else tell user he doesnt have permission 
+    res.status(401).send({ msg: 'Unauthorized - not logged in88' });
+  }
+}
+
 /**
  * First check if logged on, then Add 1 score if logged in
  */
-apiRouter.post('/score', verifyAuth, (req, res) => {
+apiRouter.post('/score', checkUserPermission, (req, res) => {
+  console.log("FFFF");
   scores = updateScores(req.body);
+  console.log("EEEE", scores);
   res.send(scores);
 });
 
@@ -143,20 +159,6 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
 apiRouter.get('/records', (_req, res) => {
   res.send(scores);
 });
-
-
-// Middleware to check user is logged on and has permission
-const checkUserPermission= async (req, res, next) =>{
-  const user = await getUser('userName', req.body.userName);
-
-  //RPH - Check if user exists, use next task
-  if(user){
-    next();
-  }else {
-    //Else tell user he doesnt have permission 
-    res.status(401).send({ msg: 'Unauthorized - not logged in' });
-  }
-}
 
 
 
@@ -215,7 +217,7 @@ app.listen(port, function() {
 /**
  * Possibly Unnecessary
  */
-app.get('/api/user/me', async (req, res) => {
+/*app.get('/api/user/me', async (req, res) => {
   const token = req.cookies['token'];
   const user = await getUser('token', token);
   if (user) {
@@ -223,4 +225,4 @@ app.get('/api/user/me', async (req, res) => {
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
   }
-});
+});*/

@@ -5,3 +5,7 @@ export class PlayState {
   static Playing = new PlayState('playing');
   static Finished = new PlayState('finished');
 }
+
+//setPlayState(playState);
+//setPlayState(PlayState.Pregame);
+//PlayState.Pregame

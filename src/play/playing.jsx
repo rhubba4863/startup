@@ -44,47 +44,33 @@ export function Playing(input) {
     const userName = localStorage.getItem('userName');
 
     const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, date: date };
+    const newScore = { userName: userName, score: score, date: date };
 
-    await fetch('api/records', { 
+    await fetch('/api/score', { 
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
     });
 
-    /*console.log("A1) " + newScore.name);
-    console.log("2) " + newScore.date);
-    console.log("3) " + newScore.score);*/
+    // //Storage of scores
+    // let scores = [];
+    // //Get the scores and split their individual pieces
+    // const scoresText = localStorage.getItem('scores');
+    // if (scoresText) {
+    //   scores = JSON.parse(scoresText);
+    // }
 
-    //Storage of scores
-    let scores = [];
-    //Get the scores and split their individual pieces
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
+    // scores.push(newScore);
 
-    scores.push(newScore);
+    // // Let other players know the game has concluded
+    // // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
 
-    // Let other players know the game has concluded
-    // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-
-    //Store the array back into localStorage
-    localStorage.setItem('scores', JSON.stringify(scores));
+    // //Store the array back into localStorage
+    // localStorage.setItem('scores', JSON.stringify(scores));
   }
 
   //Change color of buttons to Green/Red
   function changeDisplay(buttonClicked, answer){
-    /*document.getElementById("option1").className="correct";
-    document.getElementById("option2").className="wrong";
-    document.getElementById("option3").className="wrong";
-    document.getElementById("option4").className="wrong";
-
-    document.getElementById("option03").variant='success';
-    document.getElementById("option02").variant='success';
-    document.getElementById("option03").className='btn btn-danger wrong';
-    document.getElementById("option04").className='btn btn-success answer';*/
-
     //let myButton = document.getElementById("myButton");
     let finalAnswer = "John Wayne";
 
@@ -141,7 +127,7 @@ export function Playing(input) {
 
   //Once all questions answered, send user to "finished" subpage
   function reachFinishedPage(){
-    saveToLocalStorage();
+    saveScore(totalRightAnswers);
     //Call to "play.jsx" to shift to sub-page
     input.onGameCompletion();
   }
