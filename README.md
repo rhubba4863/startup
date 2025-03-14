@@ -120,19 +120,16 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **Node.js/Express HTTP service** - I created the Express folder, installed Express tools, creating the default port to be 4000.
-- [X] **Static middleware for frontend** - I added middlewar checking if user is logged on to add score
+- [X] **Static middleware for frontend** - I added middlewar checking if user is logged on to be able add score
     <!-- Check if user is logged on to add score -->
-- [X] **Calls to third party endpoints** - I use React to call on 'https://quote.cs260.click' to get a quote
+- [X] **Calls to third party endpoints** - I use React to call on 'https://quote.cs260.click' to get a quote. This is located on app.jsx top right modal 
     <!-- I use React to call on 'https://quote.cs260.click' to get a  -->
 - [x] **Backend service endpoints** - I Created endpoints in services index.js file for the logging on/off authentication
-    <!-- Endpoints to put/oost/delete  backend data -->
-- [ ] **Frontend calls service endpoints** - The functionality calls to services endpoints to check work.
+    <!-- Endpoints to put/post/delete  backend data -->
+- [X] **Frontend calls service endpoints** - The functionality calls to services endpoints to check work. 
     <!-- Front end calls on those backend sites -->
+    <!-- LocalStorage for username -->
 
-LocalStorage for username
-post
-
-<!-- RPH - figure what -->
 
 ## 🚀 DB/Login deliverable
 

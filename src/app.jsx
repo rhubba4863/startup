@@ -27,10 +27,6 @@ export default function App() {
     const startedGame = JSON.parse(localStorage.getItem('startedGame'));
     const finishedGame = JSON.parse(localStorage.getItem('finishedGame'));
 
-    // console.log("P0P"+(startedGame == false) +" "+ (finishedGame == false)+"PP");
-    // console.log("P0P"+(startedGame == true)  +" "+  (finishedGame == false)+"PP");
-    // console.log("P0P"+(startedGame == true)  +" "+  (finishedGame == true)+"PP");
-
     if ((startedGame == false) && (finishedGame == false) ) {
       return PlayState.Pregame;
     } else if ((startedGame == true) && (finishedGame == false)) {
@@ -154,7 +150,7 @@ export default function App() {
                 onVerifyChange={(userName, verifiedState) => {
                   setVerificationState(verifiedState);
                   setUserName(userName);
-                  // setPlayState(PlayState.Pregame);
+                  setPlayState(PlayState.Pregame);
                 }}
               />
             }

@@ -77,9 +77,10 @@ Week 3 - HTML
   Also periodically alerting user a high score has been made
     React.useEffect
 ## Week 9 - 
-  Now bring up 2 terminals: first the backend "node --watch index.js" then front end in terminal 2: "npm run dev"
+  Now bring up 2 terminals: first the backend "node --watch index.js" in the "service" folder then front end in terminal 2 in the "startup" folder: "npm run dev"
 ## Week 10 - 
-
+  Move certain tasks backend. In index.js create an Endpoint, like "'/auth/login'", then in front end jsx call on it with fetch commands
+  
 ## Week 11 - 
 
 ## Goals

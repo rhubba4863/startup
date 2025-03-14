@@ -1,6 +1,7 @@
 /**
  * Week 9-10 Athentication
  */
+//import React from 'react';
 
 /**
  * Endpoint Ideas
@@ -37,6 +38,9 @@ app.use(cookieParser());
 let users = [];
 let scores = [];
 let questions = [];
+let recentScore = 0;
+
+//const [recentScore, setRecentScore] = React.useState(0);
 
 // Allow your code to select a port to run on based on the command line parameters.
 // The service port. In production the front-end code is statically hosted by 
@@ -55,6 +59,11 @@ app.use(express.json());
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+apiRouter.post('/finished', async (req, res) => {
+  //setRecentScore(req.body.score);
+  recentScore = req.body.score;
+});
 
 
 /**
@@ -132,9 +141,8 @@ async function getUser(field, value) {
 // Middleware to check user is logged on and has permission
 const checkUserPermission= async (req, res, next) =>{
   const user = await getUser('userName', req.body.userName);
-  console.log("DDD", user, req.body.userName);
 
-  //RPH - Check if user exists, use next task
+  //RPH - Check if user exists, then use next task
   if(user){
     next();
   }else {
@@ -147,9 +155,7 @@ const checkUserPermission= async (req, res, next) =>{
  * First check if logged on, then Add 1 score if logged in
  */
 apiRouter.post('/score', checkUserPermission, (req, res) => {
-  console.log("FFFF");
   scores = updateScores(req.body);
-  console.log("EEEE", scores);
   res.send(scores);
 });
 

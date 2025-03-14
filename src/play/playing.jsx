@@ -11,15 +11,27 @@ export function Playing(input) {
   const [totalRounds, setTotalRounds] = React.useState(input.totalRounds);
   const [roundNumber, setRoundNumber] = React.useState(input.roundNumber);
   const [totalRightAnswers, setTotalRightAnswers] 
-    = React.useState(input.totalRightAnswers);
+    = React.useState(0);
   const [questionGuessed, setQuestionGuessed] = React.useState(false);
+  const [correctAnswer, setCorrectAnswer] = React.useState("John Wayne");
 
-  function checkAnswer(){
+  React.useEffect(() => {
+    console.log("0Score "+ totalRightAnswers);
+    localStorage.setItem('totalRightAnswers', totalRightAnswers);
+  }, [totalRightAnswers]);
+
+  function checkAnswer(guess){
     // Only edit if user has not yet guessed
     if(questionGuessed == false){
-      setTotalRightAnswers(totalRightAnswers+1);
       changeDisplay();
-      setQuestionGuessed(true);
+      setQuestionGuessed(true); 
+      //Compare guess to the right answer
+      if (guess.toLowerCase().includes(correctAnswer.toString().toLowerCase())){
+        setTotalRightAnswers(prevTotal => prevTotal+ 1);
+
+        changeDisplay();
+        setQuestionGuessed(true);
+      }
     }
   }
 
@@ -32,8 +44,6 @@ export function Playing(input) {
     //Determine when to return the values to the parent 
     if(roundNumber >= totalRounds){
       saveToLocalStorage();
-      //RPH - Add some scores to the Scores page
-      saveScore(totalRightAnswers);
       reachFinishedPage();
     }
   }
@@ -52,21 +62,7 @@ export function Playing(input) {
       body: JSON.stringify(newScore),
     });
 
-    // //Storage of scores
-    // let scores = [];
-    // //Get the scores and split their individual pieces
-    // const scoresText = localStorage.getItem('scores');
-    // if (scoresText) {
-    //   scores = JSON.parse(scoresText);
-    // }
-
-    // scores.push(newScore);
-
-    // // Let other players know the game has concluded
-    // // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-
-    // //Store the array back into localStorage
-    // localStorage.setItem('scores', JSON.stringify(scores));
+    saveToLocalStorage();
   }
 
   //Change color of buttons to Green/Red
@@ -78,7 +74,7 @@ export function Playing(input) {
       let option = document.getElementById("option0"+x);
       let text = option.textContent;
 
-      console.log("G"+text+"G");
+      //console.log("G"+text+"G");
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
       if (text.toLowerCase().includes(finalAnswer.toString().toLowerCase())){
         option.className='btn btn-success answer';
@@ -152,18 +148,18 @@ export function Playing(input) {
         </div>
 
         <div className="button-row">
-          <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer()}>
+          <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
             John Wayne
           </Button>
-          <Button id="option02" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer()}>
+          <Button id="option02" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Gary Cooper")}>
             Gary Cooper
           </Button>
         </div> 
         <div className="button-row">
-          <Button id="option03" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer()}>
+          <Button id="option03" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Clint Eastwood")}>
             Clint Eastwood
           </Button>
-          <Button id="option04" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer()}>
+          <Button id="option04" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Henry Fonda")}>
             Henry Fonda
           </Button>
         </div> 

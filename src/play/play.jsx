@@ -48,9 +48,6 @@ async function slideObject(){
 
   //changeObjectview();
   if (productShown){
-    // console.log("1) on  5 seconds "+ productShown);
-    // console.log("1) called");
-
     //Move out
     //element[0].style.transform = 'translateX(200px)'; // Move right off-screen
     element[0].style.animation = 'fly-off-right 5s ease-out'; // Move right off-screen
@@ -58,8 +55,6 @@ async function slideObject(){
 
     productShown = false;
   }else{
-    // console.log("2) off 5 seconds "+ productShown);
-    // console.log("2) ");
     productShown = true;
 
     //Bring in
@@ -89,17 +84,6 @@ Maybe add background hehind the question box
 responsive design 
  */
 export function Play({ userName, playState, onPlayChange }) {
-  /*function currentValues(){
-    console.log("Play Page");
-    console.log("D"+onPlayChange+"D");
-    console.log("D"+playState+"D");  
-
-    console.log("D"+roundNumber+"D"); 
-    console.log("D"+totalRounds+"D"); 
-    console.log("D"+totalRightAnswers+"D"); 
-  }
-  
-  currentValues();*/
 
   document.addEventListener('DOMContentLoaded', function() {
     const textElement = document.getElementById('sliding-text');
@@ -138,6 +122,7 @@ export function Play({ userName, playState, onPlayChange }) {
         {playState === PlayState.Finished && (        
           <Finished
             userName={userName} 
+            totalRightAnswers={totalRightAnswers}
 
             onStartPlayingGame={() => {
               onPlayChange( PlayState.Playing);

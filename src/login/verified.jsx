@@ -17,7 +17,6 @@ export function Verified(input) {
     })
     .finally(() => {
       localStorage.removeItem('userName');
-      //props.onLogout();
       input.onLogout();
     });
   }

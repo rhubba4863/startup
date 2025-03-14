@@ -18,14 +18,10 @@ export function Scores() {
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
   React.useEffect(() => {
-    console.log("AA");
     fetch('/api/records', {method: 'GET'})
       .then((response) => response.json())
       .then((scores) => {    
-        console.log("BB");
         setScores(scores);
-        console.log("CC", scores);
-
       });
   }, []);
 

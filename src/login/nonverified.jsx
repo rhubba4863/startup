@@ -55,17 +55,15 @@ export function NonVerified(props) {
     console.log("C-"+verifiedState+"C");
 
     //RPH - Add some scores to the Scores page
-    /*saveScore(7);
+    saveScore(7);
     saveScore(95);
     saveScore(76);
-    saveScore(20); */ 
+    saveScore(20);  
 
     //RPH - Clear the local storage  
     //localStorage.clear('scores'); 
     
-    // userName = 
     console.log("D-"+userName+"D");
-    console.log("D-"+localStorage.getItem('userName')+"D");
   }
 
   function saveScore(score) {
