@@ -60,6 +60,8 @@ export default function App() {
         setQuote(data.quote);
         setQuoteAuthor(data.author);
       })
+
+      grabQuestions();
   }
 
   function postQuote(){   
@@ -69,6 +71,31 @@ export default function App() {
         <b> By: {quoteAuthor}</b>
       </div>
     )
+  }
+
+  const [questions, setQuestion] = React.useState('RPH Loading...');
+
+  function grabQuestions(){
+    // https://opentdb.com/api.php?amount=10&category=11&type=multiple
+    //{"author":"Linus Torvalds","quote":"Talk is cheap. Show me the code."}
+
+    fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("0PARK:"+ data);
+      console.log("1PARK:"+ data.results);
+      console.log("2PARK:"+ data.results[0].question);
+      console.log("3PARK:"+ data.results[0].correct_answer);
+      console.log("4PARK:"+ data.results[0].incorrect_answers);
+      console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
+
+
+      setQuestion(data.question);
+      // setQuote(data.quote);
+      // setQuoteAuthor(data.author);
+    })
+
+    console.log("QUOTE:"+ questions);
   }
   
 

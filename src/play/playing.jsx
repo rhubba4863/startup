@@ -37,6 +37,8 @@ export function Playing(input) {
 
   //Bring up next question, or show final score/page 
   function nextQuestion(){
+    grabQuestions();
+
     setRoundNumber(roundNumber+1);
 
     resetDisplay();
@@ -68,7 +70,6 @@ export function Playing(input) {
   //Change color of buttons to Green/Red
   function changeDisplay(buttonClicked, answer){
     //let myButton = document.getElementById("myButton");
-    let finalAnswer = "John Wayne";
 
     for (let x = 1; x<5; x++){
       let option = document.getElementById("option0"+x);
@@ -76,7 +77,7 @@ export function Playing(input) {
 
       //console.log("G"+text+"G");
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
-      if (text.toLowerCase().includes(finalAnswer.toString().toLowerCase())){
+      if (text.toLowerCase().includes(correctAnswer.toString().toLowerCase())){
         option.className='btn btn-success answer';
       }else{
         option.className='btn btn-danger wrong';
@@ -128,6 +129,84 @@ export function Playing(input) {
     input.onGameCompletion();
   }
 
+  const [questions, setQuestion] = React.useState('Loading...');
+  const [wrongOption1, setWrongOption1] = React.useState('Loading...');
+  const [wrongOption2, setWrongOption2] = React.useState('Loading...');
+  const [wrongOption3, setWrongOption3] = React.useState('Loading...');
+
+  function getQuestions(){
+    
+  }
+
+  //Create New questions
+  function grabQuestions(){
+    // https://opentdb.com/api.php?amount=10&category=11&type=multiple
+    //{"author":"Linus Torvalds","quote":"Talk is cheap. Show me the code."}
+
+    fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("0PARK:"+ data);
+      console.log("1PARK:"+ data.results);
+      console.log("2PARK:"+ data.results[0].question);
+      console.log("3PARK:"+ data.results[0].correct_answer);
+      console.log("4PARK:"+ data.results[0].incorrect_answers);
+      console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
+      console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
+      console.log("7PARK:"+ data.results[0].incorrect_answers[2]);
+
+
+      //roundNumber
+      setQuestion(data.results[0].question);
+      //setCorrectAnswer(data.results[0].correct_answer);
+      setWrongOption1(data.results[0].incorrect_answers[0]);
+      setWrongOption2(data.results[0].incorrect_answers[1]);
+      setWrongOption3(data.results[0].incorrect_answers[2]);
+
+      let Random = Math.floor(Math.random() * 4)
+      console.log(Random);
+      // setQuote(data.quote);
+      // setQuoteAuthor(data.author);
+
+
+      //document.getElementById("demo").innerHTML =
+      //Math.floor(Math.random() * 10);
+    })
+
+    console.log("QUOTE:"+ questions);
+  }
+
+  function makeOption(option, optionId){
+    return(
+      <Button id={optionId} variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer({option})}>
+        {option}
+      </Button>
+    )
+  }
+  function createQuestion(){
+    let counter = 0;
+    let Random = Math.floor(Math.random() * 4)
+    console.log(Random);
+
+    for (let i = 0; i < 4; i++) {
+      if (i == counter){
+
+      }
+    }
+
+    return( 
+      <div >
+        <div className="button-row">
+          {makeOption("John Wayne", "option01")}
+          {makeOption("John Wayne", "option02")}
+        </div> 
+        <div className="button-row">
+          {makeOption("John Wayne", "option03")}
+          {makeOption("John Wayne", "option04")}
+        </div> 
+      </div>
+  )}
+
   /*
   * RPH Note - figure what button to start focus on 
   * Now logged on to main screen. User can reach the game, or log out
@@ -148,6 +227,10 @@ export function Playing(input) {
         </div>
 
         <div className="button-row">
+        {makeOption("Q1", "option05")}
+        {makeOption("Q2", "option06")}
+        {makeOption("Q3", "option07")}
+        {makeOption("Q4", "option08")}
           <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
             John Wayne
           </Button>
