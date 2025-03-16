@@ -26,7 +26,7 @@ export function Playing(input) {
       changeDisplay();
       setQuestionGuessed(true); 
       //Compare guess to the right answer
-      if (guess.toLowerCase().includes(correctAnswer.toString().toLowerCase())){
+      if (guess.toString().toLowerCase().includes(correctAnswer.toString().toLowerCase())){
         setTotalRightAnswers(prevTotal => prevTotal+ 1);
 
         changeDisplay();
@@ -37,7 +37,9 @@ export function Playing(input) {
 
   //Bring up next question, or show final score/page 
   function nextQuestion(){
-    grabQuestions();
+    //RPH - 2 STEPS TO BEGIN CALLING ON NEW QUESTIONS
+    // grabQuestions();
+    // editQuestions();
 
     setRoundNumber(roundNumber+1);
 
@@ -134,9 +136,6 @@ export function Playing(input) {
   const [wrongOption2, setWrongOption2] = React.useState('Loading...');
   const [wrongOption3, setWrongOption3] = React.useState('Loading...');
 
-  function getQuestions(){
-    
-  }
 
   //Create New questions
   function grabQuestions(){
@@ -176,36 +175,65 @@ export function Playing(input) {
     console.log("QUOTE:"+ questions);
   }
 
-  function makeOption(option, optionId){
-    return(
-      <Button id={optionId} variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer({option})}>
-        {option}
-      </Button>
-    )
-  }
-  function createQuestion(){
+
+  function editQuestions(){
     let counter = 0;
     let Random = Math.floor(Math.random() * 4)
     console.log(Random);
+    const wrongOptions = [wrongOption1, wrongOption2, wrongOption3];
 
-    for (let i = 0; i < 4; i++) {
-      if (i == counter){
+    for (let x = 1; x<5; x++){
+      let option = document.getElementById("option0"+x);
 
+
+      console.log("1) "+x.toString()+"X");
+      console.log("2) "+Random.toString()+"X");
+
+            
+      if (x.toString() == counter.toString()){
+        option.onclick = function() { HideError(id); }
+        option.className='btn btn-success answer';
+        option.textContent = correctAnswer;
+      }else{
+        option.className='btn btn-danger wrong';
+        option.textContent = wrongOptions[counter];
+        counter = counter +1;
       }
     }
+  }
+ 
+  
+  /**
+   * First create The Questions on the screen 
+   */  
+  function addBlankQuestions(){
 
     return( 
       <div >
         <div className="button-row">
-          {makeOption("John Wayne", "option01")}
-          {makeOption("John Wayne", "option02")}
+          {makeOption("A", "option01")}
+          {makeOption("B", "option02")}
         </div> 
         <div className="button-row">
-          {makeOption("John Wayne", "option03")}
-          {makeOption("John Wayne", "option04")}
+          {makeOption("C", "option03")}
+          {makeOption("D", "option04")}
         </div> 
-      </div>
-  )}
+      </div>)
+  }
+ 
+  /**1 Option */
+  function makeOption(option, optionId){
+    console.log("CC"+option);
+    console.log("DD"+option);
+
+    return(
+      // <Button id={optionId} variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer({option})}>
+      <Button id={optionId} variant='light' style={{'width' : '45%'}}>
+        {option}
+      </Button>
+    )
+  } 
+
 
   /*
   * RPH Note - figure what button to start focus on 
@@ -226,11 +254,9 @@ export function Playing(input) {
            /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
         </div>
 
+        {/* {addBlankQuestions()} */}
+        
         <div className="button-row">
-        {makeOption("Q1", "option05")}
-        {makeOption("Q2", "option06")}
-        {makeOption("Q3", "option07")}
-        {makeOption("Q4", "option08")}
           <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
             John Wayne
           </Button>
