@@ -2,6 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+
+import { Question } from './question';
+
 //import './verified.css';
 
 //RPH - User begins playing the game
@@ -35,11 +38,15 @@ export function Playing(input) {
     }
   }
 
+  //RPH - 2 STEPS TO BEGIN CALLING ON NEW QUESTIONS
+  //Question.grabQuestions();
+  // editQuestions();
+
   //Bring up next question, or show final score/page 
   function nextQuestion(){
     //RPH - 2 STEPS TO BEGIN CALLING ON NEW QUESTIONS
-    grabQuestions();
-    editQuestions();
+    // grabQuestions();
+    // editQuestions();
 
     setRoundNumber(roundNumber+1);
 
@@ -147,7 +154,7 @@ export function Playing(input) {
     .then((data) => {
       // console.log("0PARK:"+ data);
       // console.log("1PARK:"+ data.results);
-      // console.log("2PARK:"+ data.results[0].question);
+      //console.log("2PARK:"+ data.results[0].question);
       // console.log("3PARK:"+ data.results[0].correct_answer);
       // console.log("4PARK:"+ data.results[0].incorrect_answers);
       // console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
@@ -250,9 +257,11 @@ export function Playing(input) {
            /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
         </div>
 
-        {addBlankQuestions()}
+        {/* {addBlankQuestions()} */}
+
+        <Question/>
         
-        {/* <div className="button-row">
+        <div className="button-row">
           <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
             John Wayne
           </Button>
@@ -267,7 +276,7 @@ export function Playing(input) {
           <Button id="option04" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Henry Fonda")}>
             Henry Fonda
           </Button>
-        </div>  */}
+        </div> 
 
         <div id="gameCommands">
           <Button variant='light' onClick={() => reachPreGamePage()}>
