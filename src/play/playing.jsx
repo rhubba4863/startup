@@ -38,8 +38,8 @@ export function Playing(input) {
   //Bring up next question, or show final score/page 
   function nextQuestion(){
     //RPH - 2 STEPS TO BEGIN CALLING ON NEW QUESTIONS
-    // grabQuestions();
-    // editQuestions();
+    grabQuestions();
+    editQuestions();
 
     setRoundNumber(roundNumber+1);
 
@@ -69,7 +69,7 @@ export function Playing(input) {
     saveToLocalStorage();
   }
 
-  //Change color of buttons to Green/Red
+  //Change color of buttons to Green/Red - OLD
   function changeDisplay(buttonClicked, answer){
     //let myButton = document.getElementById("myButton");
 
@@ -145,14 +145,14 @@ export function Playing(input) {
     fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
     .then((response) => response.json())
     .then((data) => {
-      console.log("0PARK:"+ data);
-      console.log("1PARK:"+ data.results);
-      console.log("2PARK:"+ data.results[0].question);
-      console.log("3PARK:"+ data.results[0].correct_answer);
-      console.log("4PARK:"+ data.results[0].incorrect_answers);
-      console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
-      console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
-      console.log("7PARK:"+ data.results[0].incorrect_answers[2]);
+      // console.log("0PARK:"+ data);
+      // console.log("1PARK:"+ data.results);
+      // console.log("2PARK:"+ data.results[0].question);
+      // console.log("3PARK:"+ data.results[0].correct_answer);
+      // console.log("4PARK:"+ data.results[0].incorrect_answers);
+      // console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
+      // console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
+      // console.log("7PARK:"+ data.results[0].incorrect_answers[2]);
 
 
       //roundNumber
@@ -178,26 +178,26 @@ export function Playing(input) {
 
   function editQuestions(){
     let counter = 0;
-    let Random = Math.floor(Math.random() * 4)
-    console.log(Random);
+    let Random = Math.floor(Math.random() * 4) +1
     const wrongOptions = [wrongOption1, wrongOption2, wrongOption3];
 
     for (let x = 1; x<5; x++){
       let option = document.getElementById("option0"+x);
-
-
-      console.log("1) "+x.toString()+"X");
-      console.log("2) "+Random.toString()+"X");
-
-            
-      if (x.toString() == counter.toString()){
-        option.onclick = function() { HideError(id); }
-        option.className='btn btn-success answer';
+      console.log("X "+Random);
+           
+      if (x.toString() == Random.toString()){
         option.textContent = correctAnswer;
+        option.onclick = function() { checkAnswer(correctAnswer); }
+        option.className='btn btn-success answer';
+        console.log("Choice 1 "+Random.toString()+" X " + x.toString());
       }else{
-        option.className='btn btn-danger wrong';
         option.textContent = wrongOptions[counter];
+        option.onclick = function() { checkAnswer(wrongOptions[counter]); }
+        option.className='btn btn-danger wrong';
         counter = counter +1;
+        
+        console.log("Choice 2 "+Random.toString()+" X " + x.toString());
+
       }
     }
   }
@@ -207,7 +207,6 @@ export function Playing(input) {
    * First create The Questions on the screen 
    */  
   function addBlankQuestions(){
-
     return( 
       <div >
         <div className="button-row">
@@ -223,9 +222,6 @@ export function Playing(input) {
  
   /**1 Option */
   function makeOption(option, optionId){
-    console.log("CC"+option);
-    console.log("DD"+option);
-
     return(
       // <Button id={optionId} variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer({option})}>
       <Button id={optionId} variant='light' style={{'width' : '45%'}}>
@@ -254,9 +250,9 @@ export function Playing(input) {
            /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
         </div>
 
-        {/* {addBlankQuestions()} */}
+        {addBlankQuestions()}
         
-        <div className="button-row">
+        {/* <div className="button-row">
           <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
             John Wayne
           </Button>
@@ -271,7 +267,7 @@ export function Playing(input) {
           <Button id="option04" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Henry Fonda")}>
             Henry Fonda
           </Button>
-        </div> 
+        </div>  */}
 
         <div id="gameCommands">
           <Button variant='light' onClick={() => reachPreGamePage()}>
