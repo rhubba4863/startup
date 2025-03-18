@@ -10,15 +10,13 @@ export function Question(input) {
     const [wrongOption2, setWrongOption2] = React.useState('Loading...');
     const [wrongOption3, setWrongOption3] = React.useState('Loading...');
   
-    // addBlankQuestions();
-    // grabQuestions();
 
     //Create New questions
-    function grabQuestions(){
+    async function grabQuestions(){
       // https://opentdb.com/api.php?amount=10&category=11&type=multiple
       //{"author":"Linus Torvalds","quote":"Talk is cheap. Show me the code."}
   
-      fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
+      const response = await fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
       .then((response) => response.json())
       .then((data) => {
         console.log("0PARK:"+ data);
@@ -107,12 +105,13 @@ export function Question(input) {
     )
   } 
 
-  grabQuestions();
+  // grabQuestions();
   // editQuestions();
 
   return( 
     <div className="Movie">
       {addBlankQuestions()}
       HELP
-    </div>)
+    </div>);
 }
+
