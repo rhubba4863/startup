@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
-export function Question(input) {
-  const [questions, setQuestion] = React.useState('Loading...');
-  const [correctAnswer, setCorrectAnswer] = React.useState("John Wayne");
-  const [wrongOption1, setWrongOption1] = React.useState('Loading...');
-  const [wrongOption2, setWrongOption2] = React.useState('Loading...');
-  const [wrongOption3, setWrongOption3] = React.useState('Loading...');
-  const [finalCode, setFinalCode] = React.useState('Loading...'); 
+export function Question(input) { 
+    const [questions, setQuestion] = React.useState('Loading...');
+    const [correctAnswer, setCorrectAnswer] = React.useState("John Wayne");
+    const [wrongOption1, setWrongOption1] = React.useState('Loading...');
+    const [wrongOption2, setWrongOption2] = React.useState('Loading...');
+    const [wrongOption3, setWrongOption3] = React.useState('Loading...');
+    const [finalCode, setFinalCode] = React.useState('Loading...');
 
-  //Initially grab all data
+    let allData;
     useEffect(() => {
        // Grab question data
      fetch('/api/question/get', {
@@ -21,6 +21,7 @@ export function Question(input) {
        },
      }).then((response) => response.json())
      .then((data) => {
+       allData = data;
        setFinalCode(data);
      })
      }, []); //if empty, will use once at the beginning
@@ -118,19 +119,19 @@ export function Question(input) {
     }
 
     if(finalCode){
-      return( 
-        <div >
-          <div>{finalCode.question}</div>
-          <div className="button-row">
-            {/* {makeOption(finalCode.wrong1, "option01")} */}
-            {makeOption("John Wayne", "option01")}
-            {makeOption(finalCode.wrong3, "option02")}
-          </div> 
-          <div className="button-row">
-            {makeOption(finalCode.answer, "option03")}
-            {makeOption(finalCode.wrong2, "option04")}
-          </div>      
-        </div>)
+   return( 
+     <div >
+       <div>{finalCode.question}</div>
+       <div className="button-row">
+         {makeOption(finalCode.wrong1, "option01")}
+         {/* {makeOption("AA", "option01")} */}
+         {makeOption(finalCode.wrong3, "option02")}
+       </div> 
+       <div className="button-row">
+         {makeOption(finalCode.answer, "option03")}
+         {makeOption(finalCode.wrong2, "option04")}
+       </div>      
+     </div>)
     }
  }
 
@@ -144,10 +145,7 @@ export function Question(input) {
     )
   } 
 
-  function checkAnswer(guess){
-    console.log("helping again");
-  }
-
+  
 
   // grabQuestions();
   // editQuestions();

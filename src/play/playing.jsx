@@ -215,7 +215,6 @@ export function Playing(input) {
     console.log("QUOTE:"+ questions);
   }
 
-
   function editQuestions(){
     let counter = 0;
     let Random = Math.floor(Math.random() * 4) +1
