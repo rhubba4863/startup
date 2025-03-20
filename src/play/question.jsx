@@ -95,6 +95,34 @@ export function Question(input) {
       </div>)
   }
  
+  function addFirstQuestion(){
+    let allData;
+   // Grab question data
+   fetch('/api/question/get', {
+     method: 'get',
+     headers: {
+       'Content-type': 'application/json; charset=UTF-8',
+     },
+   }).then((response) => response.json())
+   .then((data) => {
+     allData = data;
+   })
+
+   return( 
+     <div >
+       <div>{questions}</div>
+       <div className="button-row">
+         {makeOption(allData.question, "option01")}
+         {/* {makeOption("AA", "option01")} */}
+         {makeOption("DD", "option02")}
+       </div> 
+       <div className="button-row">
+         {makeOption("DD", "option03")}
+         {makeOption("DD", "option04")}
+       </div>      
+     </div>)
+ }
+
   /**1 Option */
   function makeOption(option, optionId){
     return(
@@ -115,3 +143,9 @@ export function Question(input) {
     </div>);
 }
 
+//export editQuestions;
+
+// module.exports = {
+//   editQuestions2: editQuestions,
+//   Question: Question,
+// };

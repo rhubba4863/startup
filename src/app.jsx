@@ -59,7 +59,7 @@ export default function App() {
       .then((data) => {
         setQuote(data.quote);
         setQuoteAuthor(data.author);
-      })
+      }) 
 
       grabQuestions();
   }

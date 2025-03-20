@@ -260,7 +260,6 @@ async function getQuestion(q){
 
   const task = {
     round: q,
-    //question: aRound.results[q].question.replace(/&quot;/g, ''),
     question: replaceQuote(aRound.results[q].question),
     answer: aRound.results[q].correct_answer,
     wrong1: aRound.results[q].incorrect_answers[0].replace(/&quot;/g, ''),
@@ -275,9 +274,7 @@ async function getQuestion(q){
   console.log("70PARK:"+ task.wrong1);
   console.log("80PARK:"+ task.answer);
 
-  //return task.wrong1;
 
-  //roundNumber = roundNumber+1;
 
   return task;
 }

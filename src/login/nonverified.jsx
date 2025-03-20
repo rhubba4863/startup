@@ -73,10 +73,6 @@ export function NonVerified(props) {
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
 
-    console.log("A1) " + newScore.name);
-    console.log("2) " + newScore.date);
-    console.log("3) " + newScore.score);
-
     //Storage of scores
     let scores = [];
     //Get the scores and split their individual pieces

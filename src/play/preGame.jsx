@@ -25,7 +25,17 @@ export function PreGame(input) {
   /*
    * 
    */
-  function startGame(){
+  async function startGame(){
+    //PRACTICE
+    await fetch('/api/question/make', {
+      method: 'get',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    
+    
+
     //Call to "play.jsx" to shift sub-page
     input.onStartPlayingGame();
   }

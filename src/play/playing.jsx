@@ -43,11 +43,11 @@ export function Playing(input) {
   // editQuestions();
 
   //Bring up next question, or show final score/page 
-  function nextQuestion(){
+  async function nextQuestion(){
     //RPH - 2 STEPS TO BEGIN CALLING ON NEW QUESTIONS
     // grabQuestions();
     // editQuestions();
-    //Question.grabQuestions;
+    //Question.grabQuestions();
 
     setRoundNumber(roundNumber+1);
 
@@ -58,7 +58,45 @@ export function Playing(input) {
       saveToLocalStorage();
       reachFinishedPage();
     }
+
+    let cards;
+    //Grab new question data
+    const response = await fetch('/api/question/set', {
+      method: 'post',
+      body: JSON.stringify({ number: (roundNumber-1) }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.json())
+    .then((data) => {
+      cards = data;
+    })
+
+    
+
+    // let cards2;
+    // //Grab new question data
+    await fetch('/api/question/get', {
+      method: 'get',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.json())
+    .then((data) => {
+      cards = data;
+    })
+    
+
+    console.log("MAX:"+ cards.question);
+    console.log("MAX:"+ cards.round);
+    console.log("MAX1:"+ cards.wrong1);
+    console.log("MAX2:"+ cards.wrong2);
+    console.log("MAX3:"+ cards.wrong3);
+     console.log("MAX4:"+ cards.answer);
+
   }
+
+  
 
   //Save the score among high scores
   async function saveScore(score) {
@@ -153,14 +191,14 @@ export function Playing(input) {
     fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
     .then((response) => response.json())
     .then((data) => {
-      // console.log("0PARK:"+ data);
-      // console.log("1PARK:"+ data.results);
-      //console.log("2PARK:"+ data.results[0].question);
-      // console.log("3PARK:"+ data.results[0].correct_answer);
-      // console.log("4PARK:"+ data.results[0].incorrect_answers);
-      // console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
-      // console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
-      // console.log("7PARK:"+ data.results[0].incorrect_answers[2]);
+      /*console.log("0PARK:"+ data);
+      console.log("1PARK:"+ data.results);
+      console.log("2PARK:"+ data.results[0].question);
+      console.log("3PARK:"+ data.results[0].correct_answer);
+      console.log("4PARK:"+ data.results[0].incorrect_answers);
+      console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
+      console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
+      console.log("7PARK:"+ data.results[0].incorrect_answers[2]);*/
 
 
       //roundNumber
@@ -172,12 +210,6 @@ export function Playing(input) {
 
       let Random = Math.floor(Math.random() * 4)
       console.log(Random);
-      // setQuote(data.quote);
-      // setQuoteAuthor(data.author);
-
-
-      //document.getElementById("demo").innerHTML =
-      //Math.floor(Math.random() * 10);
     })
 
     console.log("QUOTE:"+ questions);
