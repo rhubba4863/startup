@@ -39,7 +39,8 @@ let users = [];
 let scores = [];
 let questions = [];
 let recentScore = 0;
-let round = 0;
+let aRound = 99;
+let roundNumber = 0;
 
 //const [recentScore, setRecentScore] = React.useState(0);
 
@@ -168,7 +169,6 @@ apiRouter.get('/records', (_req, res) => {
 });
 
 
-
 /**
  * Setup a cookie for user created or being logged onto
  * @param {*} res 
@@ -205,48 +205,86 @@ function updateScores(newScore) {
 }
 
 
-
-
 /**
  * Create Trivia Questions
  */
-apiRouter.post('/question/make', async (req, res) => {    
+apiRouter.get('/question/make', async (req, res) => {    
+  console.log("START) ");
+
   //RPH maybe delete any before grabbing it
-  res.send({ userName: user.userName });
+  await createTriviaQuestions();
+  res.send(await getQuestion(0));
+  //res.send({ userName: user.userName });
+
+  console.log("FINISH) ");
+  let house = "homely"
+  return {house};
 });
 
 /**
  * Get a Trivia Questions
  */
-apiRouter.get('/question/get', async (req, res) => {    
-  res.send({ userName: user.userName });
+apiRouter.post('/question/set', async (req, res) => {  
+  //Calls on exact question 
+  console.log("JOB "+ req.body.number);
+  res.send({task: await getQuestion(req.body.number)});
 });
 
-//apiRouter.delete('/auth/logout', async (req, res) => {
-//}
+apiRouter.get('/question/get', async (req, res) => {
+  roundNumber = roundNumber +1;    
+  //res.send({ userName: user.userName });
+  res.send(await getQuestion(roundNumber));
+});
 
 async function createTriviaQuestions() {
-  const response = await fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
-  .then((response) => response.json())
-  .then((data) => {
-    round = data;
-   })
+  //Fetch all 10 questions
+  const response = await fetch(
+    'https://opentdb.com/api.php?amount=10&category=11&type=multiple', {
+      method: 'GET',
+      headers:{'Content-type': 'application/json; charset=UTF-8'},
+    }
+  ) 
+  const data = await response.json();
+  aRound = data;
+  //restart on first question
+  roundNumber = 0;
 }
 
-function getQuestion(q){
+async function getQuestion(q){
   let Random = Math.floor(Math.random() * 4)
+  
+  console.log("BASE="+ aRound);
+  console.log("BASE="+ q);
+
+  //aRound = q;
 
   const task = {
-    question: round.results[q].question,
-    wrong1: round.results[q].incorrect_answers[0],
-    wrong2: round.results[q].incorrect_answers[1],
-    wrong3: round.results[q].incorrect_answers[2],
+    round: q,
+    //question: aRound.results[q].question.replace(/&quot;/g, ''),
+    question: replaceQuote(aRound.results[q].question),
+    answer: aRound.results[q].correct_answer,
+    wrong1: aRound.results[q].incorrect_answers[0].replace(/&quot;/g, ''),
+    wrong2: aRound.results[q].incorrect_answers[1].replace(/&quot;/g, ''),
+    wrong3: aRound.results[q].incorrect_answers[2].replace(/&quot;/g, ''),
     random: Random,
   };
+
+
+  console.log("50PARK:"+ task.random);
+  console.log("60PARK:"+ task.question);
+  console.log("70PARK:"+ task.wrong1);
+  console.log("80PARK:"+ task.answer);
+
+  //return task.wrong1;
+
+  //roundNumber = roundNumber+1;
 
   return task;
 }
 
+function replaceQuote(text){
+  return text.replace(/&quot;/g, '').replace(/&#039/g, '')
+}
 
 
    //Create New questions
