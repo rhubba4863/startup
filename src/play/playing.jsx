@@ -19,6 +19,8 @@ export function Playing(input) {
   //Question Segments
   const [correctAnswer, setCorrectAnswer] = React.useState("Loading...");
   const [finalCode, setFinalCode] = React.useState('Loading...'); 
+  let buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+
 
   let count = 0;
 
@@ -71,6 +73,7 @@ export function Playing(input) {
    */
   async function nextQuestion(){
     setRoundNumber(roundNumber+1);
+    buttonOptions = shuffleArray(buttonOptions);
 
     resetDisplay();
     
@@ -267,44 +270,34 @@ export function Playing(input) {
     return array;
   }
 
-  const [shuffleQuestion, setShuffleQuestion] = React.useState(true);
+  // let buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+  //let shuffledArray = buttonOptions;
 
   function presentQuestionBox2(){
-    const buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
-    let shuffledArray = buttonOptions;
+    // const buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+    // let shuffledArray = buttonOptions;
   
     //Checks that the data is not null    
     if(!finalCode){
       return (
         <div>loading...</div>
       )
-    }
+    }  
+    console.log("ANSWER "+correctAnswer);
+    console.log("ANSWER "+finalCode.answer);
 
-    if(finalCode){
-      if(shuffleQuestion){
-        shuffledArray = shuffleArray(buttonOptions);
-        setShuffleQuestion(false);}
-      // }else{
-      //   shuffledArray = buttonOptions;
-      //   setShuffleQuestion(true);
-      // }
-  
-      console.log("ANSWER "+correctAnswer);
-      console.log("ANSWER "+finalCode.answer);
-
-      return( 
-        <div className="Movie">
-          <div>{finalCode.question}</div>
-          <div className="button-row">
-            {makeOption(shuffledArray[0]+"", "option01")}
-            {makeOption(shuffledArray[1]+"", "option02")}
-          </div> 
-          <div className="button-row">
-            {makeOption(shuffledArray[2]+"", "option03")}
-            {makeOption(shuffledArray[3]+"", "option04")}
-          </div>      
-        </div>)
-    }
+    return( 
+      <div className="Movie">
+        <div>{finalCode.question}</div>
+        <div className="button-row">
+          {makeOption(buttonOptions[0]+"", "option01")}
+          {makeOption(buttonOptions[1]+"", "option02")}
+        </div> 
+        <div className="button-row">
+          {makeOption(buttonOptions[2]+"", "option03")}
+          {makeOption(buttonOptions[3]+"", "option04")}
+        </div>      
+      </div>)
   }
 
   function presentQuestionBox(){ 
