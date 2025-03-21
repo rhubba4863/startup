@@ -232,6 +232,14 @@ apiRouter.post('/question/set', async (req, res) => {
 
 apiRouter.get('/question/get', async (req, res) => {
   roundNumber = roundNumber +1;    
+
+  //res.send({ userName: user.userName });
+  res.send(await getQuestion(roundNumber));
+});
+
+apiRouter.get('/question/reset', async (req, res) => {
+  roundNumber = 0;    
+
   //res.send({ userName: user.userName });
   res.send(await getQuestion(roundNumber));
 });
@@ -239,7 +247,7 @@ apiRouter.get('/question/get', async (req, res) => {
 async function createTriviaQuestions() {
   //Fetch all 10 questions
   const response = await fetch(
-    'https://opentdb.com/api.php?amount=10&category=11&type=multiple', {
+    'https://opentdb.com/api.php?amount=15&category=11&type=multiple', {
       method: 'GET',
       headers:{'Content-type': 'application/json; charset=UTF-8'},
     }
@@ -268,13 +276,10 @@ async function getQuestion(q){
     random: Random,
   };
 
-
-  console.log("50PARK:"+ task.random);
-  console.log("60PARK:"+ task.question);
-  console.log("70PARK:"+ task.wrong1);
-  console.log("80PARK:"+ task.answer);
-
-
+  // console.log("50PARK:"+ task.random);
+  // console.log("60PARK:"+ task.question);
+  // console.log("70PARK:"+ task.wrong1);
+  // console.log("80PARK:"+ task.answer);
 
   return task;
 }

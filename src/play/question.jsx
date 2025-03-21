@@ -90,24 +90,6 @@ export function Question(input) {
         }
       }
     }
-
-  /**
-   * First create The Questions on the screen 
-   */  
-  function addBlankQuestions(){
-    return( 
-      <div >
-        <div>{questions}</div>
-        <div className="button-row">
-          {makeOption("AA", "option01")}
-          {makeOption("BB", "option02")}
-        </div> 
-        <div className="button-row">
-          {makeOption("CC", "option03")}
-          {makeOption("DD", "option04")}
-        </div>      
-      </div>)
-  }
   
   function addFirstQuestion(){ 
     //Checks that the data is not null    
