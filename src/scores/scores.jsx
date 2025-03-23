@@ -52,10 +52,6 @@ export function Scores() {
   sortScores();
 
   return (
-    // <main className='container-fluid bg-secondary text-center'>
-    //   <div>scores displayed here</div>
-    // </main>
-
     <main>
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       <h2 className="new-high-score">New High Score!</h2>

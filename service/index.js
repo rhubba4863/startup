@@ -25,6 +25,9 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
+//Database link
+const DB = require('./database.js');
+
 
 const authCookieName = 'token';
 
@@ -35,8 +38,8 @@ app.use(cookieParser());
 
 //Save Users and the scores 
 // (Note - They will delete from system when the service is restarted.)
-let users = [];
-let scores = [];
+//let scores = [];
+//let users = [];
 let questions = [];
 let recentScore = 0;
 let aRound = 99;
@@ -84,7 +87,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 
 /**
- * Log onto an existing user
+ * Log onto an existing user, returning "GetAuth token"
  */
 apiRouter.put('/auth/login', async (req, res) => {
   const user = await getUser('userName', req.body.userName);
@@ -93,6 +96,8 @@ apiRouter.put('/auth/login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      //Step to add user to Database
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ userName: user.userName });
       return;
@@ -102,13 +107,15 @@ apiRouter.put('/auth/login', async (req, res) => {
 });
 
 /**
- * Log off of current user
+ * Log off of current user "if stored in cookie"
  */
 apiRouter.delete('/auth/logout', async (req, res) => {
   //Look for user, deleting its token if found. 
   const user = await getUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    //Database updates user one/off
+    DB.updateUser(user);
   }
   //Delete cookie of token
   res.clearCookie(authCookieName);
@@ -126,23 +133,44 @@ async function createUser(userName, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  //Now add the user and his features
+  await DB.addUser(user);
 
   return user;
 }
 
 /**
- * Get Users details, identifying normally through the token and  cookies
+ * Find a User and return his details, identifying normally through the 
+ * token and  cookies
  */
 async function getUser(field, value) {
+  //RPH First check the user value isnt null
   if (!value) return null;
-
-  return users.find((u) => u[field] === value);
+  
+  //RPH now find the user by its value or token
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
+  
+  // return users.find((u) => u[field] === value);
 }
 
 // Middleware to check user is logged on and has permission
 const checkUserPermission= async (req, res, next) =>{
   const user = await getUser('userName', req.body.userName);
+  //const user = await getUser('token', req.cookies[authCookieName]);
+
+  // console.log("User1="+user);
+  // console.log("User2="+req.body.userName);
+  // console.log("User3="+getUser('userName', req.body.userName));
+  // console.log("User4="+authCookieName);
+  // console.log("User5="+req.cookies[authCookieName]);
+  // console.log("User6="+getUser('token', req.cookies[authCookieName]));
+  // console.log(getUser('userName', req.body.userName));
+  // console.log(req.cookies[authCookieName]);
+  // console.log(getUser('token', req.cookies[authCookieName]));
+
 
   //RPH - Check if user exists, then use next task
   if(user){
@@ -156,23 +184,22 @@ const checkUserPermission= async (req, res, next) =>{
 /**
  * First check if logged on, then Add 1 score if logged in
  */
-apiRouter.post('/score', checkUserPermission, (req, res) => {
+apiRouter.post('/score', checkUserPermission, async (req, res) => {
   scores = updateScores(req.body);
   res.send(scores);
 });
 
 /**
- * Return all scores
+ * Return all scores (Note the async position)
  */
-apiRouter.get('/records', (_req, res) => {
+apiRouter.get('/records', async (_req, res) => {
+  const scores = await DB.getHighScores();
   res.send(scores);
 });
 
 
 /**
  * Setup a cookie for user created or being logged onto
- * @param {*} res 
- * @param {*} authToken 
  */
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
@@ -183,8 +210,8 @@ function setAuthCookie(res, authToken) {
 }
 
 // updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore) {
-  let found = false;
+async function updateScores(newScore) {
+  /*let found = false;
   for (const [i, prevScore] of scores.entries()) {
     if (newScore.score > prevScore.score) {
       scores.splice(i, 0, newScore);
@@ -192,16 +219,20 @@ function updateScores(newScore) {
       break;
     }
   }
-
+  
   if (!found) {
     scores.push(newScore);
   }
-
+  
   if (scores.length > 10) {
     scores.length = 10;
   }
+  
+  return scores;*/
 
-  return scores;
+  //Database now decides if score belongs
+  await DB.addScore(newScore);
+  return DB.getHighScores();
 }
 
 

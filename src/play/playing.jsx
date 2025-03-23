@@ -107,9 +107,9 @@ export function Playing(input) {
     })
   
     //editQuestions();
-    console.log("MAX:"+ finalCode.question);
-    console.log("MAX:"+ finalCode.round);
-    console.log("MAX4 Answer:"+ finalCode.answer);
+    // console.log("MAX:"+ finalCode.question);
+    // console.log("MAX:"+ finalCode.round);
+    // console.log("MAX4 Answer:"+ finalCode.answer);
   }
 
   /**
@@ -142,7 +142,7 @@ export function Playing(input) {
       }
     }
 
-    console.log("ANSWER "+correctAnswer);
+    // console.log("ANSWER "+correctAnswer);
 
   }
 
@@ -170,8 +170,8 @@ export function Playing(input) {
   //Change color of buttons to Green/Red - OLD
   function changeDisplay(buttonClicked, answer){
     setCorrectAnswer(finalCode.answer);
-    console.log("ANSWER"+finalCode.answer);
-    console.log("ANSWER"+correctAnswer);
+    // console.log("ANSWER"+finalCode.answer);
+    // console.log("ANSWER"+correctAnswer);
 
     for (let x = 1; x<5; x++){
       let option = document.getElementById("option0"+x);
@@ -283,8 +283,8 @@ export function Playing(input) {
         <div>loading...</div>
       )
     }  
-    console.log("ANSWER "+correctAnswer);
-    console.log("ANSWER "+finalCode.answer);
+    // console.log("ANSWER "+correctAnswer);
+    // console.log("ANSWER "+finalCode.answer);
 
     return( 
       <div className="Movie">

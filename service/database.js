@@ -1,4 +1,3 @@
-//RPH - 
 //RPH - how to introduce modgles
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
@@ -21,8 +20,11 @@ const scoreCollection = db.collection('score');
   }
 })();
 
-function getUser(email) {
-  return userCollection.findOne({ email: email });
+/**
+ * RPH - User methods
+ */
+function getUser(userName) {
+  return userCollection.findOne({ userName: userName });
 }
 
 function getUserByToken(token) {
@@ -34,9 +36,12 @@ async function addUser(user) {
 }
 
 async function updateUser(user) {
-  await userCollection.updateOne({ email: user.email }, { $set: user });
+  await userCollection.updateOne({ userName: user.userName }, { $set: user });
 }
 
+/**
+ * RPH - Score methods
+ */
 async function addScore(score) {
   return scoreCollection.insertOne(score);
 }
