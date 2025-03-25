@@ -236,13 +236,10 @@ async function updateScores(newScore) {
  * Create Trivia Questions
  */
 apiRouter.get('/question/make', async (req, res) => {    
-  console.log("START) ");
-
   //RPH maybe delete any before grabbing it
   await createTriviaQuestions();
   res.send(await getQuestion(0));
 
-  console.log("FINISH) ");
   let house = "homely"
   return {house};
 });
@@ -252,7 +249,6 @@ apiRouter.get('/question/make', async (req, res) => {
  */
 apiRouter.post('/question/set', async (req, res) => {  
   //Calls on exact question 
-  console.log("JOB "+ req.body.number);
   res.send({task: await getQuestion(req.body.number)});
 });
 
@@ -284,28 +280,21 @@ async function createTriviaQuestions() {
   roundNumber = 0;
 }
 
+/**
+ * Retrieve the Question and options, knowing right/wrong. q is roung number
+ */
 async function getQuestion(q){
   let Random = Math.floor(Math.random() * 4)
   
-  console.log("BASE="+ aRound);
-  console.log("BASE="+ q);
-
-  //aRound = q;
-
   const task = {
     round: q,
     question: replaceQuote(aRound.results[q].question),
-    answer: aRound.results[q].correct_answer,
-    wrong1: aRound.results[q].incorrect_answers[0].replace(/&quot;/g, ''),
-    wrong2: aRound.results[q].incorrect_answers[1].replace(/&quot;/g, ''),
-    wrong3: aRound.results[q].incorrect_answers[2].replace(/&quot;/g, ''),
+    answer: replaceQuote(aRound.results[q].correct_answer),
+    wrong1: replaceQuote(aRound.results[q].incorrect_answers[0]),
+    wrong2: replaceQuote(aRound.results[q].incorrect_answers[1]),
+    wrong3: replaceQuote(aRound.results[q].incorrect_answers[2]),
     random: Random,
   };
-
-  // console.log("50PARK:"+ task.random);
-  // console.log("60PARK:"+ task.question);
-  // console.log("70PARK:"+ task.wrong1);
-  // console.log("80PARK:"+ task.answer);
 
   return task;
 }
@@ -317,55 +306,43 @@ function replaceQuote(text){
 }
 
 
-   //Create New questions
-   async function grabQuestions(){
-    // https://opentdb.com/api.php?amount=10&category=11&type=multiple
-    //{"author":"Linus Torvalds","quote":"Talk is cheap. Show me the code."}
+  //Create New questions
+  async function grabQuestions(){
+  // https://opentdb.com/api.php?amount=10&category=11&type=multiple
+  //{"author":"Linus Torvalds","quote":"Talk is cheap. Show me the code."}
 
-    const response = await fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("0PARK:"+ data);
-      console.log("1PARK:"+ data.results);
-      console.log("2PARK:"+ data.results[0].question);
-      console.log("3PARK:"+ data.results[0].correct_answer);
-      console.log("4PARK:"+ data.results[0].incorrect_answers);
-      console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
-      console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
-      console.log("7PARK:"+ data.results[0].incorrect_answers[2]);
-
-
-      //roundNumber
-      let q = data.results[0].question;
-      q.toString().replace("&quot;", "")
-      setQuestion(q);
-      //setQuestion(data.results[0].question);
-      //setCorrectAnswer(data.results[0].correct_answer);
-      setWrongOption1(data.results[0].incorrect_answers[0]);
-      setWrongOption2(data.results[0].incorrect_answers[1]);
-      setWrongOption3(data.results[0].incorrect_answers[2]);
-
-      let Random = Math.floor(Math.random() * 4)
-      console.log("Random"+Random);
+  const response = await fetch('https://opentdb.com/api.php?amount=10&category=11&type=multiple')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("0PARK:"+ data);
+    console.log("1PARK:"+ data.results);
+    console.log("2PARK:"+ data.results[0].question);
+    console.log("3PARK:"+ data.results[0].correct_answer);
+    console.log("4PARK:"+ data.results[0].incorrect_answers);
+    console.log("5PARK:"+ data.results[0].incorrect_answers[0]);
+    console.log("6PARK:"+ data.results[0].incorrect_answers[1]);
+    console.log("7PARK:"+ data.results[0].incorrect_answers[2]);
 
 
-      //document.getElementById("demo").innerHTML =
-      //Math.floor(Math.random() * 10);
-    })
+    //roundNumber
+    let q = data.results[0].question;
+    q.toString().replace("&quot;", "")
+    setQuestion(q);
+    //setQuestion(data.results[0].question);
+    //setCorrectAnswer(data.results[0].correct_answer);
+    setWrongOption1(data.results[0].incorrect_answers[0]);
+    setWrongOption2(data.results[0].incorrect_answers[1]);
+    setWrongOption3(data.results[0].incorrect_answers[2]);
 
-    console.log("QUOTE:"+ questions);
-  }
+    let Random = Math.floor(Math.random() * 4)
+    console.log("Random"+Random);
 
 
+    //document.getElementById("demo").innerHTML =
+    //Math.floor(Math.random() * 10);
+  })
 
-
-
-/**
- * Possibly Unnecessary
- */
-function clearAuthCookie(res, user) {
-  delete user.token;
-  res.clearCookie('token');
+  console.log("QUOTE:"+ questions);
 }
 
 
@@ -376,16 +353,3 @@ app.listen(port, function() {
   console.log(`Port ${port} is now being used`);
 });
 
-
-/**
- * Possibly Unnecessary
- */
-/*app.get('/api/user/me', async (req, res) => {
-  const token = req.cookies['token'];
-  const user = await getUser('token', token);
-  if (user) {
-    res.send({ userName: user.userName });
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-});*/

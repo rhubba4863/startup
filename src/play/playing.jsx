@@ -20,21 +20,16 @@ export function Playing(input) {
   //Question Segments
   const [correctAnswer, setCorrectAnswer] = React.useState("Loading...");
   const [finalCode, setFinalCode] = React.useState('Loading...'); 
-  let buttonOptions = ["A",finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+  const [buttonOptions, setButtonOptions] = React.useState(["Z","Y","X","W"]); 
 
   /**
-   * React useEffect 
+   * React useState
    * to edit the array
+   * 
+   * useState, 
    */
 
   React.useEffect(() => {
-    buttonOptions = shuffleArray(buttonOptions);
-    console.log("FIRST-"+ buttonOptions);
-  }, [buttonOptions]);
-  console.log("FIRST-"+ buttonOptions);
-
-  React.useEffect(() => {
-    console.log("0Score "+ totalRightAnswers);
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
   }, [totalRightAnswers]);
 
@@ -50,6 +45,8 @@ export function Playing(input) {
     .then((data) => {
       setFinalCode(data);
       setCorrectAnswer(data.answer);
+      setButtonOptions([data.answer, data.wrong1, data.wrong2, data.wrong3]);
+
       console.log("My New ANSWER"+data.answer);
       console.log("My New Wrong"+data.wrong2);
       console.log("XXMy New ANSWER"+correctAnswer);
@@ -81,15 +78,7 @@ export function Playing(input) {
    */
   async function nextQuestion(){
     setRoundNumber(roundNumber+1);
-
-    // useEffect(() => {
-    //   buttonOptions = shuffleArray(buttonOptions);
-    // }, [buttonOptions]);
-
-    console.log("QQQ"+buttonOptions);
-    buttonOptions = shuffleArray(buttonOptions);
-    console.log("MMM"+buttonOptions);
-
+    //Change buttons to white
     resetDisplay();
     
     //Determine when to return the values to the parent 
@@ -119,17 +108,12 @@ export function Playing(input) {
         setFinalCode(data);
         setCorrectAnswer(data.answer);
 
-        buttonOptions = ["B",finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
-        buttonOptions = shuffleArray(buttonOptions);
+        let buttonOptions2 = [data.answer, data.wrong1, data.wrong2, data.wrong3];
+        setButtonOptions(shuffleArray(buttonOptions2));
       })
     
       // editQuestions();
-      // console.log("MAX:"+ finalCode.question);
-      // console.log("MAX:"+ finalCode.round);
-      // console.log("MAX4 Answer:"+ finalCode.answer);
     }
-
-
   }
 
   /**
@@ -294,7 +278,6 @@ export function Playing(input) {
 
   function presentQuestionBox2(){
     //const buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
-    //let shuffledArray = shuffleArray(buttonOptions);
     let shuffledArray = buttonOptions;
 
     //Checks that the data is not null    
@@ -303,17 +286,13 @@ export function Playing(input) {
         <div>loading...</div>
       )
     }  
-    console.log("-ANSWER "+correctAnswer);
-    console.log("-ANSWER "+finalCode.answer);
-    console.log("");
-
 
     return( 
       <div className="Movie">
         <div>{finalCode.question}</div>
         <div className="button-row">
-          {makeOption(shuffledArray[0]+"XX", "option01")}
-          {makeOption(shuffledArray[1]+"YY", "option02")}
+          {makeOption(shuffledArray[0]+"", "option01")}
+          {makeOption(shuffledArray[1]+"", "option02")}
         </div> 
         <div className="button-row">
           {makeOption(shuffledArray[2]+"", "option03")}
