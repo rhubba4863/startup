@@ -34,7 +34,7 @@ export function PreGame(input) {
       },
     });
     
-    
+
 
     //Call to "play.jsx" to shift sub-page
     input.onStartPlayingGame();
@@ -65,7 +65,7 @@ export function PreGame(input) {
         </div>
         <div id="gameCommands">
           <Button variant='light' onClick={() => navToLogin()}>
-              Main Menu
+            Main Menu
           </Button>
           <Button variant='light' onClick={() => startGame()}>
             Start Game

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -19,10 +20,18 @@ export function Playing(input) {
   //Question Segments
   const [correctAnswer, setCorrectAnswer] = React.useState("Loading...");
   const [finalCode, setFinalCode] = React.useState('Loading...'); 
-  let buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+  let buttonOptions = ["A",finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
 
+  /**
+   * React useEffect 
+   * to edit the array
+   */
 
-  let count = 0;
+  React.useEffect(() => {
+    buttonOptions = shuffleArray(buttonOptions);
+    console.log("FIRST-"+ buttonOptions);
+  }, [buttonOptions]);
+  console.log("FIRST-"+ buttonOptions);
 
   React.useEffect(() => {
     console.log("0Score "+ totalRightAnswers);
@@ -39,11 +48,10 @@ export function Playing(input) {
       },
     }).then((response) => response.json())
     .then((data) => {
-
       setFinalCode(data);
       setCorrectAnswer(data.answer);
       console.log("My New ANSWER"+data.answer);
-      console.log("My New ANSWER"+data.wrong2);
+      console.log("My New Wrong"+data.wrong2);
       console.log("XXMy New ANSWER"+correctAnswer);
     })
   }, []);
@@ -73,7 +81,14 @@ export function Playing(input) {
    */
   async function nextQuestion(){
     setRoundNumber(roundNumber+1);
+
+    // useEffect(() => {
+    //   buttonOptions = shuffleArray(buttonOptions);
+    // }, [buttonOptions]);
+
+    console.log("QQQ"+buttonOptions);
     buttonOptions = shuffleArray(buttonOptions);
+    console.log("MMM"+buttonOptions);
 
     resetDisplay();
     
@@ -81,35 +96,40 @@ export function Playing(input) {
     if(roundNumber >= totalRounds){
       saveToLocalStorage();
       reachFinishedPage();
+    }else{
+      //Setup new 10 questions data
+      const response = await fetch('/api/question/set', {
+        method: 'post',
+        body: JSON.stringify({ number: (roundNumber-1) }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => response.json())
+      .then((data) => {
+      })
+
+      //Grab new question data
+      await fetch('/api/question/get', {
+        method: 'get',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => response.json())
+      .then((data) => {
+        setFinalCode(data);
+        setCorrectAnswer(data.answer);
+
+        buttonOptions = ["B",finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+        buttonOptions = shuffleArray(buttonOptions);
+      })
+    
+      // editQuestions();
+      // console.log("MAX:"+ finalCode.question);
+      // console.log("MAX:"+ finalCode.round);
+      // console.log("MAX4 Answer:"+ finalCode.answer);
     }
 
-    //Setup new 10 questions data
-    const response = await fetch('/api/question/set', {
-      method: 'post',
-      body: JSON.stringify({ number: (roundNumber-1) }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then((response) => response.json())
-    .then((data) => {
-    })
 
-    //Grab new question data
-    await fetch('/api/question/get', {
-      method: 'get',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then((response) => response.json())
-    .then((data) => {
-      setFinalCode(data);
-      setCorrectAnswer(data.answer);
-    })
-  
-    //editQuestions();
-    // console.log("MAX:"+ finalCode.question);
-    // console.log("MAX:"+ finalCode.round);
-    // console.log("MAX4 Answer:"+ finalCode.answer);
   }
 
   /**
@@ -128,6 +148,8 @@ export function Playing(input) {
            
       if (x.toString() == Random.toString()){
         option.textContent = correctAnswer;
+        option.textContent = "AA";
+
         option.onclick = function() { checkAnswer(correctAnswer); }
         //option.className='btn btn-success answer';
         console.log("Choice 1 "+Random.toString()+" X " + x.toString());
@@ -270,32 +292,32 @@ export function Playing(input) {
     return array;
   }
 
-  // let buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
-  //let shuffledArray = buttonOptions;
-
   function presentQuestionBox2(){
-    // const buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
-    // let shuffledArray = buttonOptions;
-  
+    //const buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
+    //let shuffledArray = shuffleArray(buttonOptions);
+    let shuffledArray = buttonOptions;
+
     //Checks that the data is not null    
     if(!finalCode){
       return (
         <div>loading...</div>
       )
     }  
-    // console.log("ANSWER "+correctAnswer);
-    // console.log("ANSWER "+finalCode.answer);
+    console.log("-ANSWER "+correctAnswer);
+    console.log("-ANSWER "+finalCode.answer);
+    console.log("");
+
 
     return( 
       <div className="Movie">
         <div>{finalCode.question}</div>
         <div className="button-row">
-          {makeOption(buttonOptions[0]+"", "option01")}
-          {makeOption(buttonOptions[1]+"", "option02")}
+          {makeOption(shuffledArray[0]+"XX", "option01")}
+          {makeOption(shuffledArray[1]+"YY", "option02")}
         </div> 
         <div className="button-row">
-          {makeOption(buttonOptions[2]+"", "option03")}
-          {makeOption(buttonOptions[3]+"", "option04")}
+          {makeOption(shuffledArray[2]+"", "option03")}
+          {makeOption(shuffledArray[3]+"", "option04")}
         </div>      
       </div>)
   }

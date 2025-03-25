@@ -8,15 +8,6 @@ export function Scores() {
 
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
-  // React.useEffect(() => {
-  //   const scoresText = localStorage.getItem('scores');
-  //   if (scoresText) {
-  //     setScores(JSON.parse(scoresText));
-  //   }
-  // }, []);
-
-  // Demonstrates calling a service asynchronously so that
-  // React can properly update state objects with the results.
   React.useEffect(() => {
     fetch('/api/records', {method: 'GET'})
       .then((response) => response.json())

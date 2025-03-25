@@ -135,8 +135,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - User is able to register a new acount and login. 
-- [ ] **User login and logout** - User is able to login/logout
+- [X] **User registration** - User is able to register a new acount and login. 
+- [X] **User login and logout** - User is able to login/logout
 - [X] **Stores data in MongoDB** - I store scores inside of MongoDB
 - [X] **Stores credentials in MongoDB** - I store user credentials inside of MongoDB
 - [X] **Restricts functionality based on authentication** - I check user permission/authentication before adding a new score.

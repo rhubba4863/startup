@@ -14,11 +14,19 @@ export function Finished(input) {
     = React.useState(localStorage.getItem('totalRightAnswers'));
     //localStorage.setItem('totalRightAnswers', totalRightAnswers);
 
-  function restartGame(){
+  async function restartGame(){
     // console.log("AA"+totalRounds);
     // console.log("AA"+roundNumber);
     // console.log("AA"+totalRightAnswers);
     // console.log("AA"+input.totalRightAnswers);
+
+    //Reset the 10 questions
+    await fetch('/api/question/make', {
+      method: 'get',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
 
 
     localStorage.setItem('totalRightAnswers', 0);

@@ -27,19 +27,13 @@ const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
 //Database link
 const DB = require('./database.js');
-
-
 const authCookieName = 'token';
 
-// JSON body parsing using built-in middleware
-app.use(express.json());
 // Use the cookie parser middleware for tracking authentication tokens
 app.use(cookieParser());
 
-//Save Users and the scores 
-// (Note - They will delete from system when the service is restarted.)
-//let scores = [];
-//let users = [];
+//Save Questions and the rounds 
+// (Note - They will delete/reset from system when the service is restarted.)
 let questions = [];
 let recentScore = 0;
 let aRound = 99;
@@ -51,6 +45,8 @@ let roundNumber = 0;
 // The service port. In production the front-end code is statically hosted by 
 // the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
+//Trust headers 
+app.set('trust proxy', true);
 
 /**
  * Express static middleware to serve files from the public directory once your 
@@ -62,7 +58,7 @@ app.use(express.static('public'));
 app.use(express.json()); 
 
 // Router for service endpoints
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 apiRouter.post('/finished', async (req, res) => {
@@ -103,7 +99,7 @@ apiRouter.put('/auth/login', async (req, res) => {
       return;
     }
   }
-  res.status(401).send({ msg: 'Wrong Username or Password33' });
+  res.status(401).send({ msg: 'Wrong Username or Password' });
 });
 
 /**
@@ -245,7 +241,6 @@ apiRouter.get('/question/make', async (req, res) => {
   //RPH maybe delete any before grabbing it
   await createTriviaQuestions();
   res.send(await getQuestion(0));
-  //res.send({ userName: user.userName });
 
   console.log("FINISH) ");
   let house = "homely"
@@ -315,8 +310,10 @@ async function getQuestion(q){
   return task;
 }
 
+//RPH - Remove extra quotes and commas
 function replaceQuote(text){
-  return text.replace(/&quot;/g, '').replace(/&#039/g, '')
+  return text.replace(/&quot;/g, '').replace(/&#039/g, '').replace(/;/, '')
+  .replace(/[.*+?^${}()|[\]\\]\//g, '\\$&');
 }
 
 
