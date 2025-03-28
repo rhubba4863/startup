@@ -28,6 +28,7 @@ const bcrypt = require('bcryptjs');
 //Database link
 const DB = require('./database.js');
 const authCookieName = 'token';
+const { peerGroup } = require('./peerGroup.js');
 
 // Use the cookie parser middleware for tracking authentication tokens
 app.use(cookieParser());
@@ -347,9 +348,10 @@ function replaceQuote(text){
 
 
 //Choose what port to use 
-//app.listen(port);
-app.listen(port, function() {
+const httpService = app.listen(port, function() {
   //alert coder of what port is in use
   console.log(`Port ${port} is now being used`);
 });
 
+//RPH - Run peerGroup
+peerGroup(httpService);
