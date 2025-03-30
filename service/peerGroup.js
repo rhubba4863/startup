@@ -1,5 +1,6 @@
 /**
- * Here the WebSocket object is initialized
+ * Here the WebSocket object is initialized, 
+ * Called on at end of index.js
  */
 const { WebSocketServer } = require('ws');
 const uuid = require('uuid');
@@ -42,7 +43,8 @@ function peerGroup(httpServer){
       }
     });
 
-    // Respond to pong messages by marking/making the connection alive
+    // 4B - Respond to pong messages by marking/making the connection alive
+    // Send the Pong Message
     ws.on('pong', () => {
       connection.alive = true;
     });
@@ -57,6 +59,7 @@ function peerGroup(httpServer){
         c.ws.terminate();
       } else {
         c.alive = false;
+        //RPH - 5b - Send the Ping Message
         c.ws.ping();
       }
     });

@@ -97,6 +97,7 @@ export function Play({ userName, playState, onPlayChange }) {
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       {/* Slide Atempt 1 */}
       <h2 className="new-high-score">New High Score!</h2>
+      <div>BOB</div>
       {/* Slide Atempt 2 */}
       {/* {SlidingText('John')} */}
 
