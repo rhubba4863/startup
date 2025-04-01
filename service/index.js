@@ -97,6 +97,8 @@ apiRouter.put('/auth/login', async (req, res) => {
       await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ userName: user.userName });
+
+      // console.log("AGAIN"+);
       return;
     }
   }
