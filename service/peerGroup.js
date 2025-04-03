@@ -31,6 +31,9 @@ function peerGroup(httpServer){
       console.log("server.insert+"+data);
       connections.forEach((c) => {
         console.log("RAG"+c);
+        console.log("RAG"+c.id);
+        console.log("RAG"+connection.id);
+
         if (c.id !== connection.id) {
           c.ws.send(data);
         }

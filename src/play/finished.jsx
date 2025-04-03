@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import { PlayState, GameNotification } from './gameNotification';
+
 //import './verified.css';
 
 //RPH - Not yet logged in
@@ -32,6 +34,9 @@ export function Finished(input) {
     localStorage.setItem('totalRightAnswers', 0);
     //Call to "play.jsx" to shift sub-page
     input.onStartPlayingGame();
+
+    //Send news/notification to other players that a game has just begun
+    GameNotification.broadcastEvent(input.userName, PlayState.Playing, {});
   }
 
   function navToLogin(){

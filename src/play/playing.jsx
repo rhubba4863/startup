@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import { PlayState, GameNotification } from './gameNotification';
 
 import { Question } from './question';
 
@@ -50,6 +51,8 @@ export function Playing(input) {
       console.log("My New ANSWER"+data.answer);
       console.log("My New Wrong"+data.wrong2);
       console.log("XXMy New ANSWER"+correctAnswer);
+
+
     })
   }, []);
   // }, [finalCode]); //if empty, will use once at the beginning
@@ -85,6 +88,9 @@ export function Playing(input) {
     if(roundNumber >= totalRounds){
       saveToLocalStorage();
       reachFinishedPage();
+
+      //Send news/notification to other players that a game has just finished
+      GameNotification.broadcastEvent(input.userName, PlayState.Finished, {totalRightAnswers});
     }else{
       //Setup new 10 questions data
       const response = await fetch('/api/question/set', {
@@ -213,6 +219,8 @@ export function Playing(input) {
 
     saveToLocalStorage();
     resetDisplay();
+
+    GameNotification.broadcastEvent(input.userName, PlayState.Playing, {});
   }
 
   //Save values to "localStorage"
@@ -238,6 +246,9 @@ export function Playing(input) {
     saveScore(totalRightAnswers);
     //Call to "play.jsx" to shift to sub-page
     input.onGameCompletion();
+
+    //Send news/notification to other players that a game has just finished
+    GameNotification.broadcastEvent(input.userName, PlayState.Finished, {totalRightAnswers});
   }
 
   

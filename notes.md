@@ -84,6 +84,9 @@ Week 3 - HTML
   
 ## Week 11 - 
   https://opentdb.com/api.php?amount=10&category=11&type=multiple
+  Test 2 windows
+  type http://localhost:5174/login
+  on 2nd window click 3 ... and select "New in Private Window"
 
 ## Goals
 Need to edit Login and Scores pages (maybe some feature different

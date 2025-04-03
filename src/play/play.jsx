@@ -9,6 +9,7 @@ import { PlayState } from './playState';
 import { Playing } from './playing';
 import { Finished } from './finished';
 import { PreGame } from './preGame';
+import { Players } from './players';
 
 /*
 *RPH - suggest ways to enhance the user experience (UX)
@@ -97,7 +98,8 @@ export function Play({ userName, playState, onPlayChange }) {
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       {/* Slide Atempt 1 */}
       <h2 className="new-high-score">New High Score!</h2>
-      <div>BOB</div>
+      {/* Display all notices between players */}
+      <Players/>
       {/* Slide Atempt 2 */}
       {/* {SlidingText('John')} */}
 
