@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { PlayState, GameNotification } from './gameNotification';
-//import './players.css';
+import './players.css';
 
 export function Players(props) {
   const userName = props.userName;
@@ -22,25 +22,25 @@ export function Players(props) {
   }
 
   function createMessageArray() {
+    let count = 0;
     const messageArray = [];
     for (const [i, event] of events.entries()) {
       let message = ' unknown ';
       if (event.type === PlayState.Finished) {
         console.log("FINISHED");
 
-        message = ` scored ${event.value.totalRightAnswers} point(s)`;
+        message = ` has scored ${event.value.totalRightAnswers} point(s)`;
       } else if (event.type === PlayState.Playing) {
         message = ` started a new game`;
-      } else if (event.type === PlayState.System) {
-        // message = event.value.msg;
-        message = "DDDD";
-      }
+      } 
 
-      console.log("aa"+event.from);
-      console.log("bb"+event.type+"bb");
-      console.log("bb"+PlayState.Finished+"bb");
+      count = count +1;
 
-      console.log("cc"+event.value.message);
+      // console.log("aa"+event.from);
+      // console.log("bb"+event.type+"bb");
+      // console.log("bb"+PlayState.Finished+"bb");
+
+      // console.log("cc"+event.value.message);
 
 
       // for (const property in event) {
@@ -49,7 +49,9 @@ export function Players(props) {
 
       console.log("dd"+JSON.stringify(event, null, 2));
 
+      console.log("Counter="+count);
 
+      //style={{'width' : '40%', textAlign: 'right' }}
       messageArray.push(
         <div key={i} className='news'>
           <span className={'news-event'}>{event.from.split('@')[0]}</span>

@@ -24,12 +24,10 @@ export function Playing(input) {
   const [buttonOptions, setButtonOptions] = React.useState(["Z","Y","X","W"]); 
 
   /**
-   * React useState
-   * to edit the array
+   * React useState to edit the array
    * 
    * useState, 
    */
-
   React.useEffect(() => {
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
   }, [totalRightAnswers]);
@@ -87,10 +85,9 @@ export function Playing(input) {
     //Determine when to return the values to the parent 
     if(roundNumber >= totalRounds){
       saveToLocalStorage();
-      reachFinishedPage();
-
+      //Note - broadcasting event alreading within "reachFinishedPage()"
       //Send news/notification to other players that a game has just finished
-      GameNotification.broadcastEvent(input.userName, PlayState.Finished, {totalRightAnswers});
+      reachFinishedPage();
     }else{
       //Setup new 10 questions data
       const response = await fetch('/api/question/set', {

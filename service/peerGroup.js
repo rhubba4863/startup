@@ -24,16 +24,11 @@ function peerGroup(httpServer){
   wss.on('connection', (ws) => {
     const connection = { id: uuid.v4(), alive: true, ws: ws };
     connections.push(connection);
-    console.log("Step 1");
 
     // Forward messages to everyone except the sender
     ws.on('message', function message(data) {
       console.log("server.insert+"+data);
       connections.forEach((c) => {
-        console.log("RAG"+c);
-        console.log("RAG"+c.id);
-        console.log("RAG"+connection.id);
-
         if (c.id !== connection.id) {
           c.ws.send(data);
         }
