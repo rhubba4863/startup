@@ -77,43 +77,14 @@ Button {
 }
 
 @keyframes slideIn {
+  /* Slide to its original position */
   to {
-    left: 0; /* Slide to its original position */
+    left: 0; 
   }
 }
 
 .container {
   position: relative;
-}
-
-.black-box {
-  position: relative;
-  float: left;
-  z-index: 1;
-  border: 2px solid black;
-  height: 100px;
-  margin: 30px;
-  color: pink;
-}
-
-.gray-box {
-  position: absolute;
-  z-index: 3;
-  background: lightgray;
-  height: 60px;
-  width: 70%;
-  left: 50px;
-  top: 50px;
-}
-
-.green-box {
-  position: absolute;
-  z-index: 2;
-  background: lightgreen;
-  width: 35%;
-  left: 270px;
-  top: -15px;
-  height: 100px;
 }
 
 

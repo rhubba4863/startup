@@ -5,14 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { PlayState, GameNotification } from './gameNotification';
 
-import { Question } from './question';
-import { Players } from './players';
-
 //import './verified.css';
 
 //RPH - User begins playing the game
 export function Playing(input) {
-  const navigation = useNavigate();
   //RPH - Carry the variables over
   const [totalRounds, setTotalRounds] = React.useState(input.totalRounds);
   const [roundNumber, setRoundNumber] = React.useState(input.roundNumber);
@@ -26,8 +22,6 @@ export function Playing(input) {
 
   /**
    * React useState to edit the array
-   * 
-   * useState, 
    */
   React.useEffect(() => {
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
@@ -47,14 +41,11 @@ export function Playing(input) {
       setCorrectAnswer(data.answer);
       setButtonOptions([data.answer, data.wrong1, data.wrong2, data.wrong3]);
 
-      console.log("My New ANSWER"+data.answer);
-      console.log("My New Wrong"+data.wrong2);
-      console.log("XXMy New ANSWER"+correctAnswer);
-
-
+      // console.log("My New ANSWER"+data.answer);
+      // console.log("My New Wrong"+data.wrong2);
+      // console.log("XXMy New ANSWER"+correctAnswer);
     })
   }, []);
-  // }, [finalCode]); //if empty, will use once at the beginning
 
   /**
    * Compare the answer to the button selected
@@ -67,7 +58,6 @@ export function Playing(input) {
       //Compare guess to the right answer
       if (guess.option.toString().toLowerCase().includes(correctAnswer.toString().toLowerCase())){
         setTotalRightAnswers(prevTotal => prevTotal+ 1);
-
         changeDisplay();
         setQuestionGuessed(true);
       }
@@ -86,7 +76,7 @@ export function Playing(input) {
     //Determine when to return the values to the parent 
     if(roundNumber >= totalRounds){
       saveToLocalStorage();
-      //Note - broadcasting event alreading within "reachFinishedPage()"
+      //Note - broadcasting event alreading within "reachFinishedPage() method"
       //Send news/notification to other players that a game has just finished
       reachFinishedPage();
     }else{
@@ -115,45 +105,7 @@ export function Playing(input) {
         let buttonOptions2 = [data.answer, data.wrong1, data.wrong2, data.wrong3];
         setButtonOptions(shuffleArray(buttonOptions2));
       })
-    
-      // editQuestions();
     }
-  }
-
-  /**
-   * Randomize Question/Answer position
-   */
-  function editQuestions(){
-    let counter = 0;
-    let Random = Math.floor(Math.random() * 4) +1
-    const wrongOptions = [finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
-
-    console.log("X "+Random);
-
-    for (let x = 1; x<5; x++){
-      let option = document.getElementById("option0"+x);
-      //console.log("X "+Random);
-           
-      if (x.toString() == Random.toString()){
-        option.textContent = correctAnswer;
-        option.textContent = "AA";
-
-        option.onclick = function() { checkAnswer(correctAnswer); }
-        //option.className='btn btn-success answer';
-        console.log("Choice 1 "+Random.toString()+" X " + x.toString());
-      }else{
-        option.textContent = wrongOptions[counter];
-        option.onclick = function() { checkAnswer(wrongOptions[counter]); }
-       // option.className='btn btn-danger wrong';
-        counter = counter +1;
-        
-        console.log("Choice 2 "+Random.toString()+" X " + x.toString());
-
-      }
-    }
-
-    // console.log("ANSWER "+correctAnswer);
-
   }
 
   
@@ -178,7 +130,7 @@ export function Playing(input) {
   }
 
   //Change color of buttons to Green/Red - OLD
-  function changeDisplay(buttonClicked, answer){
+  function changeDisplay(){
     setCorrectAnswer(finalCode.answer);
     // console.log("ANSWER"+finalCode.answer);
     // console.log("ANSWER"+correctAnswer);
@@ -187,7 +139,6 @@ export function Playing(input) {
       let option = document.getElementById("option0"+x);
       let text = option.textContent;
 
-      //console.log("G"+text+"G");
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
       if (text.toLowerCase().includes(correctAnswer.toString().toLowerCase())){
         option.className='btn btn-success answer';
@@ -223,7 +174,7 @@ export function Playing(input) {
 
   //Save values to "localStorage"
   function saveToLocalStorage(){
-    //localStorage.roundNumber;
+    //Reach using "localStorage.roundNumber";
     localStorage.setItem('roundNumber', roundNumber);
     localStorage.setItem('totalRounds', totalRounds);
     localStorage.setItem('totalRightAnswers', totalRightAnswers);
@@ -249,24 +200,7 @@ export function Playing(input) {
     GameNotification.broadcastEvent(input.userName, PlayState.Finished, {totalRightAnswers});
   }
 
-  
-  /**
-   * First create The Questions on the screen 
-   */  
-  function addBlankQuestions(){
-    return( 
-      <div >
-        <div className="button-row">
-          {makeOption("A", "option01")}
-          {makeOption("B", "option02")}
-        </div> 
-        <div className="button-row">
-          {makeOption("C", "option03")}
-          {makeOption("D", "option04")}
-        </div> 
-      </div>)
-  }
- 
+   
   /**1 Option */
   function makeOption(option, optionId){
     return(
@@ -285,7 +219,7 @@ export function Playing(input) {
     return array;
   }
 
-  function presentQuestionBox2(){
+  function presentQuestionBox(){
     //const buttonOptions = [finalCode.answer, finalCode.wrong1, finalCode.wrong2, finalCode.wrong3];
     let shuffledArray = buttonOptions;
 
@@ -308,33 +242,25 @@ export function Playing(input) {
           {makeOption(shuffledArray[3]+"", "option04")}
         </div>      
       </div>)
+
+      // Example of adding rows with values
+      {/* <div className="button-row">
+        <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
+          John Wayne
+        </Button>
+        <Button id="option02" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Gary Cooper")}>
+          Gary Cooper
+        </Button>
+      </div> 
+      <div className="button-row">
+        <Button id="option03" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Clint Eastwood")}>
+          Clint Eastwood
+        </Button>
+        <Button id="option04" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Henry Fonda")}>
+          Henry Fonda
+        </Button>
+      </div>  */}
   }
-
-  function presentQuestionBox(){ 
-    console.log(shuffledArray);
-
-    //Checks that the data is not null    
-    if(!finalCode){
-      return (
-        <div>loading...</div>
-      )
-    }
-
-    if(finalCode){
-      return( 
-        <div className="Movie">
-          <div>{finalCode.question}</div>
-          <div className="button-row">
-            {makeOption(finalCode.answer+"", "option03")}
-            {makeOption(finalCode.wrong3+"", "option02")}
-          </div> 
-          <div className="button-row">
-            {makeOption(finalCode.wrong1+"", "option01")}
-            {makeOption(finalCode.wrong2+"", "option04")}
-          </div>      
-        </div>)
-    }
- }
 
   /*
   * RPH Note - figure what button to start focus on 
@@ -349,32 +275,13 @@ export function Playing(input) {
           <img alt="Arches" height={150} src="https://cdn.britannica.com/82/136182-050-6BB308B7/John-Wayne.jpg?raw=true" />  
         </div>
         <div id="step-and-score">
-          <div style={{'width' : '40%', textAlign: 'right' }}
-           /*float={right}*/>Round {roundNumber}/{totalRounds}</div>
-          <div style={{'width' : '40%', textAlign: 'right'}} 
-           /*float={right}*/>Score {totalRightAnswers}/{totalRounds}</div>
+          <div style={{'width' : '40%', textAlign: 'right' }}>
+            Round {roundNumber}/{totalRounds}</div>
+          <div style={{'width' : '40%', textAlign: 'right'}}>
+            Score {totalRightAnswers}/{totalRounds}</div>
         </div>
 
-        {presentQuestionBox2()}
-
-        {/* <Question/> */}
-        
-        {/* <div className="button-row">
-          <Button id="option01" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("John Wayne")}>
-            John Wayne
-          </Button>
-          <Button id="option02" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Gary Cooper")}>
-            Gary Cooper
-          </Button>
-        </div> 
-        <div className="button-row">
-          <Button id="option03" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Clint Eastwood")}>
-            Clint Eastwood
-          </Button>
-          <Button id="option04" variant='light' style={{'width' : '45%'}} onClick={() => checkAnswer("Henry Fonda")}>
-            Henry Fonda
-          </Button>
-        </div>  */}
+        {presentQuestionBox()}
 
         <div id="gameCommands">
           <Button variant='light' onClick={() => reachPreGamePage()}>

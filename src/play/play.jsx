@@ -24,24 +24,6 @@ const totalRightAnswers = 0;
 
 //Slide-in Method 2
 // Sliding attempts
-const SlidingText = ( text ) => {
-  const [isVisible, setIsVisible] = React.useState(false);
-
-  React.useEffect(() => {
-    // Trigger the animation after a short delay
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100); // Adjust delay as needed
-
-    return () => clearTimeout(timer); // Clear timeout if component unmounts
-  }, []);
-
-  return (
-    <div className={`sliding-text ${isVisible ? 'visible' : ''}`}>
-      {text} Happy
-    </div>
-  );
-};
 
 let productShown = false;
 async function slideObject(){
@@ -68,18 +50,6 @@ async function slideObject(){
 
 setInterval(slideObject, 5000);
 
-//animation: fly-from-right 1s ease-out;
-const changeObjectview = () => {
-  const element = document.getElementsByClassName('new-high-score');
-  console.log("Element 1:",element);
-  console.log("Element 2:",element[0]);
-
-  element[0].style.backgroundColor = 'blue';
-  element[0].style.animation = 'animation: fly-from-right 4s ease-out';
-};
-
-
-
 /*
 Maybe add background hehind the question box
 responsive design 
@@ -95,15 +65,12 @@ export function Play({ userName, playState, onPlayChange }) {
     <main className="container-fluid bg-secondary text-center">  
       {/* Rph Need to place game notifications */}
           
-      {/* <!-- Note - Some links Hidden till user logs in --> */}
+      {/* Note - Some links Hidden till user logs in*/}
       {/* Slide Atempt 1 */}
       <h2 className="new-high-score">New High Score!</h2>
       
-
       {/* Display all notices between players */}
       <Players/>
-      {/* Slide Atempt 2 */}
-      {/* {SlidingText('John')} */}
 
       {/* Game box for user to start and play game */}
       <div id="guessing-structure-box">

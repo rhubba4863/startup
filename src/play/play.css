@@ -1,17 +1,5 @@
-header {
-  /* flex: 0 90px;
-  background-color: rgba(0, 0, 0, 0.9);
-
-  height: 10%; */
-
-  /* display: block;
-  unicode-bidi: isolate;
-  margin: auto; */
-}
-
 .game-name{
   vertical-align: middle;
-
 }
 
 menu{
@@ -27,27 +15,15 @@ menu{
   border-bottom: solid rgb(182, 182, 182) thin;
 }
 
+/**
+* Display of new updates on other users
+*/
 .new-high-score{
-  /* display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items:start; */
-
-  /* position: relative;
-  float: right;
-
-  top: 5%; */
-
   color: pink;
   position: absolute;
   top: 12%;
   right: 16px;
   font-size: 18px;
-
-  /* Element takes space, but not visible */
-  /* https://www.w3schools.com/css/css_display_visibility.asp */
-  /* visibility: hidden; */
-
 }
 
 menu .nav-item {
@@ -58,19 +34,12 @@ menu .nav-item {
 main {
   background-color: rgb(194, 193, 193);
 
-  /* flex: 1 calc(100vh - 110px);
-  display: flex; */
-  /* flex-direction: column;
-  align-items: center;
-  justify-content: space-around; */
-
   text-align: center;
   font-family: sans-serif;
   box-sizing: border-box;
   
   height: 100%;
 
-  /* flex: 1 calc(100vh - 110px); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,54 +56,18 @@ html {
 }
 
 body {
-  /* display: flex;
-  flex-direction: column;
-  min-width: 375px; */
-
-
   height: 100%;
   /* min-width: 700px */
   /* min-w-{700px}; */
 }
 
 /* NOTE MEDIA QUERIES HERE */
-/* 
-If page is in portrait format
-@media (orientation: portrait) {
-NOTE - REFER TO BODY ELEMENT
- body {
-   flex-direction: column;
- }
-}
- */
-
- /* (max-height: 500px))
- MEANS once below 500px
-  */
-
-  /* @media ((orientation: portrait) and (max-height: 500px)) {
- aside {
-   display: none;
- }
-} */
-
-/* @media ((max-height: 500px)) {
-  #page-links {
-    display: none;
-  }
- } */
-
  @media ((orientation: portrait) and (max-height: 500px)) {
   #modal-load-button {
     display: none;
   }
  }
  
-
-/* .button-row{
-  padding: 1px;
-} */
-
 /* Notes
 Fill max height of item in page
 height: 100%; */

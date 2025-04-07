@@ -32,14 +32,14 @@ class GameEventNotification{
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
     this.socket.onopen = (event) => {
-      this.receiveEvent(new OneMessage('Trivia1', PlayState.Playing, { msg: 'connected' }));
+      this.receiveEvent(new OneMessage('Trivia', PlayState.Playing, { msg: 'connected' }));
     };
     this.socket.onclose = (event) => {
-      this.receiveEvent(new OneMessage('Trivia2', PlayState.Playing, { msg: 'disconnected' }));
+      this.receiveEvent(new OneMessage('Trivia', PlayState.Playing, { msg: 'disconnected' }));
     };
     this.socket.onmessage = async (msg) => {
       try {
-        console.log("JOE+"+msg.data);
+        // console.log("JOE+"+msg.data);
 
         const event = JSON.parse(await msg.data.text());
         this.receiveEvent(event);
@@ -49,12 +49,11 @@ class GameEventNotification{
 
   broadcastEvent(from, type, value) {
     const event = new OneMessage(from, type, value);
-    console.log("Event Pieces From ="+event.from)
-    console.log("Event Pieces Type ="+event.type)
-    console.log("Event Pieces Type ="+event.type.stringify)
-    console.log("Event Pieces Type ="+JSON.stringify(event.type))
-
-    console.log("Event Pieces ="+event.value)
+    // console.log("Event Pieces From ="+event.from)
+    // console.log("Event Pieces Type ="+event.type)
+    // console.log("Event Pieces Type ="+event.type.stringify)
+    // console.log("Event Pieces Type ="+JSON.stringify(event.type))
+    // console.log("Event Pieces ="+event.value)
 
     this.socket.send(JSON.stringify(event));
   }

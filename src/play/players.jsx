@@ -17,7 +17,6 @@ export function Players(props) {
   });
 
   function handleGameEvent(event) {
-    // setEvent(prev => [...prev, event]);
     setEvent([...events, event]);
   }
 
@@ -38,7 +37,6 @@ export function Players(props) {
       // console.log("cc"+event.value.message);
       // console.log("dd"+JSON.stringify(event, null, 2));
 
-
       let name = event.from.split('@')[0]+":";
       messageArray.push(
         <div key={i} className='news'>
@@ -51,10 +49,14 @@ export function Players(props) {
     return messageArray;
   }
 
-  return (
-    <div className='players'>
-      Player News
-      <div id='player-messages'>{createMessageArray()}</div>
-    </div>
-  );
+  if (createMessageArray().length == 0){
+    return "";
+  }else{
+    return (
+      <div className='players'>
+        Player News
+        <div id='player-messages'>{createMessageArray()}</div>
+      </div>
+    );
+  }
 }

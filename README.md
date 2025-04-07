@@ -149,4 +149,4 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [X] **Frontend makes WebSocket connection** - In "peerGroup" I set a connection up, keeping track when they close.
 - [X] **Data sent over WebSocket connection** - Over Websocket I handle the events, sending an updated array of the message(s) 1 user has for all others
 - [X] **WebSocket data displayed** - Each time another user starts/ends a game the array of news is displayed on screen current user's screen.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [X] **Application is fully functional** - I can create user, login, play the game, and is alerted when another user starts or ends a game. Finally the high schools are posted for all to see.

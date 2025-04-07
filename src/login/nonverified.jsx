@@ -83,8 +83,6 @@ export function NonVerified(props) {
 
     scores.push(newScore);
 
-    // console.log("4) " + scores.length);
-
     // Let other players know the game has concluded
     // GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
 
@@ -95,7 +93,6 @@ export function NonVerified(props) {
 
     //RPH - Clear the local storage  
     //localStorage.clear('scores');
-
   }
 
   return (
