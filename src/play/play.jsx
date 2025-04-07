@@ -98,12 +98,15 @@ export function Play({ userName, playState, onPlayChange }) {
       {/* <!-- Note - Some links Hidden till user logs in --> */}
       {/* Slide Atempt 1 */}
       <h2 className="new-high-score">New High Score!</h2>
+      
+
       {/* Display all notices between players */}
       <Players/>
       {/* Slide Atempt 2 */}
       {/* {SlidingText('John')} */}
 
-      <div>
+      {/* Game box for user to start and play game */}
+      <div id="guessing-structure-box">
         {/* Decide which Play page/features to show  */}
         {playState === PlayState.Playing && (        
           <Playing

@@ -339,10 +339,6 @@ function replaceQuote(text){
 
     let Random = Math.floor(Math.random() * 4)
     console.log("Random"+Random);
-
-
-    //document.getElementById("demo").innerHTML =
-    //Math.floor(Math.random() * 10);
   })
 
   console.log("QUOTE:"+ questions);

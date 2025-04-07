@@ -1,6 +1,22 @@
-.news {
-  /* flex: 1;
-  width: 100%;
-  padding: 0.5em; */
-  z-index: -1;
+/**
+Position player news to the top left corner of the page
+*/
+.players {
+  /* https://stackoverflow.com/questions/104953/position-an-element-relative-to-its-container */
+  /* https://www.w3schools.com/css/tryit.asp?filename=trycss_position_absolute */
+  /* https://www.w3schools.com/css/tryit.asp?filename=trycss_align_float */
+
+  /* Positon news messages */
+  position: absolute;
+  z-index: 20;
+  /* Placed top left */
+  top: 85px;
+  left: 20px;
+
+  text-align: left;
+}
+
+.news-event-user {
+  color:black;
+  color:aqua;
 }

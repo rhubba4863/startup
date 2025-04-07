@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { PlayState, GameNotification } from './gameNotification';
 
 import { Question } from './question';
+import { Players } from './players';
 
 //import './verified.css';
 

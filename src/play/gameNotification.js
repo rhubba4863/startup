@@ -35,7 +35,7 @@ class GameEventNotification{
       this.receiveEvent(new OneMessage('Trivia1', PlayState.Playing, { msg: 'connected' }));
     };
     this.socket.onclose = (event) => {
-      this.receiveEvent(new OneMessage('Triva2', PlayState.Playing, { msg: 'disconnected' }));
+      this.receiveEvent(new OneMessage('Trivia2', PlayState.Playing, { msg: 'disconnected' }));
     };
     this.socket.onmessage = async (msg) => {
       try {
